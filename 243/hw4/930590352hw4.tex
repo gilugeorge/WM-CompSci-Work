@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\begin{document}
+\begin{center}
+{\bf 930590352}
+	
+CSCI 243 Spring 2011 HW4
+\end{center}
+\begin{enumerate}
+  \item $(\neg q \land (p \rightarrow q)) \rightarrow \neg p$
+    	\begin{center}
+	\begin{tabular}{ | c | c | c | c | c | c | c |}
+	  \hline
+	  $p$ & $q$ & $\neg p$ & $\neg q$ & $p \rightarrow q$ & $\neg q \land (p \rightarrow q)$ & $\neg q \land (p \rightarrow q) \rightarrow \neg p$  \\ \hline
+	$T$ & $T$ & $F$ & $F$ & $T$ & $F$ & $T$ \\
+	$T$ & $F$ & $F$ & $T$ & $F$ & $F$ & $T$ \\
+	$F$ & $T$ & $T$ & $F$ & $T$ & $F$ & $T$ \\
+	$F$ & $F$ & $T$ & $T$ & $T$ & $T$ & $T$ \\ \hline
+	\end{tabular}
+	\end{center}
+	**This is like the book
+
+  \item $p \land q \land r \land \neg s$ \\
+	**This is like the book
+
+  \item It is valid because if both premises are thown to be true, the vacuous conclusion is true, but since they both will never be true the conclusion will not be true.\\
+**This is like the book
+
+  \item $Q(x)$ is True or $P(x)$ is False
+	When $Q(x)$ is True, statement 2 will always be true \\
+	When $P(x)$ is False, statement 2 must be true by false hypothesis \\
+	**This is like the book
+
+  \item Constructive \\
+	when $m = 10^{1000} \rightarrow 10^{2000} > 10^{1000}$ \\
+	**this is like the book
+
+  \item Find a single counter-example: \\
+	23 will end this claim. \\
+	**this is like the book
+
+  \item If x is with A-(A-B), then x is within A and to be not in (A-B) means that it must be within B.
+
+  \item If $A = \{1\} B = \{ \emptyset \} A = \{1\}$ \\
+	$(A-B)-C = \{1\} - \{1\} = \{ \emptyset \}$ \\
+	but $A-(B-C) = \{1\} - \{ \emptyset \} = \{1\} $ \\
+	and therefore are not equal \\
+	**this is like the book
+
+  \item $ \emptyset , A \cap B, A, A \cup B, U$ \\
+	**this is like the book
+
+  \item All integers if there is one integer and one non-integer, or when they are both fractions are less than 1. \\
+	**this is like the book.
+
+  \item **no question**
+
+  \item $n = 2k +1$ \\
+	$\frac {n^2}{4} = k^2 + k + \frac {1}{4} \rightarrow k^2+k+1$ \\
+	$\frac {n^2+3}{4} = \frac {4k^2+4k+1+3}{4} = \frac {4k^2+4k+4}{4} = k^2+k+1$ \\
+	**this is like the book
+
+  \item
+	a) Search through the list i times and if there was a 1, go to next number, if there was a zero check i+1 and if 0 return True, otherwise continue to i+1. \\
+        b) 2n comparisons in the worst case that there are never any consecutive zeroes. \\
+	**this is like the book
+
+  \item 5 mod 17 = 5 \\
+	5, 22, 39, 56 \\
+	**this is like the book
+
+  \item gcd$(2n+1, 3n+2) $ \\
+	$3n +2 = (2n +1)(1) + (n+1) $\\
+	$2n +1 = (n+1)(1) + n$ \\
+	$n +1 = (n)(1) + 1$ \\
+	gcd is 1\\
+	**This is like the book
+
+  \item $a mod 9 \iff (a_1 + \dots + a_n)_{10} mod 9$ \\
+	$10^a + \dots + 10^{a_n} mod 9$ \\
+	$10 \equiv 1 mod 9$ \\
+	$a \equiv a_{n-1} + \dots + a_0 mod 9$ \\
+	when the digits sum to 0, $ a \equiv 0 mod 9$ \\
+	**this is like the book
+
+  \item base: n = 1 \\
+	$1 \cdot 2^{n-1} = 1 \cdot 1 = 1$ \\
+	$(1-1)(2^1)+1 = 0(2)+1 = 1$ the base works \\
+	Proof: \\
+	$(n-1) \cdot 2^n +1 +(n+1) \cdot 2^n$ \\
+	$= 2n \cdot 2^n +1$ \\
+	$= n(2^{n+1})+1 \equiv ((n+1)-1) \cdot 2^{n+1} +1$ \\
+	**this is like the book
+
+  \item base: n = 10 $2^10 > 10^3 \rightarrow 1024 > 1000$ \\
+	the base checks out now the Proof: \\
+	$(n+1)^3 = n^3+3n^2+3n+3n$ \\
+	$=n^3+9n^2$ \\
+	which is $<n^3 +n^3$ \\
+	therefore: $2n^3 < 2 \cdot 2^n$ \\
+	$=2^{n+1}$ \\
+	**this is like the book
+
+  \item I had no clue how to do this one
+	** after looking at the book, k + 1 sets can cover all sets below it., thus k+ 2 must also cover the sets below it.  But k + 1 is not able to cover more than one point on the line, therefore it is proved wrong.
+
+  \item if n = 1 \\
+	  \{ if (list[a] = 0) $\rightarrow$ thisMethod(list) = 1 \\
+	     else thisMethod(list) = 0 	\}  \\
+	 else \{ \\
+	   if list[$a_n$] = 0 $\rightarrow$ thisMethod(list) = thisMethod(list) + 1\\
+	   else thisMethod(list) = thisMethod(list-1) \} \\
+	**this is like the book
+
+  \item
+    \begin{enumerate}
+	\item 9+2(9)(9)= 171 \\
+	      171 + 18 + 3 = 192
+	\item 1 + 19 + 280 + 1 = 301
+	\item 1 + 19 + 280 = 300
+	\item same as c, 300
+    \end{enumerate}
+        **this is like the book
+  \item
+    \begin{enumerate}
+      \item 50
+      \item 50
+      \item 14, 13 different types of cards and then 1 more to make sure they are the same
+      \item 5, 4 of the same card and 1 more to make sure you find a different one
+    \end{enumerate}
+	**this is like the book
+
+  \item 8 a's, 3 b's, 4 c's, 5 d's = 20 total \\
+	$\frac{20!}{8!3!4!5!}=3,291,888,400$ \\
+	**this is like the book
+
+  \item $5^{24} = 6 \times  10^{16}$ \\
+	**this is like the book
+
+  \item I didn't really know how to do this one ** looking at the book, it was a simplification of a therem in the book.  Once m and n were plugged in correctly they would be able to simplify to C((n-1), (n-m)) solutions.
+
+ 
+
+\end{enumerate}
+\end{document}

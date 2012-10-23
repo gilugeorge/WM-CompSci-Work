@@ -1,0 +1,216 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\begin{document}
+\begin{center}{\bf 930590352}
+
+CSCI 243 Spring 2011 HW1
+\end{center}
+\begin{enumerate}
+
+\item
+ \begin{enumerate}
+  \item $r \land \neg p$ 
+  \item $\neg p \land q \land r$ 
+  \item $r \rightarrow (q \iff \neg p)$
+  \item $\neg q \land \neg p \land r$
+  \item $(\neg r \land \neg p) \rightarrow q$ \\
+	I got this one wrong because I did not realize that it needed two seperate statements, I was trying to combine everything into one set.
+  \item $(r \land p) \rightarrow \neg q$
+ \end{enumerate}
+
+\item
+ \begin{enumerate}
+  \item 2 rows
+  \item 16 rows
+  \item 64 rows
+  \item 16 rows
+ \end{enumerate}
+
+\item
+ \begin{enumerate}
+  \setcounter{enumii}{2}
+  \item
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	$p$ & $q$ & $\neg q$ & $p \lor \neg q$ & $(p \lor \neg q) \rightarrow q$ \\ \hline
+	$T$ & $T$ & $F$ & $T$ & $T$ \\ \hline	
+	$T$ & $F$ & $T$ & $T$ & $F$ \\ \hline	
+	$F$ & $T$ & $F$ & $F$ & $T$ \\ \hline	
+	$F$ & $F$ & $T$ & $T$ & $F$ \\ \hline
+	\end{tabular}
+
+  \item
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	$p$ & $q$ & $p \lor q$ & $p \land q$ & $(p \lor q) \rightarrow (p \land q)$ \\ \hline
+	$T$ & $T$ & $T$ & $T$ & $T$ \\ \hline	
+	$T$ & $F$ & $T$ & $F$ & $F$ \\ \hline	
+	$F$ & $T$ & $T$ & $F$ & $F$ \\ \hline	
+	$F$ & $F$ & $F$ & $F$ & $T$ \\ \hline
+	\end{tabular}
+
+  \item
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+	\hline
+	$p$ & $q$ & $\neg p$ & $\neg q$ & $p \rightarrow q$ & $(\neg q \rightarrow \neg p)$ & $(p \rightarrow q) \iff (\neg q \rightarrow \neg p)$ \\ \hline
+	$T$ & $T$ & $F$ & $F$ & $T$ & $T$ & $T$ \\ \hline	
+	$T$ & $F$ & $F$ & $T$ & $F$ & $F$ & $T$ \\ \hline	
+	$F$ & $T$ & $T$ & $F$ & $T$ & $T$ & $T$ \\ \hline	
+	$F$ & $F$ & $T$ & $T$ & $T$ & $T$ & $T$ \\ \hline
+	\end{tabular}
+ \end{enumerate}
+
+\item
+ (a) \begin{tabular}{|c|c|c|c|c|}
+ 	\hline
+	$p$ & $q$ & $p \lor q$ & $p \oplus q$ & $(p \lor q) \rightarrow (p \oplus q)$ \\ \hline
+	$T$ & $T$ & $T$ & $F$ & $F$ \\ \hline	
+	$T$ & $F$ & $T$ & $T$ & $T$ \\ \hline	
+	$F$ & $T$ & $T$ & $T$ & $T$ \\ \hline	
+	$F$ & $F$ & $F$ & $F$ & $T$ \\ \hline
+     \end{tabular}
+
+ (d) \begin{tabular}{|c|c|c|c|c|c|}
+ 	\hline
+	$p$ & $q$ & $\neg p$ & $p \iff q$ & $\neg p \iff q$ & $(p \iff q) \oplus (\neg p \iff q)$ \\ \hline
+	$T$ & $T$ & $F$ & $T$ & $F$ & $T$ \\ \hline	
+	$T$ & $F$ & $F$ & $F$ & $T$ & $T$ \\ \hline	
+	$F$ & $T$ & $T$ & $F$ & $T$ & $T$ \\ \hline	
+	$F$ & $F$ & $T$ & $T$ & $F$ & $T$ \\ \hline
+	\end{tabular}
+\item
+ (c) \begin{tabular}{|c|c|c|c|c|c|}
+ 	\hline
+	$p$ & $q$ & $\neg p$ & $p \rightarrow q$ & $\neg p \rightarrow q$ & $(p \rightarrow q) \lor (\neg p \rightarrow q)$ \\ \hline
+	$T$ & $T$ & $F$ & $T$ & $T$ & $T$ \\ \hline	
+	$T$ & $F$ & $F$ & $F$ & $T$ & $T$ \\ \hline	
+	$F$ & $T$ & $T$ & $T$ & $T$ & $T$ \\ \hline	
+	$F$ & $F$ & $T$ & $T$ & $F$ & $T$ \\ \hline
+	\end{tabular}
+
+ (e) \begin{tabular}{|c|c|c|c|c|c|}
+ 	\hline
+	$p$ & $q$ & $\neg p$ & $p \iff q$ & $\neg p \iff q$ & $(p \iff q) \lor (\neg p \iff q)$ \\ \hline
+	$T$ & $T$ & $F$ & $T$ & $F$ & $T$ \\ \hline	
+	$T$ & $F$ & $F$ & $F$ & $T$ & $T$ \\ \hline	
+	$F$ & $T$ & $T$ & $F$ & $T$ & $T$ \\ \hline	
+	$F$ & $F$ & $T$ & $T$ & $F$ & $T$ \\ \hline
+	\end{tabular}
+
+\item
+ No, the detective can only determine that the butler and cook are lying, but cannot tell what the gardener or handyman is telling.  This is because the truth tables will only allow for the butler and cook to be determined, but the other two can be any combination to satisfy the statement.
+
+\item
+ \begin{enumerate}
+ \setcounter{enumii}{2}
+  \item Mei does not walk and does not take the bus to class.
+  \item Ibrahim is not smart, or he does not work hard.
+ \end{enumerate}
+
+\item 
+ (a) \begin{tabular}{|c|c|c|c|}
+	\hline
+	$p$ & $q$ & $p \land q$ & $(p \land q) \rightarrow p$ \\ \hline
+	$T$ & $T$ & $T$ & $T$ \\ \hline
+	$T$ & $F$ & $F$ & $T$ \\ \hline
+	$F$ & $T$ & $F$ & $T$ \\ \hline
+	$F$ & $F$ & $F$ & $T$ \\ \hline
+     \end{tabular}
+
+ (e) \begin{tabular}{|c|c|c|c|c|}	
+	\hline
+	$p$ & $q$ & $p \rightarrow q$ & $\neg(p \rightarrow q)$ & $\neg(p \rightarrow q) \rightarrow p$ \\ \hline
+	$T$ & $T$ & $T$ & $F$ & $T$ \\ \hline
+	$T$ & $F$ & $F$ & $T$ & $T$ \\ \hline
+	$F$ & $T$ & $T$ & $F$ & $T$ \\ \hline
+	$F$ & $F$ & $T$ & $F$ & $T$ \\ \hline
+     \end{tabular}
+
+\item They are equivalent because when it is p or q, the only ones that are true are the ones when both are true.  this means that the intersection of the two statements yields the same results as having two seperate $(p \rightarrow r)$ and $(q \rightarrow r)$ statements.  
+
+\item 
+ \begin{tabular}{|c|c|c|c|c|c|c|c|}
+  \hline
+  $p$ & $q$ & $r$ & $(p \rightarrow q)$ & $(q \rightarrow r)$ & $(p \rightarrow r)$ & $(p \rightarrow q) \land (q \rightarrow r)$ & $(p \rightarrow q) \land (q \rightarrow r) \rightarrow (p \rightarrow r)$ \\ \hline
+  $T$ & $T$ & $T$ & $T$ & $T$ & $T$ & $T$ & $T$ \\ \hline
+  $T$ & $T$ & $F$ & $T$ & $F$ & $F$ & $F$ & $T$ \\ \hline
+  $T$ & $F$ & $T$ & $F$ & $T$ & $T$ & $F$ & $T$ \\ \hline
+  $F$ & $F$ & $F$ & $T$ & $T$ & $T$ & $T$ & $T$ \\ \hline
+  $F$ & $T$ & $T$ & $T$ & $T$ & $T$ & $T$ & $T$ \\ \hline
+  $F$ & $T$ & $F$ & $T$ & $F$ & $T$ & $F$ & $T$ \\ \hline
+ \end{tabular}
+
+\item To show that they are not equivalent would simply require that there is an example of which the logic statement does not hold. In this case when all three $p, q, $ and $r$ are false, statement one will result in $F$, while statement 2 will be $T$, thus proving that they are not logically equivalent.
+
+\item 
+	(a) With all people, if x is a comedian then x is funny. \\
+	(d) There is at least one comedian who is funny.
+
+\item
+ \begin{enumerate}
+	\item T
+	\item T
+	\item F
+	\item F
+	\item T
+	\item F
+ \end{enumerate}
+
+\item For all the below, $P(x)= is perfect$ and $F(x)= is friend$ \\
+ \begin{enumerate}
+  \item $\forall x \neg P(x)$
+  \item $\neg \forall x P(x)$
+  \item $\forall x(F(x) \rightarrow P(x))$
+  \item $\exists x(F(x) \land P(x))$
+  \item $\forall x(F(x) \land P(x))$
+  \item $\neg \forall xF(x) \lor \exists x \neg P(x)$ 
+ \end{enumerate}
+
+\item They are not logically equivalent because $P(x) \rightarrow Q(x)$ can be true even when $P(x)$ is false, but that is not the case when $\forall P(x)$ is false.  **My answer differed slightly because I couldn't really explain what I meant as clearly as what the book said, but essentially it is the same idea.**
+
+\item Just one item from each statement is not the same as saying that there is one from the intersection of the two statements. A person may satisfy each statement seperately, but may not satisfy each statement at the same time. \\
+**The book instead used a concrete example to show where the two logic statements would not be equivalent. I was completely wrong and was thinking of a different way to answer this question.**
+
+\item 
+ (a) $\forall xL(x,Jerry)$ \\
+ (c) $\exists x \forall y L(x,y)$ \\
+ (e) $\exists x \neg L(Lydia,x)$ \\
+ (g) $\exists !x \forall y L(y,x)$ \\
+ (i) $\forall x L(x,x)$ 
+
+\item 
+ (a) $\forall x \forall y (x<0, y<0) \rightarrow (x+y <0)$ \\
+ (c) $\forall x \forall y (x^2 + y^2 \geq (x+y)^2$
+
+\item
+ (a) $\forall x \exists y (y=2)F(x,y)$ \\
+	$\exists x \forall y (y=2) F(x,y)$ \\
+	A student has taken a class at the school. \\
+ 	**I simplified the statement too far. I didnt take into account the seperation of having 2 mathematics classes** \\
+
+ (d) $\forall x \exists y F(x, Kevin Bacon, z)$ \\
+	$\exists x(\forall x \neg F(x,Kevin Bacon, z)$ \\
+	There is an actor who has not been in a movie with Kevin Bacon, or with somebody who has been in a movie with Kevin Bacon. \\
+	**I did not seperate the two different statements into different parts, which I should have done. The book hadthe "with somebody who has been in a movie with Kevin Bacon" section in an "and" statement, which I should have noticed.**
+
+\item
+ \begin{enumerate}
+  \item $x=3$  $y= -3$
+  \item $x=-4$   $y=2$
+  \item $x=2$  $y=-1$
+ \end{enumerate}
+
+\item
+ \begin{enumerate}
+  \item T
+  \item F
+  \item T
+ \end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}

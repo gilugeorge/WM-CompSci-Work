@@ -1,0 +1,12 @@
+#!/bin/sh
+
+rm -rf $1
+if test $# -eq 1
+then
+	./archive -c $1
+	./archive $1 -a testingA.txt -s Test
+	./archive $1 -a testingA.txt -s Test
+	./archive $1 -a testingA.txt -s Test
+	./archive $1 -a testingA.txt -s Test
+	./archive $1 -a testingA.txt -s Test
+fi

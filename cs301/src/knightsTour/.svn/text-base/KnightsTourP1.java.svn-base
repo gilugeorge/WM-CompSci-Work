@@ -1,0 +1,74 @@
+/**
+ * 
+ */
+package knightsTour;
+
+import javax.swing.*;
+import java.util.Random;
+/**
+ * This class implements the Knights' tour for the Tour interface for Project 1.
+ * The code skeleton was generated in Eclipse with the new class feature and requesting that interface Tour should be implemented.
+ * The code is for Java 1.6 or higher.
+ * 
+ * @author ...
+ *
+ */
+public class KnightsTourP1 implements Tour {
+
+	/* (non-Javadoc)
+	 * @see knightsTour.Tour#setDimension(int)
+	 */
+	@Override
+	public void setDimension(int n) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/* (non-Javadoc)
+	 * @see knightsTour.Tour#getDimension()
+	 */
+	@Override
+	public int getDimension() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see knightsTour.Tour#getTour(int, int)
+	 */
+	@Override
+	public int[] getTour(int startRow, int startCol) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see knightsTour.Tour#printTour(int, int)
+	 */
+	@Override
+	public String printTour(int startRow, int startCol) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// The following code is added for the purposed of Homework 1:
+		Random r = new Random(123456789) ;
+		
+		JFrame f = new JFrame("Swing Example Window");
+		//f.setLayout(new FlowLayout());
+		f.add(new JLabel("" + Math.abs(r.nextInt())));
+		f.pack();
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		f.setVisible(true);
+	
+		System.out.println("The answer to Homework 1, Q1 is: " + Math.abs(r.nextInt()));
+
+	}
+	
+}

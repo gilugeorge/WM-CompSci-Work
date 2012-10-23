@@ -1,0 +1,179 @@
+/**
+ * 
+ */
+package knightsTour;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * This a set of tests for methods of a class that implements the Tour interface to compute a knight's tour.
+ * This is for Junit 4.
+ * 
+ * @author peterkemper
+ *
+ */
+public class TourTestP1 {
+
+	/**
+	 * This method is automatically called by the junit runtime environment before each individual test and is supposed to contain code
+	 * that creates necessary data structures used in each test.
+	 * The method is used to share common initialization code among all tests.
+	 * 
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		// TODO: add code as necessary
+	}
+
+	/**
+	 * This method is automatically called by the junit runtime environment after each individual test and is supposed to contain code
+	 * that deletes data structures no longer used after each test.
+	 * The method is used to share common clean-up code among all tests.
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+		// TODO: add code as necessary
+	}
+
+	/**
+	 * Test method for get/set pair for attribute dimension.
+	 */
+	@Test
+	public void testSetDimension() {
+		// TODO: add code to check if reading and writing that attribute works correctly.
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test if a tour calculation is correct for a board of size 0 x 0
+	 * Initialization is not possible with any reasonable value, we try r=1,c=1,
+	 * 
+	 */
+	@Test
+	public void testGetTour0() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+	/**
+	 * Test if a tour calculation is correct for a board of size 1 x 1
+	 * Initialization is only possible with r=0,c=0, others should result in an error
+	 * For r=0,c=0, trivial tour of length 1
+	 */
+	@Test
+	public void testGetTour1() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+	
+	/**
+	 * Test if a tour calculation is correct for a board of size 2 x 2
+	 * Initialization is possible with different value pairs, e.g. r=0,c=0, however there is no solution
+	 * since the knight cannot perform any legal moves.
+	 * The test checks all possible initial positions.
+	 */
+	@Test
+	public void testGetTour2() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+	
+
+	/**
+	 * Test if a tour calculation is correct for a board of size 4 x 4
+	 * The test checks all possible initial positions.
+	 * 
+	 * TODO: what is the correct solution we should expect???
+	 */
+	@Test
+	public void testGetTour4() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+
+	
+	/**
+	 * Test if a tour calculation is correct for a board of size 5 x 5
+	 * The test checks all initial positions that are different (subject to symmetry arguments).
+	 * 
+	 * TODO: what is the correct solution we should expect???
+	 */
+	@Test
+	public void testGetTour5() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+	/** 
+	 * Test if the output is produced. 
+	 * Case: solution exists and is successfully computed. 
+	 * Trivial case of 1 x 1 matrix.
+	 */
+	@Test
+	public void testPrintTour1() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+	/** 
+	 * Test if the output is produced. 
+	 * Case: solution exists and is successfully computed. 
+	 * Non-trivial case of 5 x 5 matrix.
+	 */
+	@Test
+	public void testPrintTour5() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+	/** 
+	 * Test if the output is produced. 
+	 * Case: solution does not exist. 
+	 * Non-trivial case of 5 x 5 matrix.
+	 */
+	@Test
+	public void testPrintTour5b() {
+		// TODO: add test code
+		// NOTE: a test must exercise functions of the class under test AND perform a correctness check
+		// with methods of type assertTRUE(), assertFALSE() etc
+		// check the documentation of the org.junit.Assert package for further details!
+		// http://www.junit.org/apidocs/org/junit/Assert.html
+		fail("Not yet implemented");
+	}
+
+
+}

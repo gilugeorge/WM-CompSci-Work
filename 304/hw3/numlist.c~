@@ -1,0 +1,13 @@
+/*Eric Shih
+ *This program accepts numbers entered by the user until a
+ *number is repeated. The program then prints out the list
+ *of numbers and their sum.
+ */
+
+#include <stdio.h>
+
+int main(){
+  
+
+  return 0;
+}//main

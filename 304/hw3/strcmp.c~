@@ -1,0 +1,10 @@
+/*Eric Shih
+ *This program takes in two input strings and compares the two to see
+ *if they are the same or not.
+ */
+
+#include <stdio.h>
+
+int main(){
+
+}//main

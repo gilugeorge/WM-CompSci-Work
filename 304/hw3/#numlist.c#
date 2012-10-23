@@ -1,0 +1,38 @@
+/*Eric Shih
+ *This program accepts numbers entered by the user until a
+ *number is repeated. The program then prints out the list
+ *of numbers and their sum.
+ */
+
+#include <stdio.h>
+#define MAX_NUMS 20
+
+int main(){
+  int *head;//the pointer for the array
+  int sum;
+  int i, j;//counters for the for loops
+  int count = 0;
+  int array[MAX_NUMS];
+  
+  for(i = 0; i < MAX_NUMS; i++){ 
+      printf("Number : ");
+      scanf("%d", &array[count]);
+      
+      /*Check to see if it is a repeated number*/
+      for(j = 0; j < count; j++){
+	if(array[j] == array[count]){
+	  i = MAX_NUMS;
+	  array[count] = \0; //****CHECK THIS ONE****
+	}//if
+      }//for
+
+      count++;//shifts the index of the array to the next spot
+  }//for
+
+  /*sums the numbers and prints the results*/
+  for(i = 0; i < count; i++){
+    sum += array[i];
+  }
+  printf("%d numbers were entered and their sum is %d\n", count, sum);
+  return 0;
+}//main

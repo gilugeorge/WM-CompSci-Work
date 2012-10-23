@@ -1,0 +1,326 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{multicol}
+
+\begin{document}
+\begin{center}
+{\bf 930590352}
+
+CSCI 243 Spring 2011 HW3
+\end{center}
+\begin{enumerate}
+
+\item 
+		\begin{enumerate}
+		\item Run a while loop that continues until none is found. The loop should compare the required number $x$, with the number at index $i$ starting at $i=0$. Once found, the loop should terminate.\\
+		**This is the same as what the book said.
+		\item Run a loop which will first compare the required number $x$ with the number of index $i=\frac{size}{2}$. If not equal then the numbers get compared to see if $x$ is greater than or less than the number at $i$. If greater, then it will then copy the number from $i$ to the end and make that the next set of numbers to compare to and vice versa if it is less than. If they are the samethen the loop will exit. \\
+		**This answer was more generic than the answer book, but had the same ideas without the specific syntax
+		\end{enumerate} 
+
+\item
+	1. Search for 1 using the binary search. \\
+	2. Place 1 at index 0.  \\
+	3. Search for 2 using binary search. \\
+	4. Place 2 after 1. \\
+	5. Repeat until the list is sorted. \\
+	**The book's path was different than mine. I should have done the comparison's one by one instead of simply placing the number at the front. My way was not exactly an insertion sort, it didn't take each step up throught the list.
+
+\item
+	\begin{enumerate}
+	\item List the talks in descending Order. Compare each talk time with the total time available, and if the talk is less than the total time remaining, then it is added to the list and the time changed to be the end of the talk added. This will continue until the talks no longer fit in the scheduled amount of time. \\
+	**This is the same idea as the book's
+	\item 9:00-9:45 \\
+				9:50-10:15 \\
+				10:15-10:45 \\
+				11:00-11:15 \\
+	** This is the same as what the book scheduled.
+	\end{enumerate}
+
+\item $\frac{x^2+1}{x+1} = \frac{x^2-1+2}{x+1} = \frac{x^2-1}{x+1} + \frac{2}{x+1} = \frac{(x-1)(x+1)}{x+1} + \frac{2}{x+1} = (x-1) + \frac{2}{x+1}$ \\
+ It has been simplified to show that O(x) is the highest order. \\
+**This matches the path that the book took.
+
+\item 
+	\begin{enumerate}
+	\item $n=3$
+	\item $n=3$
+	\item $n=1$
+	\item $n=0$
+	\end{enumerate}
+	** These matches the answers in the book
+
+\item $O(1)$ is constant time where the absolute value of the function is bound by an  unchanging value because there is no potential for variation. \\
+	**This is the same as the book
+
+\item
+	\begin{enumerate}
+	\item $log n = 10^9$ \\
+				$n = 2^{10^9}$ \\
+				$n = 2^1000000000$ \\
+				**same as the book
+	\item $n=10^9$ \\
+				**Same as the book
+	\item $nlogn = 10^9$ \\
+				$n = \frac{10^9}{logn}$ \\
+				**they wanted us to guess a specific number by seeing the pattern and finding n manually. I think this equation shows the answer correctly enough without becoming sloppy.
+	\item $n^2 = 10^9$ \\
+				$n = 10^4.5$ \\
+				$n = 32$ \\
+				** Same as the book
+	\item $2^n = 10^9$ \\
+				$n = log(10^9)$ \\
+				$n = 29$ \\
+				**Same as the book
+	\item $n! = n$ \\
+				**I didn't know how to do this, beacuse I didn't know how to simplify n!, but I realize now that I can simply plug and chug into the equation until the answer is found.
+	\end{enumerate}
+
+\item **I didn't understand what the question was asking before, but now I realize that two sets of comparisons are needed, when it is in the list and when it isn't. When it isn't in the list, $2n+2$ comparisons are needed, and $2n+1$ when there is. Thus the two need to be averaged to result in the final average number of comparisons of $\frac{3n+4}{2}$.
+
+\item
+	$a \equiv b(mond m)$ \\
+	$m \mid (a-b)$ \\
+	since $n \mid m$ you get $n \mid (a-b)$ \\
+	Therefore, $a \equiv b(mod n)$ \\
+	**This is like the book
+
+\item
+	\begin{enumerate}
+	\item $m=9, a =0, c=3, b=2, ac=0, bc=6$ \\
+				$ac \equiv bc (mod 3)$ \\
+				$0 \equiv 6 (mod 3)$ --This is false, therefore the conditional statement does not hold \\
+				**This is like the book
+	\item $a \equiv b (mod m), c = d(modm), a^c !\equiv b^d (modm)$ \\
+				$a = 2, b = 2, c = 2, d = 7, m= 5$ \\
+				$2 \equiv 2 mod 5$ \\
+				$2 \equiv 7 mod 5$ \\
+				$2^2 \equiv 2^7 mod 5$ \\
+				$4 =neq 3$ --Thus the statement does not hold \\
+				**This is like the book
+	\end{enumerate}
+
+\item $x_1 = 3 \cdot 2 mod 11 = 6$ \\
+			$x_2 = 3 \cdot 6 mod 11 = 7$ \\
+			$x_3 = 3 \cdot 7 mod 11 = 10$ \\
+			$x_4 = 3 \cdot 10 mod 11 = 8$ \\
+			$x_5 = 3 \cdot 8 mod 11 = 2$ \\
+			It has repeated so thus the pattern is... $2,6,7,10,8,2,...$ \\
+			**This is like the book
+
+\item $10! = 10 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1$ \\
+			$10! = (2 \cdot 5) \cdot 3^2 \cdot 2^3 \cdot 7\cdot (2 \cdot 3) \cdot 5 \cdot 2^2 \cdot 3 \cdot 2 \cdot 1$ \\
+			$10! = 2^8 \cdot 3^4 \cdot 5^2 \cdot 7$ \\
+			**This is like the book.
+
+\item
+	a.$\{1,3\} = 2$ \\
+	b.$\{1,3,7,9\} = 4$ \\
+	c.$\{1,2,3,4,5,6,7,8,9,10,11,12\} = 12$ \\
+	**This is like the book
+
+\item $n(n+1)(n+2)$ \\
+			(n+1) is even, thus will be divisble by 2 \\
+			And since there are 3 consecutive integers, one must be divisble by 3 because every third number from zero is divisble by 3. \\
+			**Not explained as clearly as the book did, but it is along the lines. They proved it more mathematically.
+
+\item 
+	\begin{enumerate}
+	\item $ x=1, power=3$ \\
+				$3^2 mod 99 = 9$ 
+	\item $x=1, power=9$ \\
+ 				$3^4 mod99=81$ 
+	\item $x=1, power=81$ \\
+				$3^8mod99=27$ 
+	\item $x=81, power=27$ \\
+				$81^2 mod 99 = 36$ 
+	\end{enumerate}
+			--At this point I got confused at looked at the book \\
+			**The book seemed strange by combining all the steps together and mashing a bunch of numbers together. They got the answer 27, which is what I would have gotten if I had continued down the line.
+
+\item
+	b.\\
+		$201 = 111 \cdot 1 +90$ \\
+		$111 = 90 \cdot 1 + 21$ \\
+		$90 = 21 \cdot 4 + 6$ \\
+		$21 = 6 \cdot 3 + 3$ \\
+		$6 = 3 \cdot 2 + 0$ \\
+		--The gcd is 3 \\
+		** This is like the book\\
+
+	d.\\
+		$54321 = 12345 \cdot 4 +4941$ \\
+		$12345 = 4941 \cdot 2 +2463$ \\
+		$4941 = 2463 \cdot 2 +15$ \\
+		$2463 = 15 \cdot 164 + 3$ \\
+		$15 = 3 \cdot 5 + 0$ \\
+		--the gcd is 3 \\
+		** This is like the book \\
+
+	f. \\
+		$9888 = 6060 \cdot 1 +3828$ \\
+		$6060 = 3828 \cdot 1 +2232$ \\
+		$2243 = 1596 \cdot 1 +636$ \\
+		$1596 = 636 \cdot 2 +324$ \\
+		$636 = 324 \cdot 1 +312$ \\
+		$324 = 312 \cdot 1 +12$ \\
+		$312 = 12 \cdot 26 +0$ \\
+		--the gcd is 12 \\
+		**This is like the book.
+
+\item 
+	\begin{enumerate}
+	\item $-(0110) = -6$
+	\item $1101 = 13$
+	\item $(1110) = -14$
+	\item $0000 = 0$
+	\end{enumerate}		
+	**These are all like the book	
+	
+\item
+	\begin{enumerate}
+	\item $-(2^4 - 9) = -7$
+	\item $1101 = 13$
+	\item $(2^4 -1) = -15$
+	\item $-(2^4 - 15) = -1$
+	\end{enumerate}		
+	**These are all like the book
+
+\item	$x^2 = 1(modp) \rightarrow p \mid(x+1)(x-1) \rightarrow p\mid x+1, p\mid x-1$ \\
+	$p\mid x+1 = x \equiv -1(mod p)$ and $p\mid x-1 = x \equiv 1(modp)$\\
+	Therefore, they are all equivilent \\
+	**This is like the book
+
+\item The Chinese Remainder Theorom is used here: \\
+	$m = 2 \cdot 3 \cdot 5 \cdot 11 = 330$ \\
+	$8 y_4 = 1 mod11$\\
+	$8 \cdot 7 = 56 = 1 mod 11$\\
+	$x = (1\cdot103\cdot1)+(2\cdot110\cdot2)+(3\cdot66\cdot1)+(4\cdot30\cdot7)= 323(mod330)$ \\
+	Therefore 323+330k is the solution \\
+	**This is close to the book. 
+   
+\item	$x \equiv 1 (mod 2)$ \\
+	$x \equiv 1 (mod 5)$ \\
+	$m = 2\cdot 3 = 6$ \\
+	$x = 1 mod 6$ \\
+	$\{...-5, 1, 7, 13, 19,...\}$ --leave a remainder of 1 \\
+	**This is like the book.
+
+\item	$2047 = 23 \cdot 89$ --Showing that it is a composite \\
+	$2047 - 1 = 2046 = 2 \cdot 1023$ \\
+	$s = 1, t = 2023$ \\
+	Therefore, $2^1023 = 2^{11^{93}} = 1^{93} = 1 mod 2047$ \\
+	**This is like the book.
+
+\item 	$2821 = 7 \cdot 13 \cdot 31$ \\
+	$b^{2820} = 1 mod 2821$ and $gcd(b,7) = gcd(b,13) = gcd(b,31) = 1$ \\
+	Fermat's Little Theorem: \\
+	$b^6 \equiv 1 mod 7 \rightarrow b^{6^{420}} \equiv 1 mod 7$ \\
+	$b^{12} \equiv 1 mod 13 \rightarrow b^{12^{233}} \equiv 1 mod 13$ \\
+	$b^{30} \equiv 1 mod 31 \rightarrow b^{30^{94}} \equiv 1 mod 31$ \\
+	Therefore $b^2820 \equiv 1 mod 2821$ by Chinese Remainder Theorem and is a Carmichael number. \\
+	**This is close to what the book had, mine was not as much detail.
+
+\item Scratched Out
+
+\item 	$mod 5 \rightarrow x^2 \equiv 4 \rightarrow x=2, x=3$ \\
+	$mod 7 \rightarrow x = 1, x = 6$ \\
+	results in: \\
+	$x \equiv 2 mod 5, x \equiv 3 mod 5$ and $ x \equiv 1 mod7, x \equiv 6 mod 7$ \\
+	The chinese Remainder Theorem is then used to yield:
+	$x = 22(mod35) = 8(mod35) = 13(mod35) = 27(mod35)$ \\
+	**I had to look through the book a bit to completely understand the process.
+
+\item if $(x,y)$ is the position within the matrix: \\
+	$a_{xy}+(b_{xy}+c_{xy}) = (a_{xy}+b_{xy}) + c_{xy}$ \\
+	and by the associative law of addition, this when done to all entries will prove that they are the same.\\
+	**This is like the book
+
+\item  **I didn't know how to do this one at all. But after looking at the book, the way to compare each entry by combining the summations of each A, B, and C matrix. Once in the summation notation, the commutative law of addition can be used to shwo they are equal.
+
+\item To show they are equal you simply see if $AA^{-1}$ and $A^{-1}A$ are the same. \\
+	\[
+	A =
+	\left[
+	 \begin{array}{l l}
+		a & b  \\
+		c & d  \\
+	 \end{array}
+	\right]
+	\]	
+	\[
+	A^{-1} =
+	\left[
+	 \begin{array}{l l}
+		\frac{d}{ad-bc} & -\frac{b}{ad-bc}  \\
+		-\frac{c}{ad-bc} &  \frac{a}{ad-bc} \\
+	 \end{array}
+	\right]
+	\]
+	\[
+	AA^{-1}=
+	\left[
+	 \begin{array}{c c}
+		1 & 0  \\
+		0 & 1  \\
+	 \end{array}
+	\right]
+	\]
+	\[
+	A^{-1}A=
+	\left[
+	 \begin{array}{c c}
+		1 & 0  \\
+		0 & 1  \\
+	 \end{array}
+	\right]
+	\] \\
+	**This is like the book
+
+\item	$(A_1A_2)(A_3A_4) = (10 \cdot 2 \cdot 5) + (5 \cdot 20 \cdot 3) + (10 \cdot 5 \cdot 3) = 550$ \\
+	$((A_1A_2)A_3)A_4 = (10 \cdot 2 \cdot 5) + (10 \cdot 5 \cdot 20) + (10 \cdot 20 \cdot 3) = 1700$ \\
+	$((A_2A_3)A_1)A_4 = (2 \cdot 5 \cdot 20) + (10 \cdot 2 \cdot 20) + (10 \cdot 20 \cdot 3) = 1200$ \\
+	$((A_3A_4)A_2)A_1 = (5 \cdot 20 \cdot 3) + (2 \cdot 5 \cdot 3) + (10 \cdot 2 \cdot 3) = 390$ \\
+	$((A_2A_3)A_4)A_4 = (2 \cdot 5 \cdot 20) + (2 \cdot 20 \cdot 3) + (10 \cdot 2 \cdot 3) = 380$ \\
+	Therefore the last one is the most efficient because it only takes 380 calculations \\
+	**This is like the book
+
+
+\item
+	\begin{enumerate}
+	\item 
+	\[
+	\left[
+	 \begin{array}{c c c}
+		1 & 1 & 1\\
+		1 & 1 & 1\\
+		1 & 0 & 1
+	 \end{array}
+	\right]
+	\]
+	\item
+	\[
+	\left[
+	 \begin{array}{c c c}
+		0 & 0 & 1\\
+		1 & 0 & 0\\
+		0 & 0 & 1
+	 \end{array}
+	\right]
+	\]
+	\item
+	\[
+	\left[
+	 \begin{array}{c c c}
+		1 & 1 & 1\\
+		1 & 1 & 1\\
+		1 & 0 & 1
+	 \end{array}
+	\right]
+	\]
+
+	\end{enumerate}
+	**This is like the book
+
+\end{enumerate}
+\end{document}

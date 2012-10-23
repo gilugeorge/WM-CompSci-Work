@@ -1,0 +1,19 @@
+;Eric Shih
+;small.asm
+;This program searches through an array
+;and finds the smallest value and stores
+;it in 'smallest' and R0.
+
+	.ORIG x3000
+
+
+
+
+	HALT
+
+;
+;Storage for array, pointers, and result
+;
+	
+
+	.END

@@ -1,0 +1,226 @@
+#!/bin/sh
+
+declare -i min=0
+declare -i max=0
+declare -i semicolon=0
+declare -i boundLength=0
+declare -i maxLength=0
+declare -i count=1
+declare STRING tbounds
+declare -i subjectLength #find and store subject and file lengths
+declare -i fileLength
+
+#-c check for archive
+if test $# -eq 2 && test $1 = "-c" 
+then
+	if test -d $2 
+	then
+		echo "$2 is already a Directory"
+	else
+		mkdir $2
+		echo "$min:$max" > $2/bounds
+	fi
+#fi
+
+#add messages -a -s
+elif test $# -eq 5 && test -d $1 && test $2 = "-a" && test $4 = "-s" && test -f $3
+then
+	#echo "enter -a -s"
+	expr length $3 > $1/temp
+	read -r fileLength < $1/temp
+	expr length $5 > $1/temp
+	read -r subjectLength < $1/temp
+	rm $1/temp				#clean up temp files
+	rm -f $HOME/.Trash/$1/temp
+
+	if test $subjectLength -le 31 && test $fileLength -le 511
+	then
+		read -r tbounds < $1/bounds
+		expr index $tbounds ':' > $1/temp
+		read -r semicolon < $1/temp
+		expr length $tbounds > $1/temp
+		read -r boundLength < $1/temp
+		expr $boundLength-$semicolon > $1/temp
+		read -r maxLength < $1/temp
+		semicolon+=1
+		expr substr $tbounds $semicolon $maxLength > $1/temp
+		read -r max < $1/temp
+		max+=1
+		echo "Subject: $5" > $1/$max
+		strDate=$(date -u)
+		echo "Date: $strDate" >> $1/$max
+		echo "=====" >> $1/$max
+		cat $3 >> $1/$max
+		echo "$min:$max" > $1/bounds #update the bounds
+		rm $1/temp
+	else
+		echo "Bad File/Subject"
+	fi
+	
+#add messages -s -a
+elif test $# -eq 5 && test -d $1 && test $2 = "-s" && test $4 = "-a"
+then
+	#echo "enter -s -a"
+	expr length $5 > $1/temp
+	read -r fileLength < $1/temp
+	expr length $3 > $1/temp
+	read -r subjectLength < $1/temp
+	rm $1/temp				#clean up temp files
+	rm -f $HOME/.Trash/$1/temp
+
+	if test $subjectLength -le 31 && test $fileLength -le 511
+	then
+		read -r tbounds < $1/bounds
+		expr index $tbounds ':' > $1/temp
+		read -r semicolon < $1/temp
+		expr length $tbounds > $1/temp
+		read -r boundLength < $1/temp
+		expr $boundLength-$semicolon > $1/temp
+		read -r maxLength < $1/temp
+		semicolon+=1
+		expr substr $tbounds $semicolon $maxLength > $1/temp
+		read -r max < $1/temp
+		max+=1
+		echo "Subject: $3" > $1/$max
+		strDate=$(date -u)
+		echo "Date: $strDate" >> $1/$max
+		echo "=====" >> $1/$max
+		cat $5 >> $1/$max
+
+		echo "$min:$max" > $1/bounds #update the bounds			
+		rm $1/temp
+	else
+		echo "Bad File/Subject"
+	fi
+
+#Remove Message
+elif test $# -eq 3 && test -d $1 && test $2 = "-d"
+then
+	if test -f $1/$3
+	then
+		#echo "Removing $3"
+	
+		read -r tempBounds < $1/bounds
+		col=`expr index $tempBounds ':'`
+		num1=${tempBounds:0:$col-1}
+		num2=${tempBounds:$col}
+		#echo $num1 $num2 $3
+		
+		if (test $3 -lt $num1 ) || (test $3 -gt $num2 ) #check for files
+		then
+			echo "File not Available"
+			exit
+		fi
+
+		if test $num2 -eq 1
+		then
+			rm $1/$3
+			echo "0:0" > $1/bounds
+		else
+			rm $1/$3 #remove the file
+			val=`expr $3 - 1`
+			for i in $( eval echo {$val..$num1})
+			do
+				x=`expr $i + 1`
+				mv $1/$i $1/$x
+			done
+			num1=`expr $num1 + 1`
+			echo "$num1:$num2" > $1/bounds
+		fi
+
+	else
+		echo "$3 is not within Archive"
+	fi
+
+#Get Subject List
+elif test $# -eq 2 && test -d $1 && test $2 = "-S"
+then
+		read -r tempBounds < $1/bounds
+		col=`expr index $tempBounds ':'`
+		num1=${tempBounds:0:$col-1}
+		num2=${tempBounds:$col}
+		#echo $num1 $num2
+
+		for i in $( eval echo {$num1..$num2} )
+		do
+			if test $i -eq 0
+			then
+				continue
+			else
+				read -r tFile < $1/$i
+				subj=${tFile:9}
+				date=$(head -n 2 $1/$i | tail -n 1)
+				echo $i $subj ${date:5}
+			fi
+		done
+
+#Search for words in subject -ss
+elif test $# -eq 3  && test -d $1 && test $2 = "-ss"
+then
+
+		read -r tempBounds < $1/bounds
+		col=`expr index $tempBounds ':'`
+		num2=${tempBounds:$col}
+
+		while test $count -le $num2
+		do
+			#echo "In the Do ln 170"
+			if test -f $1/$count
+			then
+				read -r word < $1/$count
+				echo $word > $1/temp2
+				grep -c $3 $1/temp2 > $1/temp
+				read -r countStrings < $1/temp
+
+				if test $countStrings -gt 0
+				then
+					echo "$count"
+				fi
+				rm -f $1/temp
+				rm -f $1/temp2
+				rm -f $HOME/.Trash/$1/temp
+				rm -f $HOME/.Trash/$1/temp2
+			fi
+		countString=0
+		count+=1
+		done
+
+#Search for words in body -sb
+elif test $# -eq 3  && test -d $1 && test $2 = "-sb"
+then
+		
+		read -r tempBounds < $1/bounds
+		col=`expr index $tempBounds ':'`
+		num2=${tempBounds:$col}
+
+		while test $count -le $num2
+		do
+			#echo "In the Do ln 170"
+			if test -f $1/$count
+			then
+				cat $1/$count >> $1/temp2
+				sed -i -e "1d" $1/temp2
+				sed -i -e "1d" $1/temp2
+				sed -i -e "1d" $1/temp2
+				grep -c $3 $1/temp2 > $1/temp
+				read -r countString < $1/temp
+				if test $countString -gt 0
+				then
+					echo "$count"
+				fi
+				rm -f $1/temp
+				rm -f $1/temp2
+				rm -f $HOME/.Trash/$1/temp
+				rm -f $HOME/.Trash/$1/temp2
+			fi
+		countString=0
+		count+=1
+		done
+				
+#otherwise produce error message
+else
+	echo "Bad Commands for archive"
+fi
+
+
+

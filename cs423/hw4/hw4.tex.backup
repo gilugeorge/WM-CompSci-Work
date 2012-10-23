@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein          
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt          
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 423 Homework 4}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 1:00 pm, Wednesday, 10/10}
+\centerline{Eric Shih}
+
+\begin{enumerate}
+ \item (8 points) Prove that the language A of strings of 0s and 1s whose length is a perfect square is not regular
+  \begin{description}
+    \item We will use proof by contradiction. Assume that A is a regular language, therefore the pumping lemma applies.
+    \item Let $p$ be the constant in the pumping lemma. Select $s = (0 \cup 1)^{p^2}$. $|s| \leq p, s = xyz, |xyz|=p^2,
+	  |y| > 0$, and $|xy| < p$.
+    \item According to the pumping lemma, $\forall i \leq 0$, $xy^iz \in A$. Therefore when y is pumped, $s$ should
+	  still be a perfect square, thus $|y|$ to any perfect square should result in the next perfect square.
+    \item $|s| = p^2$, so the next perfect square will be $(p+1)^2$; letting $i = 2$: 
+	  $p^2 + 1 \leq |xy^2z| \leq p^2 + p$.
+    \item $|xy^2z|$ can't be the correct perfect square $p^2$ nor can it be the next perfect square $(p+1)^2$ ($p^2 + 2p +1$)
+	  since $|xy^2z| \leq p^2 + p \leq p^2 + 2p +1$. This is a contradiction and the pumping lemma does not apply. Thus
+	  we have shown that A is not regular.
+  \end{description}
+
+ \item (8 points) Problem 1.46 (c) on page 90.
+  \begin{description}
+   \item Consider $\overline{L}$ where all strings are palindromes. By the closure properties, if $\overline{L}$ is
+	 not regular, $L$ is not regular.
+   \item Assume $\overline{L}$ is regular, so the pumping lemma applies. Let $p$ be the constant in the pumping lemma
+	 and $s=xyz$ where $\forall i \leq 0$, $xy^iz \in \overline{L}, |y| > 0$, and $|xy| < p$.
+   \item Let $s = 0^p10^p$, $y$ will be a substring in the first half of $s$ containing at least one 0 and up to $p$
+	 number of $0$s. $z$ will be $10^p$. When $i=0$, there will be at least one 0 removed from the first part of
+	 $x$, leaving $xz$ resulting in anywhere from $0^{p-1}10^p$ to $10^p$, none of which are palindromes.
+   \item Thus the pumping lemma does not hold, proving that $\overline{L}$ is not regular, and by closure $L$.
+  \end{description}
+
+ \item (16 points) Problem 1.49 (a) and (b) on page 90.\\ a) Strings accepted in B are:
+  \begin{center}
+    \begin{tabular}{l | l}
+      k & $1^ky$ \\ \hline
+      1 & $1 \dots 1 \dots$ \\
+      2 & $11 \dots 1 \dots 1 \dots$ \\
+      3 & $111 \dots 1 \dots 1 \dots 1 \dots$ \\
+      4 & $1111 \dots 1 \dots 1 \dots 1 \dots 1 \dots$ \\
+    \end{tabular}
+  \end{center}
+    $\forall w \in B$, $w=1^ky=11^{k-1}y$. From this $w$ can give the regular expression 
+    $1(0 \cup 1)^*1(0 \cup 1)^*$ proving $B$ to be regular.
+
+ \item (8 points) Problem 1.54 (a) on page 91.
+   \begin{description}
+    \item F can be defined by 3 subsets:
+      \begin{itemize}
+      \item $i = 0$, $F_0 = b^*c^*$, this subset is regular.
+      \item $i = 1$, $F_1 = ab^nc^n$, found to be not regular in a previous proof.
+      \item $i \geq 2$, $F_2 = aa^+b^*c^*$, this subset is regular.
+      \end{itemize}
+    \item Assuming F is regular, $F = F_0 \cup F_1 \cup F_2$ and each subset is mutually disjoint. This leads to
+	  the conclusion that $F_1 = F - F_0 - F_2$. By the closure property, if $F$, $F_0$, and $F_2$ are regular
+	  then $F_1$ should be as well. But this is not the case; we know that $F_1$ is not regular from a previous
+	  proof, thus providing a contradiction, which in turn proves that F is not regular.
+   \end{description}
+\end{enumerate}
+
+\pagebreak
+\setlength{\parindent}{1cm}
+\centerline{\bf Reading Summary 2}
+
+\begin{spacing}{1.5}
+ Regular expressions are used for applications that search for patterns in text. Compiled into deterministic or 
+ non-deterministic automata, they are used to produce a program that recognizes patterns in text. Two of the most
+ important classes of regular expression-based applications are lexical analyzers and text searches. UNIX notation
+ is commonly used  to make the applications for regular expressions easier. The UNIX extensions of character 
+ classes allow large sets of characters to be represented very succinctly.  \\
+ \indent The lexical analyzer scans the source program and recognizes all tokens, such as keywords and identifiers. A 
+ lexical-analyzer generator takes a high-level description of a lexical analyzer and produces a functioning lexical
+ analyzer. lex and flex are examples of these sort of operations. They are very useful because they are able to
+ generate an efficient function that breaks source programs into tokens. This shortens the amount of time that is
+ spent generating a proper lexical analyzer. The conversion of the expressions to an automaton begins by building
+ an automaton for all expressions. This only tells us that a token has been recognized, but the use of the NFA
+ epsilon state, exactly which specific token can be recognized. One simple problem to this strategy is that more
+ than one token can be recognized, but this can be solved by giving priority to the first expression listed. \\
+ \indent Searching for patterns in text is another popular use for regular-expression notation. Despite not being
+ as developed as lexical analyzers, using regular expressions for text searches will offer efficient automaton-based
+ implementations. 
+
+  
+\end{spacing}
+
+
+
+\end{document}
