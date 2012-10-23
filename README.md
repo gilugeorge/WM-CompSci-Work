@@ -1,4 +1,6 @@
 WM-CompSci-Work
 ===============
 
-Hello World. This is a test...
+This is a simple test repo for me to get used setting up and working in github. The
+files here are school assignments so that I can work on different machines and learn
+the workings of github as I go along.
