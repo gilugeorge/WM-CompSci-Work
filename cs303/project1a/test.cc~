@@ -1,0 +1,66 @@
+#include <iostream>
+#include "group.h"
+
+using namespace std;
+
+
+int main (){
+  //Test bad alloc
+  /*long t = 1000000000000000000000000000000;
+  GroupOfNumbers al(t); // this should fail
+  */
+  
+  //test basic input
+  long a = 15, b = 1, c = 2, d = 3;
+  GroupOfNumbers nums(11);
+  cout << "Empty: " << nums.isEmpty() << endl;
+  nums.add(a);
+  nums.add(b);
+  nums.add(c);
+  nums.add(d);
+  nums.add(a);
+  nums.add(b);
+  nums.add(c);
+  nums.add(d);
+  nums.add(a);
+  nums.add(b);
+  nums.add(c);
+  nums.displayGroupOfNumbers();
+  cout << "Empty: " << nums.isEmpty() << endl;
+  cout << "Total: " << nums.total() << endl;
+  
+  //test remove
+  nums.remove(a);
+  nums.remove(b);
+  nums.remove(c);
+  nums.remove(d);
+  nums.remove(a);
+  nums.displayGroupOfNumbers();
+  cout << "Empty: " << nums.isEmpty() << endl;  
+  cout << "Total: " << nums.total() << endl;
+  
+  //test Operator=
+  cout << "---------Start Operator= test -------------" << endl;
+  GroupOfNumbers num1(10), num2(13);
+  cout << "Total num1: " << num1.total() << endl;
+  cout << "Total num2: " << num2.total() << endl;
+  num2.add(a);
+  num2.add(b);
+  num2.add(c);
+  num2.add(d);
+  num2.add(a);
+  num2.add(b);
+  num2.add(c);
+  num2.add(d);  
+  num2.add(a);
+  num2.add(b);
+  num2.add(c);
+  num2.add(d);
+  num2.add(a);
+  cout << "Total num2: " << num2.total() << endl;
+  num2 = num1;
+  cout << "Total num1: " << num1.total() << endl;
+  cout << "Total num2: " << num2.total() << endl;
+   
+  return 0;
+}
