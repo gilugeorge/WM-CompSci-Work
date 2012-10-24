@@ -89,11 +89,7 @@
  
  \indent In markup languages, tags are the strings that are used to give information about the semantics of various
  strings within the document. In the case of HTML, its major functions of creating links between documents and describing
- the format of a document use CFGs to describe and guide the process of a document. Tags always have a beginning form and
- sometimes have an end form. If there is not an end form, then the tags are usually matched at the end of a paragraph. A 
- CFG can be used to describe not only the syntax of HTML, but it can also be used to show the structure of the language. In
- more complex markup language, CFGs play a more important role. Document Type Definition is a CFG with its own notation,
- but the same principles for context-free grammars. 
+ the format of a document use CFGs to describe and guide the process of a document.
 \end{spacing}
 
 \end{document}
