@@ -126,7 +126,17 @@ $Final Swap$& 42 & 57 & 7 & 40 & 83 & 78 & 80 & 79 & 86 & 91 & 89 & 84 \\
 \end{array}
 \]
 
-\item if it is left + 2 in the initial $if$ then it will work, otherwise it will skip directly to insertion sort.
+\item If the initial if statement still reads $(left + 2 <= right)$ then the quicksort algorithm will work, otherwise it will skip 
+      directly to insertion sort because there are not enough elements in the array. Below is the illustration of the first call
+      when the algorithm works:
 
+\[
+\begin{array}{lcccccc}
+$Quick Sort$ & 3 & 4 & 1 & 2 & 5 & left: 0, right: 4\\
+$median3$ & 3 & 4 & 5 & 2 & 1 & left: 0, right: 4\\
+$Final Swap$& 1 & 4 & 5 & 2 & 3 \\
+$Quick Sort$ & 1 & 4 & 5 & 2 & 3 & left: 0, right: -1
+\end{array}
+\]
 \end{enumerate}
 \end{document}
