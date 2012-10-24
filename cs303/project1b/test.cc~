@@ -16,5 +16,5 @@ int main (){
   nums.writeGroupOfNumbersTo("output.txt");
   
   GroupOfNumbers funs("output.txt", d);
-  nums.displayGroupOfNumbers();
+  funs.displayGroupOfNumbers();
 }

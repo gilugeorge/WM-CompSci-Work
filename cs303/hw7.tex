@@ -1,0 +1,130 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+
+\textwidth 6.5truein          
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt          
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CS303 Homework 7}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 3:30 pm, Wednesday, 10/24}
+\centerline{Eric Shih}
+\centerline{collaborated with Mark Pfluger, Ben Kayton, and Michael Trotta}
+
+\begin{enumerate}
+ \item Initial Input: 
+$
+\begin{array}{cccccccccccc}
+42 & 57 & 7 & 40 & 83 & 78 & 86 & 89 & 80 & 91 & 79 & 84
+\end{array}
+$
+
+
+\[
+\begin{array}{lccccccccccccc}
+$Quick Sort$ & 42& 57& 7& 40& 83& 78& 86& 89& 80& 91& 79& 84 & left: 0, right: 11\\
+$median3$& 42& 57& 7& 40& 83& 79& 86& 89& 80& 91& 78& 84 & left: 0, right: 11\\
+$Final Swap$& 42& 57& 7& 40& 78& 79& 86& 89& 80& 91& 83& 84 \\ \hline
+$Quick Sort$ & 42& 57& 7& 40& 78& 79& 86& 89& 80& 91& 83& 84 &  left: 0, right: 3\\
+$Insertion Sort(before): $&42& 57& 7& 40& 78& 79& 86& 89& 80& 91& 83& 84 \\
+$insertion Sort(after): $&7& 40& 42& 57& 78& 79& 86& 89& 80& 91& 83& 84 \\ \hline
+$Quick Sort$ & 7& 40& 42& 57& 78& 79& 86& 89& 80& 91& 83& 84 &  left: 5, right: 11\\
+$median3$& 7& 40& 42& 57& 78& 79& 86& 89& 83& 91& 80& 84 & left: 5, right: 11 \\
+$Final Swap$&7& 40& 42& 57& 78& 79& 80& 89& 83& 91& 86& 84 \\ \hline
+$Quick Sort$ & 7& 40& 42& 57& 78& 79& 80& 89& 83& 91& 86& 84 & left: 5, right: 5\\
+$Insertion Sort (before)$&7& 40& 42& 57& 78& 79& 80& 89& 83& 91& 86& 84 \\
+$Insertion Sort (after)$&7& 40& 42& 57& 78& 79& 80& 89& 83& 91& 86& 84 \\ \hline
+$Quick Sort$ & 7& 40& 42& 57& 78& 79& 80& 89& 83& 91& 86& 84 & left: 7, right: 11\\
+$Insertion Sort (before)$& 7& 40& 42& 57& 78& 79& 80& 89& 83& 91& 86& 84 \\
+$Insertion Sort (after)$& 7& 40& 42& 57& 78& 79& 80& 83& 84& 86& 89& 91 \\ \hline
+$Final Array:$& 7& 40& 42& 57& 78& 79& 80& 83& 84& 86& 89& 91
+\end{array}
+\]
+\centerline{ Number of Shifts: 10\\
+Number of Swaps: 4\\
+Total Shifts and Swaps: 14}
+
+\item Initial Input: 
+$
+\begin{array}{cccccccccccc}
+42 & 57 & 7 & 40 & 83 & 78 & 86 & 89 & 80 & 91 & 79 & 84
+\end{array}
+$
+
+\[
+\begin{array}{lccccccccccccc}
+$Quick Sort$ & 42 & 57 & 7 & 40 & 83 & 78 & 86 & 89 & 80 & 91 & 79 & 84 & left: 0, right: 11\\
+$median3$ & 42 & 57 & 7 & 40 & 83 & 79 & 86 & 89 & 80 & 91 & 78 & 84 & left: 0, right: 11\\
+$Final Swap$& 42 & 57 & 7 & 40 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 \\ \hline
+$Quick Sort left: 0 right: 3$ & 42 & 57 & 7 & 40 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 \\
+$median3$ & 40 & 7 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 & left: 0, right: 3\\
+$Final Swap$& 40 & 7 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 \\ \hline
+$Quick Sort$ & 40 & 7 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 & left: 0, right: 1\\
+$Insertion Sort (before) $& 40 & 7 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 \\
+$Insertion Sort (after) $& 7 & 40 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 \\ \hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 & left: 3, right: 3\\
+$Insertion Sort (before)$& 7 & 40 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 \\
+$Insertion Sort (after)$& 7 & 40 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 \\ \hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 86 & 89 & 80 & 91 & 83 & 84 & left: 5, right: 11\\
+$median3$ & 7 & 40 & 42 & 57 & 78 & 79 & 86 & 89 & 83 & 91 & 80 & 84 & left: 5, right: 11\\
+$Final Swap$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 89 & 83 & 91 & 86 & 84 \\ \hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 89 & 83 & 91 & 86 & 84 & left: 5, right: 5\\
+$Insertion Sort (before)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 89 & 83 & 91 & 86 & 84 \\
+$Insertion Sort (after)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 89 & 83 & 91 & 86 & 84 \\ \hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 89 & 83 & 91 & 86 & 84 & left: 7, right: 11\\
+$median3$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 84 & 83 & 86 & 89 & 91 & left: 7, right: 11\\
+$Final Swap$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 84 & 83 & 86 & 89 & 91 \\ \hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 84 & 83 & 86 & 89 & 91 & left: 7, right: 9\\
+$median3$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 & left: 7, right: 9\\
+$Final Swap$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 \\ \hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 & left: 7, right: 7\\
+$Insertion Sort (before)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 \\
+$Insertion Sort (after)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 \\ \hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 & left: 9, right: 9\\
+$Insertion Sort (before)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 \\
+$Insertion Sort (after)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 \\hline
+$Quick Sort$ & 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 & left: 11, right: 11\\
+$Insertion Sort (before)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 \\
+$Insertion Sort (after)$& 7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91 \\ \hline
+$Final Array: $&7 & 40 & 42 & 57 & 78 & 79 & 80 & 83 & 84 & 86 & 89 & 91
+\end{array}
+\]
+\centerline{Number of Shifts: 1\\
+Number of Swaps: 15\\
+Total Number of Shifts and Swaps: 16}
+
+\item It is better to use a hybrid strategy over only having one sort because the best of both algorithms can be used. In our case
+  the insertion sort is better suited to the smaller cases, while quicksort is better for larger cases. The values from the previous
+  questions did not support my assertion, but this is only because the size of $a$ is not large enough.
+
+\item The quicksort will still work because it does not matter where the pivot is placed.
+\[
+\begin{array}{lccccccccccccc}
+$Quick Sort$ & 42 & 57 & 7 & 40 & 83 & 78 & 86 & 89 & 80 & 91 & 79 & 84 & left: 0, right: 11\\
+$median3$ & 42 & 57 & 7 & 40 & 83 & 78 & 86 & 89 & 80 & 91 & 79 & 84 & left: 0, right: 11\\
+$Final Swap$& 42 & 40 & 7 & 79 & 83 & 78 & 86 & 89 & 80 & 91 & 57 & 84 \\
+\end{array}
+\]
+  \item As with question 4, the quicksort will still work because it does not matter where the pivot is placed.
+\[
+\begin{array}{lccccccccccccc}
+$Quick Sort$ & 42 & 57 & 7 & 40 & 83 & 78 & 86 & 89 & 80 & 91 & 79 & 84 & left: 0, right: 11\\
+$median3$ & 42 & 57 & 7 & 40 & 83 & 78 & 86 & 89 & 80 & 91 & 79 & 84 & left: 0, right: 11\\
+$Final Swap$& 42 & 57 & 7 & 40 & 83 & 78 & 80 & 79 & 86 & 91 & 89 & 84 \\
+\end{array}
+\]
+
+\item if it is left + 2 in the initial $if$ then it will work, otherwise it will skip directly to insertion sort.
+
+\end{enumerate}
+\end{document}
