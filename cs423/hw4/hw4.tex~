@@ -65,7 +65,17 @@
     \end{tabular}
   \end{center}
     $\forall w \in B$, $w=1^ky=11^{k-1}y$. From this $w$ can give the regular expression 
-    $1(0 \cup 1)^*1(0 \cup 1)^*$ proving $B$ to be regular.
+    $1(0 \cup 1)^*1(0 \cup 1)^*$ proving $B$ to be regular. \\
+    
+  b) Show the C is not regular: \\
+    \begin{description}
+     \item Assume C is regular, therefore the pumping lemma applies. Let $p$ be the pumping length.
+     \item We choose $s = 1^p01^p$, $|s| = 2p + 1 \geq p$. Since $|ab| \leq p$, $|ab|$ will 
+     represent $1^p$ and $c$ will represent $01^p$. When $i = 0$, $b$ is removed from $abc$.
+     This resulting string $ac$ will have $k$ decremented by at least one since $|b| > 0$, but $y$
+     will contain the same amount of $1s$ since $c$ is unchanged. THus $y$ will have more than $k$ $1s$
+     resulting in 
+    \end{description}
 
  \item (8 points) Problem 1.54 (a) on page 91.
    \begin{description}

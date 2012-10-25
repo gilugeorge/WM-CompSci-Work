@@ -55,7 +55,7 @@
   \end{description}
 
  \item (16 points) Problem 1.49 (a) and (b) on page 90.\\ a) Strings accepted in B are:
-  \begin{center}
+  a) \begin{center}
     \begin{tabular}{l | l}
       k & $1^ky$ \\ \hline
       1 & $1 \dots 1 \dots$ \\
@@ -102,9 +102,16 @@
  than one token can be recognized, but this can be solved by giving priority to the first expression listed. \\
  \indent Searching for patterns in text is another popular use for regular-expression notation. Despite not being
  as developed as lexical analyzers, using regular expressions for text searches will offer efficient automaton-based
- implementations. 
-
-  
+ implementations. This technology is normally used to describe classes of patterns at a high level, and to allow
+ for easy modifications. In the case of a Web application, usually a large amount of text needs to be scanned in
+ order to figure out what a query is asking. In the example of finding a street address, a regular expression can
+ be used to find what a street is. A set of regular expressions can be used to define what a street is, but can
+ also easily be modified to add terms to the recognizer to improve its effectiveness.
+ \indent Regular expressions are a powerful tool in producing automated programs. Two very commonly used applications
+ are lexical analyzers and text searches. Regular expressions are used in lexical analyzers to simplify the 
+ generation of tokens. Text searches use regular expressions to search for wanted patterns in large amounts of text.
+ Both applications use regular expressions to simplify the creation of the individual program, but also allows for
+ easy modifications or changes.
 \end{spacing}
 
 
