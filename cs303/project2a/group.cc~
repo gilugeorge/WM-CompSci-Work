@@ -81,7 +81,7 @@ using namespace std;
 	    exit(1);
 	  }
 	  //cout << "Size(ln 87 group): " << _LIMIT << endl;
-	  for(i = 0; i < _LIMIT; i++){
+	  for(i = 0; i < total_requested; i++){
 	    add(Equilikely(lower,upper));
 	  }
   }//
@@ -146,7 +146,7 @@ using namespace std;
       add(fileNum);
       count++;
     }
-    if(count < givenLimit){
+    if(count < total_requested){
       cerr << " GroupOfNumbers: Insufficient number of entries in file: "<< fname << endl;
 	    cerr << " GroupOfNumbers: Number requested from file: " << total_requested << endl;
 	    cerr << " GroupOfNumbers: Number reputedly available: " << givenLimit << endl;	    
@@ -289,53 +289,121 @@ using namespace std;
   /***************************************/
 	/*Implementation of Weiss's insertion_sort*/
   void GroupOfNumbers::insertion_sort(){
+ 		insertion_sort(0,total());
+  }//insertion_sort
+	// protected method for insertion sort
+  void GroupOfNumbers::insertion_sort(long left, long right){
   	int j;  	
-  	for(int p = 1; p < _total; p++){
+  	for(int p = left; p < right; p++){
 	  	long tmp = _group[p];
 	  	for( j = p; j > 0 && tmp < _group[j-1]; j--){
 	  		_group[j] = _group[j-1];
 	  	}
-	  	a[j] = tmp;
-  	}  	
-  }//insertion_sort
-	// protected method for insertion sort
-  void GroupOfNumbers::insertion_sort(long left, long right){
-  
+	  	_group[j] = tmp;
+  	} 
   }
   
 	/*Implementation of Weiss's heapsort*/
   void GroupOfNumbers::heapsort(){
-  
+  	for(int i = total()/2; i >= 0; i--) /* buildHeap */
+  		percolate_down(i, total() );
+  	for(int j = total() - 1; j > 0; j--){
+  		//swap(_group[0], _group[j]);
+  		long temp = _group[0];
+  		_group[0] = _group[j];
+  		_group[j] = temp;
+  		percolate_down(0, j);
+  	}
   }//heapsort
   // protected methods for heapsort
   void GroupOfNumbers::percolate_down(long i, long n){
-  
+  	long child, tmp;
+  	
+  	for(tmp = _group[i]; left_child(i) < n; i = child){
+  		child = left_child(i);
+  		if(child != n-1 && _group[child] < _group[child+1])
+  			child++;
+  		if(tmp < _group[child])
+  			_group[i] = _group[child];
+  		else
+  			break;
+  	}
+  	_group[i] = tmp;
   }
   
 	/*Implementation of Weiss's mergesort*/
   void GroupOfNumbers::mergesort(){
-  
+  	long* temp_group = new long[_LIMIT];
+  	mergesort(temp_group, 0, total()-1);
   }//mergesort
   // protected methods for mergesort
   void GroupOfNumbers::mergesort(long *temp_group, long left, long right){
-  
+  	if(left < right){
+  		long center = (left + right) / 2;
+  		mergesort(temp_group, left, center);
+  		mergesort(temp_group, center+1, right);
+  		merge(temp_group, left, center+1, right);  	
+  	}
   }  
   void GroupOfNumbers::merge(long *temp_group, long leftPos, long rightPos, long rightEnd){
-  
+  	long leftEnd = rightPos - 1;
+  	long tmpPos = leftPos;
+  	long numElements = rightEnd - leftPos + 1;
+  	
+  	while(leftPos <= leftEnd && rightPos <= rightEnd)
+  		if(_group[leftPos] <= _group[rightPos])
+  			temp_group[tmpPos++] = _group[leftPos++];
+  		else
+  			temp_group[tmpPos++] = _group[rightPos++];
+  	while(leftPos <= leftEnd) //Copy rest of first half
+  		temp_group[tmpPos++] = _group[leftPos++];
+  	while(rightPos <= rightEnd) //Copy rest of right half
+  		temp_group[tmpPos++] = _group[rightPos++];
+  		
+  	//Copy tmpArray back
+  	for(int i = 0; i < numElements; i++, rightEnd--)
+  		_group[rightEnd] = temp_group[rightEnd];
   }
   
  	/*Implementation of Weiss's quicksort*/
   void GroupOfNumbers::quicksort(){
-  
+  	quicksort(0, total()-1);
   }//quicksort
   // protected methods for quicksort
   void GroupOfNumbers::quicksort(long left, long right){
-  
+  	if(left + CutOff <= right){
+  		long pivot = median_of_3(left, right);
+  		
+  		long i = left, j = right-1;
+  		for(;;){
+  			while(_group[++i] < pivot){}
+  			while(pivot < _group[--j]){}
+  			if(i < j)
+  				swap(_group[i], swap[j]);
+  			else
+  				break;
+  		}
+  		
+  		swap(_group[i], _group[right-1]); //Restore Pivot
+  		quicksort(left, i-1); //sort small elements
+  		quicksort(i+1, right); //sort large elements  		
+  	}else //do an insertion sort on the subarrays
+  		insertion_sort(left,right);
+  	
   }
   
-  long median_of_3(long left, long right){
-  	long a = 3;
-  	return a;
+  long GroupOfNumbers::median_of_3(long left, long right){
+		int center = (left + right) / 2;
+		if(_group[center] < _group[left])
+			swap(_group[left], _group[center]);
+    if( _group[right] < _group[left] )
+        swap( _group[left], _group[right] );
+    if( _group[right] < _group[center] )
+        swap( _group[center], _group[right] );
+
+        // Place pivot at position right - 1
+    swap( _group[center], _group[right - 1] );
+    return _group[right - 1];
   }
   
   long GroupOfNumbers::Equilikely(long lower, long upper){
