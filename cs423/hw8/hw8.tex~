@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein          
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt          
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 423 Homework 8}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 1:00 pm, Wednesday, 11/7}
+\centerline{Eric Shih}
+
+\begin{enumerate}
+ \item 
+\end{enumerate}
+
+\end{document}
