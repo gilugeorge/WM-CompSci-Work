@@ -388,8 +388,7 @@ using namespace std;
   		quicksort(left, i-1); //sort small elements
   		quicksort(i+1, right); //sort large elements  		
   	}else //do an insertion sort on the subarrays
-  		insertion_sort(left,right);
-  	
+  		insertion_sort(left,right);  	
   }
   
   long GroupOfNumbers::median_of_3(long left, long right){
@@ -406,6 +405,83 @@ using namespace std;
     return _group[right - 1];
   }
   
+  /* Quicksort Pivot Alternative Methods */
+  // always uses the first element of the partition(left) as the pivot for quicksort
+  void GroupOfNumbers::quick_choose_first(){
+	 	quick_choose_first(0, total()-1);
+  }
+  void GroupOfNumbers::quick_choose_first(long left, long right){
+  	if(left + CutOff <= right){
+  		long pivot = left;
+  		
+  		long i = left, j = right-1;
+  		for(;;){
+  			while(_group[++i] < pivot){}
+  			while(pivot < _group[--j]){}
+  			if(i < j)
+  				swap(_group[i], _group[j]);
+  			else
+  				break;
+  		}
+  		
+  		swap(_group[i], _group[right-1]); //Restore Pivot
+  		quick_choose_first(left, i-1); //sort small elements
+  		quick_choose_first(i+1, right); //sort large elements  		
+  	}else //do an insertion sort on the subarrays
+  		insertion_sort(left,right); 
+  }
+  
+  // always uses the middle element of the partition((left + right)/2) as the pivot for quicksort
+  void GroupOfNumbers::quick_choose_middle(){
+ 	 	quick_choose_middle(0, total()-1);
+  }
+  void GroupOfNumbers::quick_choose_middle(long left, long right){
+   	if(left + CutOff <= right){
+  		long pivot = (left + right)/2;
+  		cout << "Pivot: " << pivot << endl;
+  		long i = left, j = right-1;
+  		for(;;){
+  			while(_group[++i] < pivot){}
+  			while(pivot < _group[--j]){}
+  			if(i < j)
+  				swap(_group[i], _group[j]);
+  			else
+  				break;
+  		}
+  		
+  		swap(_group[i], _group[right-1]); //Restore Pivot
+  		quick_choose_middle(left, i-1); //sort small elements
+  		quick_choose_middle(i+1, right); //sort large elements  		
+  	}else //do an insertion sort on the subarrays
+  		insertion_sort(left,right);  	
+  }
+
+  // always uses the last element of the partition (right) as the pivot for quicksort
+  void GroupOfNumbers::quick_choose_last(){
+ 	 	quick_choose_last(0, total()-1);
+  }
+  void GroupOfNumbers::quick_choose_last(long left, long right){
+   	if(left + CutOff <= right){
+  		long pivot = right;
+  		cout << "Pivot: " << pivot << endl;
+  		
+  		long i = left, j = right-1;
+  		for(;;){
+  			while(_group[++i] < pivot){}
+  			while(pivot < _group[--j]){}
+  			if(i < j)
+  				swap(_group[i], _group[j]);
+  			else
+  				break;
+  		}
+  		
+  		swap(_group[i], _group[right-1]); //Restore Pivot
+  		quick_choose_last(left, i-1); //sort small elements
+  		quick_choose_last(i+1, right); //sort large elements  		
+  	}else //do an insertion sort on the subarrays
+  		insertion_sort(left,right);  	
+  }
+
   long GroupOfNumbers::Equilikely(long lower, long upper){
     return (lower + (long) ((upper - lower + 1) * Random()) );
   }//end Equilikely
