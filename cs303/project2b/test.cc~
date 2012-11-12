@@ -10,12 +10,13 @@ int main (){
 	long i;	//loop iterator
 	long a = 1; //number used for identical elements
 	
+	/*
 	//quicksort Test
 	GroupOfNumbers nums1(0,100,20);
 	cout<< "*=====Before quicksort=====";
 	nums1.displayGroupOfNumbers();
 	nums1.quicksort();
-	cout<< "\n=====After quicksort=====";
+	cout<< "=====After quicksort=====";
 	nums1.displayGroupOfNumbers();
 
 	//quicksort first Test
@@ -41,13 +42,13 @@ int main (){
 	nums4.quick_choose_last();	
 	cout<< "=====After quicksort last=====";
 	nums4.displayGroupOfNumbers();
-	
+	*/
 	
 	
 	
 	//Timing Tests//
 	
-	/*
+	
 	//insertion sort
 	GroupOfNumbers nums1(0,100,250000);
 	cout<< "insertion_sort(Random): ";
@@ -85,9 +86,9 @@ int main (){
 	nums4.insertion_sort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
 	
-	/*
+	
+	
 	//heapsort
 	GroupOfNumbers nums1(0,100,250000);
 	cout<< "heapsort(Random): ";
@@ -125,9 +126,9 @@ int main (){
 	nums4.heapsort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
 	
-	/*
+	
+	
 	//mergesort
 	GroupOfNumbers nums1(0,100,250000);
 	cout<< "mergesort(Random): ";
@@ -165,9 +166,9 @@ int main (){
 	nums4.mergesort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
 	
-	/*
+	
+	
 	//quicksort
 	GroupOfNumbers nums1(0,100,250000);
 	cout<< "Quicksort(Random): ";
@@ -205,6 +206,6 @@ int main (){
 	nums4.quicksort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
+	
 	
 }

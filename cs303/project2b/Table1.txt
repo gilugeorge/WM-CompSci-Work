@@ -28,10 +28,7 @@ choose last element
 Table 1.  Timing results for the sorting algorithms with n = 250000.
 
 
-[Replace this first block with a statement indicating whether the
-results you are reporting are from a single run or the average over
-multiple runs.  If the times are averaged over multiple runs, indicate
-the number of runs.]
+[Single Run]
 
 [Replace this second block with the name of the machine in the CS
 system on which you ran your timing tests (e.g., bg1 or ...).  If your

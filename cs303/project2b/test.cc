@@ -10,6 +10,7 @@ int main (){
 	long i;	//loop iterator
 	long a = 1; //number used for identical elements
 	
+	/*
 	//quicksort Test
 	GroupOfNumbers nums1(0,100,20);
 	cout<< "*=====Before quicksort=====";
@@ -41,13 +42,13 @@ int main (){
 	nums4.quick_choose_last();	
 	cout<< "=====After quicksort last=====";
 	nums4.displayGroupOfNumbers();
-	
+	*/
 	
 	
 	
 	//Timing Tests//
 	
-	/*
+	
 	//insertion sort
 	GroupOfNumbers nums1(0,100,250000);
 	cout<< "insertion_sort(Random): ";
@@ -85,126 +86,126 @@ int main (){
 	nums4.insertion_sort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
 	
-	/*
+	
+	
 	//heapsort
-	GroupOfNumbers nums1(0,100,250000);
+	GroupOfNumbers nums5(0,100,250000);
 	cout<< "heapsort(Random): ";
 	start = user_time() + system_time();
-	nums1.heapsort();
+	nums5.heapsort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums2(250000);
+	GroupOfNumbers nums6(250000);
 	for(i = 0; i <= 250000; i++)
-		nums2.add(i);
-	//nums2.displayGroupOfNumbers();
+		nums6.add(i);
+	//nums6.displayGroupOfNumbers();
 	cout<< "heapsort(sorted): ";
 	start = user_time() + system_time();
-	nums2.heapsort();
+	nums6.heapsort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums3(250000);
+	GroupOfNumbers nums7(250000);
 	for(i = 249999; i >= 0; i--)
-		nums3.add(i);
-	//nums3.displayGroupOfNumbers();
+		nums7.add(i);
+	//nums7.displayGroupOfNumbers();
 	cout<< "heapsort(reverse): ";
 	start = user_time() + system_time();
-	nums3.heapsort();
+	nums7.heapsort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums4(250000);
+	GroupOfNumbers nums8(250000);
 	for(i = 0; i <= 250000; i++)
-		nums4.add(a);
-	//nums4.displayGroupOfNumbers();
+		nums8.add(a);
+	//nums8.displayGroupOfNumbers();
 	cout<< "heapsort(identical): ";
 	start = user_time() + system_time();
-	nums4.heapsort();
+	nums8.heapsort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
 	
-	/*
+	
+	
 	//mergesort
-	GroupOfNumbers nums1(0,100,250000);
+	GroupOfNumbers nums9(0,100,250000);
 	cout<< "mergesort(Random): ";
 	start = user_time() + system_time();
-	nums1.mergesort();
+	nums9.mergesort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums2(250000);
+	GroupOfNumbers nums10(250000);
 	for(i = 0; i <= 250000; i++)
-		nums2.add(i);
-	//nums2.displayGroupOfNumbers();
+		nums10.add(i);
+	//nums10.displayGroupOfNumbers();
 	cout<< "mergesort(sorted): ";
 	start = user_time() + system_time();
-	nums2.mergesort();
+	nums10.mergesort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums3(250000);
+	GroupOfNumbers nums11(250000);
 	for(i = 249999; i >= 0; i--)
-		nums3.add(i);
-	//nums3.displayGroupOfNumbers();
+		nums11.add(i);
+	//nums11.displayGroupOfNumbers();
 	cout<< "mergesort(reverse): ";
 	start = user_time() + system_time();
-	nums3.mergesort();
+	nums11.mergesort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums4(250000);
+	GroupOfNumbers nums12(250000);
 	for(i = 0; i <= 250000; i++)
-		nums4.add(a);
-	//nums4.displayGroupOfNumbers();
+		nums12.add(a);
+	//nums12.displayGroupOfNumbers();
 	cout<< "mergesort(identical): ";
 	start = user_time() + system_time();
-	nums4.mergesort();
+	nums12.mergesort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
 	
-	/*
+	
+	
 	//quicksort
-	GroupOfNumbers nums1(0,100,250000);
+	GroupOfNumbers nums13(0,100,250000);
 	cout<< "Quicksort(Random): ";
 	start = user_time() + system_time();
-	nums1.quicksort();
+	nums13.quicksort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums2(250000);
+	GroupOfNumbers nums14(250000);
 	for(i = 0; i <= 250000; i++)
-		nums2.add(i);
-	//nums2.displayGroupOfNumbers();
+		nums14.add(i);
+	//nums14.displayGroupOfNumbers();
 	cout<< "Quicksort(sorted): ";
 	start = user_time() + system_time();
-	nums2.quicksort();
+	nums14.quicksort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums3(250000);
+	GroupOfNumbers nums15(250000);
 	for(i = 249999; i >= 0; i--)
-		nums3.add(i);
-	//nums3.displayGroupOfNumbers();
+		nums15.add(i);
+	//nums15.displayGroupOfNumbers();
 	cout<< "Quicksort(reverse): ";
 	start = user_time() + system_time();
-	nums3.quicksort();
+	nums15.quicksort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	////////
-	GroupOfNumbers nums4(250000);
+	GroupOfNumbers nums16(250000);
 	for(i = 0; i <= 250000; i++)
-		nums4.add(a);
-	//nums4.displayGroupOfNumbers();
+		nums16.add(a);
+	//nums16.displayGroupOfNumbers();
 	cout<< "Quicksort(identical): ";
 	start = user_time() + system_time();
-	nums4.quicksort();
+	nums16.quicksort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	*/
+	
 	
 }
