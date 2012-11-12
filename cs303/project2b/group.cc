@@ -428,12 +428,12 @@ using namespace std;
   	}else //do an insertion sort on the subarrays
   		insertion_sort(left,right+1); 
   		
-  	for(int x = 0; x<right;x++){
+  	/*for(int x = 0; x<right;x++){
   		if(x+1 > right ||	 _group[x]>_group[x+1]){
   			cout<<"!!!check failed!!!"<<endl;
   			exit(1);
   		}
-  	}
+  	}*/
   		
   }
   
@@ -461,11 +461,11 @@ using namespace std;
   	}else //do an insertion sort on the subarrays
   		insertion_sort(left,right+1);
   		
-  	for(int x = 0; x<right;x++){
+  	/*for(int x = 0; x<right;x++){
   		if(x+1 > right || _group[x]>_group[x+1]){
   			cout<<"!!!check failed!!!"<<endl;
   		}
-  	}	  	
+  	}*/	  	
   }
 
   // always uses the last element of the partition (right) as the pivot for quicksort
@@ -491,11 +491,11 @@ using namespace std;
   	}else //do an insertion sort on the subarrays
   		insertion_sort(left,right+1);
   		
-  	for(int x = 0; x<right;x++){
+  	/*for(int x = 0; x<right;x++){
   		if(x+1 > right || _group[x]>_group[x+1]){
   			cout<<"!!!check failed!!!"<<endl;
   		}
-  	}		  	
+  	}*/		  	
   }
 
   long GroupOfNumbers::Equilikely(long lower, long upper){
