@@ -6,13 +6,13 @@ extern double user_time();
 extern double system_time();
 
 int main (){
-	double start, finish; //timing variables
+	/*double start, finish; //timing variables
 	long i;	//loop iterator
 	long a = 1; //number used for identical elements
-	
+	*/
 	/*
 	//quicksort Test
-	GroupOfNumbers nums1(0,100,20);
+	GroupOfNumbers nums1(0,100,200);
 	cout<< "*=====Before quicksort=====";
 	nums1.displayGroupOfNumbers();
 	nums1.quicksort();
@@ -20,35 +20,35 @@ int main (){
 	nums1.displayGroupOfNumbers();
 
 	//quicksort first Test
-	GroupOfNumbers nums2(0,100,20);
-	cout<< endl << "*=====Before quicksort first=====";
-	nums2.displayGroupOfNumbers();
+	GroupOfNumbers nums2(0,100,250000);
+	//cout<< endl << "*=====Before quicksort first=====";
+	//nums2.displayGroupOfNumbers();
 	nums2.quick_choose_first();
-	cout<< "=====After quicksort first=====";
-	nums2.displayGroupOfNumbers();
+	cout<< "===== quicksort first=====" << endl;
+	//nums2.displayGroupOfNumbers();
 	
 	//quicksort middle Test
-	GroupOfNumbers nums3(0,100,20);
-	cout<< endl << "*=====Before quicksort middle=====";
-	nums3.displayGroupOfNumbers();
+	GroupOfNumbers nums3(0,100,250000);
+	//cout<< endl << "*=====Before quicksort middle=====";
+	//nums3.displayGroupOfNumbers();
 	nums3.quick_choose_middle();	
-	cout<< "=====After quicksort middle=====";
-	nums3.displayGroupOfNumbers();
+	cout<< "===== quicksort middle=====" << endl;
+	//nums3.displayGroupOfNumbers();
 	
 	//quicksort last Test
-	GroupOfNumbers nums4(0,100,20);
-	cout<< endl << "*=====Before quicksort last=====";
-	nums4.displayGroupOfNumbers();
+	GroupOfNumbers nums4(0,100,250000);
+	//cout<< endl << "*=====Before quicksort last=====";
+	//nums4.displayGroupOfNumbers();
 	nums4.quick_choose_last();	
-	cout<< "=====After quicksort last=====";
-	nums4.displayGroupOfNumbers();
+	cout<< "===== quicksort last=====" << endl;
+	//nums4.displayGroupOfNumbers();
 	*/
 	
 	
 	
 	//Timing Tests//
 	
-	
+	/*
 	//insertion sort
 	GroupOfNumbers nums1(0,100,250000);
 	cout<< "insertion_sort(Random): ";
@@ -206,9 +206,11 @@ int main (){
 	nums16.quicksort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	*/
+	
 	
 	//quicksortfirst
-	GroupOfNumbers nums17(0,100,250000);
+	GroupOfNumbers nums17(0,250000,250000);
 	cout<< "Quicksortfirst(Random): ";
 	start = user_time() + system_time();
 	nums17.quick_choose_first();
@@ -244,9 +246,9 @@ int main (){
 	nums20.quick_choose_first();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	
+
 	//quicksortmiddle
-	GroupOfNumbers nums21(0,100,250000);
+	GroupOfNumbers nums21(0,250000,250000);
 	cout<< "Quicksortmiddle(Random): ";
 	start = user_time() + system_time();
 	nums21.quick_choose_middle();
@@ -284,8 +286,8 @@ int main (){
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	
 	//quicksortlast
-	GroupOfNumbers nums25(0,100,250000);
-	cout<< "Quicksortmiddle(Random): ";
+	GroupOfNumbers nums25(0,250000,250000);
+	cout<< "Quicksortlast(Random): ";
 	start = user_time() + system_time();
 	nums25.quick_choose_last();
 	finish = user_time() + system_time();
@@ -295,7 +297,7 @@ int main (){
 	for(i = 0; i <= 250000; i++)
 		nums26.add(i);
 	//nums26.displayGroupOfNumbers();
-	cout<< "Quicksortmiddle(sorted): ";
+	cout<< "Quicksortlast(sorted): ";
 	start = user_time() + system_time();
 	nums26.quick_choose_last();
 	finish = user_time() + system_time();
@@ -305,7 +307,7 @@ int main (){
 	for(i = 249999; i >= 0; i--)
 		nums27.add(i);
 	//nums27.displayGroupOfNumbers();
-	cout<< "Quicksortmiddle(reverse): ";
+	cout<< "Quicksortlast(reverse): ";
 	start = user_time() + system_time();
 	nums27.quick_choose_last();
 	finish = user_time() + system_time();
@@ -315,7 +317,7 @@ int main (){
 	for(i = 0; i <= 250000; i++)
 		nums28.add(a);
 	//nums28.displayGroupOfNumbers();
-	cout<< "Quicksortmiddle(identical): ";
+	cout<< "Quicksortlast(identical): ";
 	start = user_time() + system_time();
 	nums28.quick_choose_last();
 	finish = user_time() + system_time();

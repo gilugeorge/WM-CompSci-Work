@@ -12,7 +12,7 @@ int main (){
 	
 	/*
 	//quicksort Test
-	GroupOfNumbers nums1(0,100,20);
+	GroupOfNumbers nums1(0,100,200);
 	cout<< "*=====Before quicksort=====";
 	nums1.displayGroupOfNumbers();
 	nums1.quicksort();
@@ -20,35 +20,35 @@ int main (){
 	nums1.displayGroupOfNumbers();
 
 	//quicksort first Test
-	GroupOfNumbers nums2(0,100,20);
-	cout<< endl << "*=====Before quicksort first=====";
-	nums2.displayGroupOfNumbers();
+	GroupOfNumbers nums2(0,100,250000);
+	//cout<< endl << "*=====Before quicksort first=====";
+	//nums2.displayGroupOfNumbers();
 	nums2.quick_choose_first();
-	cout<< "=====After quicksort first=====";
-	nums2.displayGroupOfNumbers();
+	cout<< "===== quicksort first=====" << endl;
+	//nums2.displayGroupOfNumbers();
 	
 	//quicksort middle Test
-	GroupOfNumbers nums3(0,100,20);
-	cout<< endl << "*=====Before quicksort middle=====";
-	nums3.displayGroupOfNumbers();
+	GroupOfNumbers nums3(0,100,250000);
+	//cout<< endl << "*=====Before quicksort middle=====";
+	//nums3.displayGroupOfNumbers();
 	nums3.quick_choose_middle();	
-	cout<< "=====After quicksort middle=====";
-	nums3.displayGroupOfNumbers();
+	cout<< "===== quicksort middle=====" << endl;
+	//nums3.displayGroupOfNumbers();
 	
 	//quicksort last Test
-	GroupOfNumbers nums4(0,100,20);
-	cout<< endl << "*=====Before quicksort last=====";
-	nums4.displayGroupOfNumbers();
+	GroupOfNumbers nums4(0,100,250000);
+	//cout<< endl << "*=====Before quicksort last=====";
+	//nums4.displayGroupOfNumbers();
 	nums4.quick_choose_last();	
-	cout<< "=====After quicksort last=====";
-	nums4.displayGroupOfNumbers();
+	cout<< "===== quicksort last=====" << endl;
+	//nums4.displayGroupOfNumbers();
 	*/
 	
 	
 	
 	//Timing Tests//
 	
-	
+	/*
 	//insertion sort
 	GroupOfNumbers nums1(0,100,250000);
 	cout<< "insertion_sort(Random): ";
@@ -206,9 +206,11 @@ int main (){
 	nums16.quicksort();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	*/
+	
 	
 	//quicksortfirst
-	GroupOfNumbers nums17(0,100,250000);
+	GroupOfNumbers nums17(0,250000,250000);
 	cout<< "Quicksortfirst(Random): ";
 	start = user_time() + system_time();
 	nums17.quick_choose_first();
@@ -244,9 +246,9 @@ int main (){
 	nums20.quick_choose_first();
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
-	
+
 	//quicksortmiddle
-	GroupOfNumbers nums21(0,100,250000);
+	GroupOfNumbers nums21(0,250000,250000);
 	cout<< "Quicksortmiddle(Random): ";
 	start = user_time() + system_time();
 	nums21.quick_choose_middle();
@@ -284,7 +286,7 @@ int main (){
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	
 	//quicksortlast
-	GroupOfNumbers nums25(0,100,250000);
+	GroupOfNumbers nums25(0,250000,250000);
 	cout<< "Quicksortlast(Random): ";
 	start = user_time() + system_time();
 	nums25.quick_choose_last();
