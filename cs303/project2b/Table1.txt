@@ -15,13 +15,13 @@ mergesort										0.03					0.02				0.01					0.01
 quicksort with pivot rule:	0.01					0.01				0.01					0
 choose median of 3
 -----------------------------------------------------------------------------
-quicksort with pivot rule:
+quicksort with pivot rule:	0.02					27.33				26.7					0.02
 choose first element
 -----------------------------------------------------------------------------
-quicksort with pivot rule:
+quicksort with pivot rule:	0.02					0.01				0.01					0.01
 choose middle element
 -----------------------------------------------------------------------------
-quicksort with pivot rule:
+quicksort with pivot rule:	0.02					26.49				26.83					0.01
 choose last element
 -----------------------------------------------------------------------------
 
