@@ -207,5 +207,119 @@ int main (){
 	finish = user_time() + system_time();
 	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	
+	//quicksortfirst
+	GroupOfNumbers nums17(0,100,250000);
+	cout<< "Quicksortfirst(Random): ";
+	start = user_time() + system_time();
+	nums17.quick_choose_first();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums18(250000);
+	for(i = 0; i <= 250000; i++)
+		nums18.add(i);
+	//nums18.displayGroupOfNumbers();
+	cout<< "Quicksortfirst(sorted): ";
+	start = user_time() + system_time();
+	nums18.quick_choose_first();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums19(250000);
+	for(i = 249999; i >= 0; i--)
+		nums19.add(i);
+	//nums15.displayGroupOfNumbers();
+	cout<< "Quicksortfirst(reverse): ";
+	start = user_time() + system_time();
+	nums19.quick_choose_first();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums20(250000);
+	for(i = 0; i <= 250000; i++)
+		nums20.add(a);
+	//nums20.displayGroupOfNumbers();
+	cout<< "Quicksortfirst(identical): ";
+	start = user_time() + system_time();
+	nums20.quick_choose_first();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	
+	//quicksortmiddle
+	GroupOfNumbers nums21(0,100,250000);
+	cout<< "Quicksortmiddle(Random): ";
+	start = user_time() + system_time();
+	nums21.quick_choose_middle();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums22(250000);
+	for(i = 0; i <= 250000; i++)
+		nums22.add(i);
+	//nums22.displayGroupOfNumbers();
+	cout<< "Quicksortmiddle(sorted): ";
+	start = user_time() + system_time();
+	nums22.quick_choose_middle();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums23(250000);
+	for(i = 249999; i >= 0; i--)
+		nums23.add(i);
+	//nums23.displayGroupOfNumbers();
+	cout<< "Quicksortmiddle(reverse): ";
+	start = user_time() + system_time();
+	nums23.quick_choose_middle();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums24(250000);
+	for(i = 0; i <= 250000; i++)
+		nums24.add(a);
+	//nums24.displayGroupOfNumbers();
+	cout<< "Quicksortmiddle(identical): ";
+	start = user_time() + system_time();
+	nums24.quick_choose_middle();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	
+	//quicksortlast
+	GroupOfNumbers nums25(0,100,250000);
+	cout<< "Quicksortlast(Random): ";
+	start = user_time() + system_time();
+	nums25.quick_choose_last();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums26(250000);
+	for(i = 0; i <= 250000; i++)
+		nums26.add(i);
+	//nums26.displayGroupOfNumbers();
+	cout<< "Quicksortlast(sorted): ";
+	start = user_time() + system_time();
+	nums26.quick_choose_last();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums27(250000);
+	for(i = 249999; i >= 0; i--)
+		nums27.add(i);
+	//nums27.displayGroupOfNumbers();
+	cout<< "Quicksortlast(reverse): ";
+	start = user_time() + system_time();
+	nums27.quick_choose_last();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	////////
+	GroupOfNumbers nums28(250000);
+	for(i = 0; i <= 250000; i++)
+		nums28.add(a);
+	//nums28.displayGroupOfNumbers();
+	cout<< "Quicksortlast(identical): ";
+	start = user_time() + system_time();
+	nums28.quick_choose_last();
+	finish = user_time() + system_time();
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	
 	
 }

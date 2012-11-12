@@ -3,16 +3,16 @@ Sorting method              randomly     sorted       sorted       identical
 (including pivot            generated    in order     in reverse   elements
 rules for quicksort)
 =============================================================================
-insertion sort
+insertion sort							17.42					0						35.14					0
 
 -----------------------------------------------------------------------------
-heapsort
+heapsort										0.02					0.01				0.02					0
 
 -----------------------------------------------------------------------------
-mergesort
+mergesort										0.03					0.02				0.01					0.01
 
 -----------------------------------------------------------------------------
-quicksort with pivot rule:
+quicksort with pivot rule:	0.01					0.01				0.01					0
 choose median of 3
 -----------------------------------------------------------------------------
 quicksort with pivot rule:
@@ -30,11 +30,6 @@ Table 1.  Timing results for the sorting algorithms with n = 250000.
 
 [Single Run]
 
-[Replace this second block with the name of the machine in the CS
-system on which you ran your timing tests (e.g., bg1 or ...).  If your
-tests were run on a machine not on the CS network, say so and indicate
-the features of the machine upon which your tests were run.]
+[Ran tests on gpu1]
 
-[Replace this third block with the list of options you used to compile
-and create the executable used to run your timing tests.  In
-particular, it is useful to know if you used compiler optimizations.]
+[Used '-O' compiler option to create the executable test]
