@@ -98,11 +98,19 @@ a one-to-one function and onto (aka a bijection). Therefore T is countable.
  from what goes specifically into the machine, but how the machine reacts and works as a whole. There are also challenges to the standard model,
  which all have an impact on universality; they are labelled into sections called reductionalists, impressionists, remodelers, and incomputability
  theorists(recursion theorists). The most generally respected challenge to the model, reductionalists, is explained by saying ``one can apply 
- it ever more widely to what we observe in nature, and let it mold our expectations of what computing machines can achieve.
+ it ever more widely to what we observe in nature, and let it mold our expectations of what computing machines can achieve. \\
  \indent The impressionists are a large force in the community of real-world ''computation``. Real-world computation is how nature and people in
  the real world compute. The old definition of computation being steps carried out by a computer is now being challenged by the idea that computation
  is something can be a non-stop natural process. Some believe that this old idea is a result of a ''Mathematical Bias`` because the founders of
- computing were mathematicians. 
+ computing were mathematicians. \\
+ \indent To capture much of the computational aspects of nature, people have turned to creating models to be analyzed. Hypercomputational 
+ packages is one model that is subject to much disagreement. Some think that this idea of computational models that go beyond the Turing Machine
+ are impossible and wrong, while others believe that hypercomputational packages are the way forward. \\
+ \indent Finally, the halting set is used by many scholars to explain incomputability. They believe that incomputability is simply the halting set
+ with an existential quantifier added. As it is described, ''All the fuss and descriptive variety associated with incomputability in nature and 
+ its models merely cloak avatars of halting sets for different machines.``  \\
+ \indent Even with the amount of discourse between scholars regarding the future of the Turing Machine, there is no doubt that it's impact is huge among
+ the subject of computability and will continue to play a factor in the future.
 \end{spacing}
 
 

@@ -92,14 +92,20 @@ a one-to-one function and onto (aka a bijection). Therefore T is countable.
 
 \begin{spacing}{1.5}
  \indent The turing machine is far from being bettered by other models. Over 75 years, the Turing Machine is still considered the best machine
- model availble. It can be used to model both modern computing and the natural world. What we have learned over the years in computing is a
+ model available. It can be used to model both modern computing and the natural world. What we have learned over the years in computing is a
  result of the model. \\
  \indent The Turing machine was so special because it disembodied the machine and broadened the view of computation. It brought the view away
  from what goes specifically into the machine, but how the machine reacts and works as a whole. There are also challenges to the standard model,
  which all have an impact on universality; they are labelled into sections called reductionalists, impressionists, remodelers, and incomputability
- theorists(recursion theorists). The most generally respected challenge to the model, reductionalists, is explained by syaing ``one can apply 
- it ever more widely to what we observe in nature, and let it mold our expectations of what computing machines can achieve.
- \indent 
+ theorists(recursion theorists). The most generally respected challenge to the model, reductionalists, is explained by saying ``one can apply 
+ it ever more widely to what we observe in nature, and let it mold our expectations of what computing machines can achieve. \\
+ \indent The impressionists are a large force in the community of real-world ''computation``. Real-world computation is how nature and people in
+ the real world compute. The old definition of computation being steps carried out by a computer is now being challenged by the idea that computation
+ is something can be a non-stop natural process. Some believe that this old idea is a result of a ''Mathematical Bias`` because the founders of
+ computing were mathematicians. \\
+ \indent To capture much of the computational aspects of nature, people have turned to creating models to be analyzed. Hypercomputational 
+ packages is one model that is subject to much disagreement. Some think that this idea of computational models that go beyond the Turing Machine
+ are impossible and wrong, while others believe that hypercomputational packages are the way forward. 
 \end{spacing}
 
 
