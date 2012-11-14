@@ -67,28 +67,40 @@ natural number can be converted to an i, j, k tuple (by the reverse process). He
 a one-to-one function and onto (aka a bijection). Therefore T is countable.
 
   \item (7 points) Problem 4.19 on page 184. \\
-  *reference www.cs.ucdavis.edu/~gusfield/cs120f11/HW6key.pdf* \\
-  
-  For this problem, we want to show that S is decidable. To show this we construct a TM T such that T on input < M > does the following:
-  \begin{enumerate}
-   \item Construct a DFA N that recognizes L(M )R 1.31.
-   \item Run TM F from Theorem 4.5 on < M, N >, where F is the TM deciding EQDF A
-   \item If F accepts, accept. If F rejects, reject.
-  \end{enumerate}
-
-
-
-
-
-3. If F accepts, accept. If F rejects, reject.
-
-Note that for any language A, let AR = {wR |w ∈ A}. Observe that if < M >∈ S then
-L(M ) = L(M )R . So F will accept < M, N > ⇐⇒ L(M ) = L(N ) = L(M )R . Hence
-M will accept ⇐⇒ L(M ) = L(M )R . Therefore M is a decider for S and thus S is
-decidable.
+  *test.scripts.psu.edu/users/a/y/.../Decidable\%20Languages(2).docx* \\  
+	Let P = ADFA. We know this to be decidable. \\
+	We also know that regular languages are closed under the reverse operation. So, if there is a DFA D for
+	w, there is a DFA D’ for $w^R$. We can then construct an NFA N by branching to D and D’. Since we have
+	an algorithm to convert NFAs to DFAs, we run it on $<N>$ to get $<M>$. Now we have a DFA M, and since
+	ADFA is decidable, there is some S such that S = $\{<M>\}$. Since M is a DFA that accepts wR whenever it
+	accepts w, $S = \{<M> | M$ is a DFA that accepts $w^R$ whenever it accepts $w\}$, and S is decidable.
   
   \item (12 points) In class, we learned that $A_D$ is non-TR, $A_{TM}$ and $HALT_{TM}$ are TR but non-TD. What can you say 
-	about their complements? Are they non-TR, TR but non-TD, or TD? Justify your answers. 
+	about their complements? Are they non-TR, TR but non-TD, or TD? Justify your answers. \\
+	
+	Both $\bar{A_{TM}}$ and $\bar{HALT_{TM}}$ are not TR since $A_{TM}$ and $HALT_{TM}$ are TR. If both sets were TR, then
+	they would also be TD. \\
+	$\bar{A_D}$ is not TD, according to the closure property, because $A_D$ is not TD. $\bar{A_D}$ is, on the other hand, TR.
+	In the case $A_D = \{w_i | w_i \notin L(M_i) \}$, its complement $\bar{A_D} = \{w_i | w_i \in L(M_i) \}$. A TM R can be
+	constructed to take $w_i$ as input, then use the string to code TM $M_i$. Both are then fed into $A_TM$, which will accept
+	if it accepts. This shows that $\bar{A_D}$ is TR.
 \end{enumerate}
+
+\pagebreak
+\setlength{\parindent}{1cm}
+\centerline{\bf Reading Summary 4}
+
+\begin{spacing}{1.5}
+ \indent The turing machine is far from being bettered by other models. Over 75 years, the Turing Machine is still considered the best machine
+ model availble. It can be used to model both modern computing and the natural world. What we have learned over the years in computing is a
+ result of the model. \\
+ \indent The Turing machine was so special because it disembodied the machine and broadened the view of computation. It brought the view away
+ from what goes specifically into the machine, but how the machine reacts and works as a whole. There are also challenges to the standard model,
+ which all have an impact on universality; they are labelled into sections called reductionalists, impressionists, remodelers, and incomputability
+ theorists(recursion theorists). The most generally respected challenge to the model, reductionalists, is explained by syaing ``one can apply 
+ it ever more widely to what we observe in nature, and let it mold our expectations of what computing machines can achieve.
+ \indent 
+\end{spacing}
+
 
 \end{document}
