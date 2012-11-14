@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein          
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt          
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 423 Homework 9}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 1:00 pm, Wednesday, 11/14}
+\centerline{Eric Shih}
+
+\begin{enumerate}
+  \item (7 points) Exercise 4.3 on page 183. \\
+    A decidable language is closed under the complement. TM $M_{\bar{L}}$ which decides $\bar{L}$ will accept when TM $M_{\bar{L}}$ that
+    decides $L$ rejects, and reject when $M_{\bar{L}}$ accepts. It has been shown that $E_{DFA}$ is decidable where $E_{DFA}$ = $\{<A> | $
+    is a DFA and $L(A)= \emptyset \}$. \\
+    On input $<A>$ where $A$ is a DFA:
+    \begin{enumerate}
+     \item Mark the start state of $A$.
+     \item Repeat until no new states are marked.
+     \item Mark states that has a transition coming in from any state that is already marked.
+     \item If no accept state is marked, accept. Otherwise, reject.
+    \end{enumerate}
+
+  \item (7 points) Exercise 4.6 on page 183. \\
+    Proof by contradiction. Assume that $B$ is countable. Infinate sequences over ${0,1}$ can be represented by $N = {1,2,3,...}$. A
+    $f(n)$ can be mapped where $n \in N$. $f(n) = (w_{n1},w_{n2},w_{n3},...)$ where $w_{ni}$ is the $i$th bit in the $n$th sequence. Using
+    diagonalization, it is possible to find a sequence over ${0,1}$ that is not in $f(n)$, where the $i$th bit is the opposite of the $i$th
+    sequence. This means that the sequences are $\notin$ $B$, giving us a contradiction, proving $B$ to be uncountable. \\
+    $
+    \begin{array}{l|l}
+     $n$ & f(n) \\ \hline
+     $1$ & (w_1 1, w_1 2,w_1 3,w_1 4,...) \\
+     $2$ & (w_2 1, w_2 2,w_2 3,w_2 4,...) \\
+     $3$ & (w_3 1, w_3 2,w_3 3,w_3 4,...) \\
+     \vdots & \vdots
+    \end{array}
+    $
+  \item (7 points) Exercise 4.7 on page 183. \\
+  *reference www.cs.ucdavis.edu/~gusfield/cs120f11/HW6key.pdf* \\
+  To prove that T is countable we provide a function f : T → N. Given a triple (i, j, k)
+from T f is deﬁned as follows: convert each number i, j, and k to their respective binary
+representation. We will compute the natural number n in its binary representation. For
+the ath bit of n, we divide a by 3. This will produce a quotient q and a remainder r.
+If r is 0 then we extract the qth bit from i, if r is 1 then we extra the qth bit from j,
+if r is 2 then we extract the qth bit from k. Note that if the qth bit of i, j, or k is not
+deﬁned then use a 0. Note that f maps every i, j, k tuple to a natural number and every
+natural number can be converted to an i, j, k tuple (by the reverse process). Hence f is
+a one-to-one function and onto (aka a bijection). Therefore T is countable.
+
+  \item (7 points) Problem 4.19 on page 184. \\
+  *test.scripts.psu.edu/users/a/y/.../Decidable\%20Languages(2).docx* \\  
+	Let P = ADFA. We know this to be decidable. \\
+	We also know that regular languages are closed under the reverse operation. So, if there is a DFA D for
+	w, there is a DFA D’ for $w^R$. We can then construct an NFA N by branching to D and D’. Since we have
+	an algorithm to convert NFAs to DFAs, we run it on $<N>$ to get $<M>$. Now we have a DFA M, and since
+	ADFA is decidable, there is some S such that S = $\{<M>\}$. Since M is a DFA that accepts wR whenever it
+	accepts w, $S = \{<M> | M$ is a DFA that accepts $w^R$ whenever it accepts $w\}$, and S is decidable.
+  
+  \item (12 points) In class, we learned that $A_D$ is non-TR, $A_{TM}$ and $HALT_{TM}$ are TR but non-TD. What can you say 
+	about their complements? Are they non-TR, TR but non-TD, or TD? Justify your answers. \\
+	
+	Both $\bar{A_{TM}}$ and $\bar{HALT_{TM}}$ are not TR since $A_{TM}$ and $HALT_{TM}$ are TR. If both sets were TR, then
+	they would also be TD. \\
+	$\bar{A_D}$ is not TD, according to the closure property, because $A_D$ is not TD. $\bar{A_D}$ is, on the other hand, TR.
+	In the case $A_D = \{w_i | w_i \notin L(M_i) \}$, its complement $\bar{A_D} = \{w_i | w_i \in L(M_i) \}$. A TM R can be
+	constructed to take $w_i$ as input, then use the string to code TM $M_i$. Both are then fed into $A_TM$, which will accept
+	if it accepts. This shows that $\bar{A_D}$ is TR.
+\end{enumerate}
+
+\pagebreak
+\setlength{\parindent}{1cm}
+\centerline{\bf Reading Summary 4}
+
+\begin{spacing}{1.5}
+ 
+\end{spacing}
+
+
+\end{document}

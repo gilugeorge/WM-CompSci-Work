@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein          
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt          
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 423 Homework 9}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 1:00 pm, Wednesday, 11/14}
+\centerline{Eric Shih}
+
+\begin{enumerate}
+  \item (7 points) Exercise 4.3 on page 183. \\
+    A decidable language is closed under the complement. TM $M_{\bar{L}}$ which decides $\bar{L}$ will accept when TM $M_{\bar{L}}$ that
+    decides $L$ rejects, and reject when $M_{\bar{L}}$ accepts. It has been shown that $E_{DFA}$ is decidable where $E_{DFA}$ = $\{<A> | $
+    is a DFA and $L(A)= \emptyset \}$. \\
+    On input $<A>$ where $A$ is a DFA:
+    \begin{enumerate}
+     \item Mark the start state of $A$.
+     \item Repeat until no new states are marked.
+     \item Mark states that has a transition coming in from any state that is already marked.
+     \item If no accept state is marked, accept. Otherwise, reject.
+    \end{enumerate}
+
+  \item (7 points) Exercise 4.6 on page 183. \\
+    Proof by contradiction. Assume that $B$ is countable. Infinate sequences over ${0,1}$ can be represented by $N = {1,2,3,...}$. A
+    $f(n)$ can be mapped where $n \in N$. $f(n) = (w_{n1},w_{n2},w_{n3},...)$ where $w_{ni}$ is the $i$th bit in the $n$th sequence. Using
+    diagonalization, it is possible to find a sequence over ${0,1}$ that is not in $f(n)$, where the $i$th bit is the opposite of the $i$th
+    sequence. This means that the sequences are $\notin$ $B$, giving us a contradiction, proving $B$ to be uncountable. \\
+    $
+    \begin{array}{l|l}
+     $n$ & f(n) \\ \hline
+     $1$ & (w_1 1, w_1 2,w_1 3,w_1 4,...) \\
+     $2$ & (w_2 1, w_2 2,w_2 3,w_2 4,...) \\
+     $3$ & (w_3 1, w_3 2,w_3 3,w_3 4,...) \\
+     \vdots & \vdots
+    \end{array}
+    $
+  \item (7 points) Exercise 4.7 on page 183. \\
+  *reference www.cs.ucdavis.edu/~gusfield/cs120f11/HW6key.pdf* \\
+  To prove that T is countable we provide a function f : T → N. Given a triple (i, j, k)
+from T f is deﬁned as follows: convert each number i, j, and k to their respective binary
+representation. We will compute the natural number n in its binary representation. For
+the ath bit of n, we divide a by 3. This will produce a quotient q and a remainder r.
+If r is 0 then we extract the qth bit from i, if r is 1 then we extra the qth bit from j,
+if r is 2 then we extract the qth bit from k. Note that if the qth bit of i, j, or k is not
+deﬁned then use a 0. Note that f maps every i, j, k tuple to a natural number and every
+natural number can be converted to an i, j, k tuple (by the reverse process). Hence f is
+a one-to-one function and onto (aka a bijection). Therefore T is countable.
+
+  \item (7 points) Problem 4.19 on page 184. \\
+  *reference www.cs.ucdavis.edu/~gusfield/cs120f11/HW6key.pdf* \\
+  
+  For this problem, we want to show that S is decidable. To show this we construct a TM T such that T on input < M > does the following:
+  \begin{enumerate}
+   \item Construct a DFA N that recognizes L(M )R 1.31.
+   \item Run TM F from Theorem 4.5 on < M, N >, where F is the TM deciding EQDF A
+   \item If F accepts, accept. If F rejects, reject.
+  \end{enumerate}
+
+
+
+
+
+3. If F accepts, accept. If F rejects, reject.
+
+Note that for any language A, let AR = {wR |w ∈ A}. Observe that if < M >∈ S then
+L(M ) = L(M )R . So F will accept < M, N > ⇐⇒ L(M ) = L(N ) = L(M )R . Hence
+M will accept ⇐⇒ L(M ) = L(M )R . Therefore M is a decider for S and thus S is
+decidable.
+  
+  \item (12 points) In class, we learned that $A_D$ is non-TR, $A_{TM}$ and $HALT_{TM}$ are TR but non-TD. What can you say 
+	about their complements? Are they non-TR, TR but non-TD, or TD? Justify your answers. 
+\end{enumerate}
+
+\end{document}
