@@ -225,10 +225,13 @@ using namespace std;
    	if(k < 1 || k > _total)
   		return false;
   	
-  	long* temp_group = _group;
+  	long* temp_group = new long[_total];
+  	for(int i = 0; i < _total; i++){
+  		temp_group[i] = _group[i];
+  	}
   	insertion_sort(temp_group, 0, total());
 		
-		output_temp_group(temp_group);  	
+//		output_temp_group(temp_group);  	
 	
   	kth_smallest = temp_group[k-1];
   	return true;
@@ -247,7 +250,10 @@ using namespace std;
   bool GroupOfNumbers::partial_sort_select(long k, long & kth_smallest) const{
    	if(k < 1 || k > _total)
 			return false;
-		long* temp_group = _group;
+  	long* temp_group = new long[_total];
+  	for(int i = 0; i < _total; i++){
+  		temp_group[i] = _group[i];
+  	}
 		insertion_sort(temp_group, 0, k);
 		int i, temp1, temp2, c = 0, small = 0;
 		for(i = k; i < _total; i++){
@@ -266,41 +272,33 @@ using namespace std;
 			c++;
 		}
 		
-		output_temp_group(temp_group);
+//		output_temp_group(temp_group);
 		
 		kth_smallest = temp_group[k-1];
 		return true;
   }//partial_sort_select
+  
   bool GroupOfNumbers::min_heap_select(long k, long & kth_smallest) const{
    	if(k < 1 || k > _total)
   		return false;
   		
-		long* temp_group = _group;
+  	long* temp_group = new long[_total];
+  	for(int i = 0; i < _total; i++){
+  		temp_group[i] = _group[i];
+  	}
 		long currentSize = _total;
 		for( int i = _total / 2; i >= 0; i-- ) /* buildHeap */
 			percolate_down2(temp_group, i, _total );
-		cout << "----Right after Heapify-----" ;
-		output_temp_group(temp_group);
-		
-		long temp;
-		for( int j = _total - 1; j > 0; j-- ){
-				temp = temp_group[0];
-				temp_group[0] = temp_group[j];
-				temp_group[j] = temp;
-//			temp_group[ 0 ] ^= temp_group[ j ];
-//			temp_group[ j ] ^= temp_group[ 0 ];
-//			temp_group[ 0 ] ^= temp_group[ j ];
-			percolate_down2(temp_group, 0, j );
-		}
 
+		long tempMin;
 		for(int i = 0; i < k; i++ ){
+			tempMin= temp_group[1];
 			temp_group[ 1 ] = temp_group[ currentSize-- ];
 			percolate_down2(temp_group, 1, currentSize);
 		}
-				
-		cout << "----Min Heap select-----" ;
-		output_temp_group(temp_group);
-		kth_smallest = temp_group[k-1];
+		
+//		output_temp_group(temp_group);
+		kth_smallest = tempMin;
 		return true;
   }//min_heap_select
   void GroupOfNumbers::percolate_down2(long* temp_group, long hole, long currentSize ) const{
@@ -323,10 +321,13 @@ using namespace std;
 	}//percolate_down2
   
   bool GroupOfNumbers::partial_max_heap_select(long k, long & kth_smallest) const{
-		if(k>_total)
-			return false;
+   	if(k < 1 || k > _total)
+  		return false;
 		
-		long* temp_group = _group;
+  	long* temp_group = new long[_total];
+  	for(int i = 0; i < _total; i++){
+  		temp_group[i] = _group[i];
+  	}
 		int x;
 		for( int i = k / 2; i >= 0; i-- ) /* buildHeap */
 			percolate_down(temp_group, i, k);
@@ -340,7 +341,7 @@ using namespace std;
 			}
 		}
 		
-		output_temp_group(temp_group);
+//		output_temp_group(temp_group);
 		kth_smallest= temp_group[0];
 		return true;
   }//partial_max_heap_select
@@ -362,10 +363,13 @@ using namespace std;
   bool GroupOfNumbers::quick_select(long k, long & kth_smallest) const{
    	if(k < 1 || k > _total)
   		return false;
-  	long* temp_group = _group;
+  	long* temp_group = new long[_total];
+  	for(int i = 0; i < _total; i++){
+  		temp_group[i] = _group[i];
+  	}
   	quick_select(temp_group, 0, total()-1, k);
   	
-  	output_temp_group(temp_group);
+//  	output_temp_group(temp_group);
   	
   	kth_smallest = temp_group[k-1];
   	return true;
