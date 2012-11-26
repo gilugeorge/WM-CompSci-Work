@@ -373,7 +373,7 @@ using namespace std;
 //  	output_temp_group(temp_group);
   	
   	kth_smallest = temp_group[k-1];
-  	cout << kth_smallest << temp_group[k-1]<< endl;
+//  	cout << kth_smallest << temp_group[k-1]<< endl;
   	return true;
   }//quick_select
 	void GroupOfNumbers::quick_select(long *temp_group, long left, long right, long k) const{

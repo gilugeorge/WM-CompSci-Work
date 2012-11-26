@@ -153,10 +153,18 @@ class GroupOfNumbers {
   // always uses the last element as the pivot for quicksort
 
  protected:
+ 	//Each used for sort_select because the implemented insertion was not able to take
+ 	//in an array.
  	void insertion_sort(long *temp_group, long left, long right) const;
+	
+	//methods used for recursion and access to median of 3 algorithm.
 	void quick_select(long *temp_group, long left, long right, long k) const;
  	long median_of_3(long *temp_group, long left, long right) const;
+ 	
+ 	//used for testing/debugging purposes.
  	void output_temp_group(long*temp_group)const;
+ 	
+ 	//Used for the two different heap selections.
  	void percolate_down(long *temp_group, long i, long n)const;
  	void percolate_down2(long* tempGroup, long hole, long currentSize ) const;
  	inline long left_child(long i) const{
