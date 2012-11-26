@@ -158,6 +158,7 @@ class GroupOfNumbers {
  	long median_of_3(long *temp_group, long left, long right) const;
  	void output_temp_group(long*temp_group)const;
  	void percolate_down(long *temp_group, long i, long n)const;
+ 	void percolate_down2(long* tempGroup, long hole, long currentSize ) const;
  	inline long left_child(long i) const{
     return 2*i + 1;
   }

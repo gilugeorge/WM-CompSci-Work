@@ -272,8 +272,56 @@ using namespace std;
 		return true;
   }//partial_sort_select
   bool GroupOfNumbers::min_heap_select(long k, long & kth_smallest) const{
-  	return true;
+   	if(k < 1 || k > _total)
+  		return false;
+  		
+		long* temp_group = _group;
+		long currentSize = _total;
+		for( int i = _total / 2; i >= 0; i-- ) /* buildHeap */
+			percolate_down2(temp_group, i, _total );
+		cout << "----Right after Heapify-----" ;
+		output_temp_group(temp_group);
+		
+		long temp;
+		for( int j = _total - 1; j > 0; j-- ){
+				temp = temp_group[0];
+				temp_group[0] = temp_group[j];
+				temp_group[j] = temp;
+//			temp_group[ 0 ] ^= temp_group[ j ];
+//			temp_group[ j ] ^= temp_group[ 0 ];
+//			temp_group[ 0 ] ^= temp_group[ j ];
+			percolate_down2(temp_group, 0, j );
+		}
+
+		for(int i = 0; i < k; i++ ){
+			temp_group[ 1 ] = temp_group[ currentSize-- ];
+			percolate_down2(temp_group, 1, currentSize);
+		}
+				
+		cout << "----Min Heap select-----" ;
+		output_temp_group(temp_group);
+		kth_smallest = temp_group[k-1];
+		return true;
   }//min_heap_select
+  void GroupOfNumbers::percolate_down2(long* temp_group, long hole, long currentSize ) const{
+
+		long child;
+		long temp = temp_group[ hole ];
+
+		for( ; hole * 2 <= currentSize; hole = child ){
+			child = hole * 2;
+			if( child != currentSize && temp_group[ child + 1 ] < temp_group[ child ]){
+				child++;	
+			}
+			if( temp_group[ child ] < temp ){
+				temp_group[ hole ] = temp_group[ child ];
+			}
+			else
+				break;
+		}
+		temp_group[ hole ] = temp;
+	}//percolate_down2
+  
   bool GroupOfNumbers::partial_max_heap_select(long k, long & kth_smallest) const{
 		if(k>_total)
 			return false;
@@ -315,7 +363,7 @@ using namespace std;
    	if(k < 1 || k > _total)
   		return false;
   	long* temp_group = _group;
-  	quick_select(temp_group, temp_group[0], total(), k);
+  	quick_select(temp_group, 0, total()-1, k);
   	
   	output_temp_group(temp_group);
   	
@@ -335,12 +383,12 @@ using namespace std;
   			else
   				break;
   		}
-  		
   		swap(temp_group[i], temp_group[right-1]); //Restore Pivot
-  		if(k <= i)
+  		if(k <= i){
 	  		quick_select(temp_group, left, i-1, k); //sort small elements
-  		else if(k > i + 1)
-  			quick_select(temp_group, i+1, right, k); //sort large elements  		
+  		}else if(k > i + 1){
+  			quick_select(temp_group, i+1, right, k); //sort large elements
+  		}
   	}else{ //do an insertion sort on the subarrays
   		insertion_sort(temp_group, left,right);
   	}	
