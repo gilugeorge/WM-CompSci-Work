@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<TextView android:id="@+id/textView3" android:layout_width="wrap_content"
+		android:layout_height="50dp" android:text="Select Maze Type and Level"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_gravity="center"></TextView>
+	
+	//radio Button Code
+	<RadioGroup android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:orientation="vertical"
+		android:layout_gravity="center">
+		<RadioButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/gambler"
+			android:text="@string/gambler" android:layout_gravity="bottom"></RadioButton>
+		<RadioButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/cGambler"
+			android:text="@string/cGambler" android:layout_gravity="top"></RadioButton>
+		<RadioButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/wFollower"
+			android:text="@string/wFollower" android:layout_gravity="top"></RadioButton>
+		<RadioButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/wizard"
+			android:text="@string/wizard"></RadioButton>
+		<RadioButton android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/manual"
+			android:text="@string/manual"></RadioButton>
+	</RadioGroup>
+
+	//level select code
+	<LinearLayout android:layout_height="wrap_content"
+		android:id="@+id/linearLayout1" android:layout_width="match_parent"></LinearLayout>
+	<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+		android:text="Select Level:" android:layout_height="wrap_content"></TextView>
+	<Spinner android:layout_height="wrap_content"
+		android:layout_width="150dp" android:id="@+id/spinner1"></Spinner>
+	<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
+		android:layout_height="50dp"></TextView>
+
+	//Start Button Code
+	<Button android:id="@+id/Button01" android:layout_width="100dp"
+		android:layout_height="wrap_content" android:text="@string/Start"
+		android:layout_gravity="center"></Button>
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, AMazeActivity!</string>
+    <string name="app_name">AMaze</string>
+    <string name="Start">Start</string>
+    <string name="myClickHandler">myClickHandler</string>
+    <string name="gambler">Gambler</string>
+    <string name="cGambler">Curious Gambler</string>
+    <string name="wFollower">Wall Follower</string>
+    <string name="wizard">Wizard</string>
+    <string name="manual">Manual</string>
+    <string name="mazePicture">The Maze will be Here</string>
+    <string name="finish">Finish</string>
+    <string name="level_Prompt">Choose a Level</string>
+    <string-array name="level_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    
+</resources>

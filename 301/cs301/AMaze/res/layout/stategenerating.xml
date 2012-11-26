@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+		android:text="Now Loading" android:layout_height="150dp"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_gravity="center"></TextView>
+
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+	</LinearLayout>
+	<ProgressBar android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:id="@+id/progressBar1"
+		style="?android:attr/progressBarStyleLarge" android:layout_gravity="center"></ProgressBar>
+	<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
+		android:text="" android:layout_height="125dp"
+		android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+	<LinearLayout android:id="@+id/LinearLayout02"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></LinearLayout>
+	<Button android:id="@+id/Button01" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:onClick="onClick"
+		android:text="Cancel" android:layout_gravity="center"></Button>
+	<EditText android:layout_width="match_parent" android:id="@+id/editText1"
+		android:layout_height="wrap_content" android:color="#333333">
+		<requestFocus></requestFocus>
+	</EditText>
+</LinearLayout>
