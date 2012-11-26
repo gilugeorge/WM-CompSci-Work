@@ -1,14 +1,10 @@
 //*****************************************************
 // Eric Shih
 // CS 303 Algorithms
-// Project 1, Part A
+// Project 3
 // Fall 2012
 //*****************************************************
-/*
-#include <cstdlib>  // include for the function exit()
-#include <iostream> // include for the input/output members
-#include <iomanip>  // include for input/output formatting
-*/
+
 
 #include "group.h"
 #include "rng.h"
@@ -217,7 +213,125 @@ using namespace std;
     outFile.close();
   }//end writeGroupOfNumbersTo
 
-  // mutators
+  // Each of the following methods returns the kth smallest
+  // number in the group in the argument kth_smallest.
+  // **The original group is unchanged.
+  // The return value for each of these methods is true if the
+  // value of k is valid (i.e., 1 <= k <= total()); otherwise,
+  // the return value of each of these methods is false.
+  // The difference is in the algorithm used, and thus in the
+  // time complexity that can either be expected (or guaranteed).
+  bool GroupOfNumbers::sort_select(long k, long & kth_smallest) const{
+   	if(k < 1 || k > _total)
+  		return false;
+  	
+  	long* temp_group = _group;
+  	insertion_sort(temp_group, 0, total());
+		
+		output_temp_group(temp_group);  	
+	
+  	kth_smallest = temp_group[k-1];
+  	return true;
+  }//sort_select
+ 	void GroupOfNumbers::insertion_sort(long *temp_group, long left, long right) const{
+ 		int i, j;
+ 		for(i = left; i < right; i++){
+ 			long temp = temp_group[i];
+ 			for(j = i; j > 0 && temp < temp_group[j-1]; j--){
+ 				temp_group[j] = temp_group[j-1];
+ 			}
+ 			temp_group[j] = temp;
+ 		}
+ 	}//insertion_sort
+  
+  bool GroupOfNumbers::partial_sort_select(long k, long & kth_smallest) const{
+   	if(k < 1 || k > _total)
+			return false;
+		long* temp_group = _group;
+		insertion_sort(temp_group, 0, k);
+		int i, temp1, temp2, c = 0, small = 0;
+		for(i = k; i < _total; i++){
+			if(temp_group[i] < temp_group[k-1]){
+				temp1 = temp_group[i];
+				for(int j = 0; j < k+c; j++){
+					if(temp1 < temp_group[j]){
+						temp2 = temp_group[j];
+						temp_group[j] = temp1;
+						temp1 = temp2;
+					}
+					small = j+1;
+				}
+				temp_group[small] = temp1;
+			}
+			c++;
+		}
+		
+		output_temp_group(temp_group);
+		
+		kth_smallest = temp_group[k-1];
+		return true;
+  }//partial_sort_select
+  bool GroupOfNumbers::min_heap_select(long k, long & kth_smallest) const{
+  	return true;
+  }//min_heap_select
+  bool GroupOfNumbers::partial_max_heap_select(long k, long & kth_smallest) const{
+  	return true;
+  }//partial_max_heap_select
+  bool GroupOfNumbers::quick_select(long k, long & kth_smallest) const{
+   	if(k < 1 || k > _total)
+  		return false;
+  	long* temp_group = _group;
+  	quick_select(temp_group, 0, total(), k);
+  	
+  	output_temp_group(temp_group);
+  	
+  	kth_smallest = temp_group[k-1];
+  	return true;
+  }//quick_select
+	void GroupOfNumbers::quick_select(long *temp_group, long left, long right, long k) const{
+		if(left + CutOff <= right){
+  		long pivot = median_of_3(temp_group,left, right);
+  		
+  		long i = left, j = right-1;
+  		for(;;){
+  			while(temp_group[++i] < pivot){}
+  			while(pivot < temp_group[--j]){}
+  			if(i < j)
+  				swap(temp_group[i], temp_group[j]);
+  			else
+  				break;
+  		}
+  		
+  		swap(temp_group[i], temp_group[right-1]); //Restore Pivot
+  		quick_select(temp_group, left, i-1, k); //sort small elements
+  		quick_select(temp_group, i+1, right, k); //sort large elements  		
+  	}else{ //do an insertion sort on the subarrays
+  		insertion_sort(temp_group, left,right+1);
+  	}	
+	}//quick select
+	long GroupOfNumbers::median_of_3(long *temp_group, long left, long right)const{
+		int center = (left + right) / 2;
+		if(temp_group[center] < temp_group[left])
+			swap(temp_group[left], temp_group[center]);
+    if( temp_group[right] < temp_group[left] )
+        swap( _group[left], temp_group[right] );
+    if( temp_group[right] < temp_group[center] )
+        swap( temp_group[center], temp_group[right] );
+        // Place pivot at position right - 1
+    swap( temp_group[center], temp_group[right - 1] );
+    return temp_group[right - 1];
+  }
+ 	void GroupOfNumbers::output_temp_group(long *temp_group)const{
+  	long i;
+	  for(i = 0; i< _total; i++){
+		  if((i%10) == 0)
+			  cout << "\n" << setw(8) << temp_group[i];
+		  else
+			  cout << setw(8) << temp_group[i];
+	  }
+    cout << endl;  	
+ 	}//
+  // MUTATORS
   // ========
 
   /* If possible, adds newNumber to the group---duplicates
