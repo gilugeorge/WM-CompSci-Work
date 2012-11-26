@@ -367,11 +367,13 @@ using namespace std;
   	for(int i = 0; i < _total; i++){
   		temp_group[i] = _group[i];
   	}
+//  	output_temp_group(temp_group);
   	quick_select(temp_group, 0, total()-1, k);
   	
 //  	output_temp_group(temp_group);
   	
   	kth_smallest = temp_group[k-1];
+  	cout << kth_smallest << temp_group[k-1]<< endl;
   	return true;
   }//quick_select
 	void GroupOfNumbers::quick_select(long *temp_group, long left, long right, long k) const{
@@ -390,8 +392,8 @@ using namespace std;
   		swap(temp_group[i], temp_group[right-1]); //Restore Pivot
   		if(k <= i){
 	  		quick_select(temp_group, left, i-1, k); //sort small elements
-  		}else if(k > i + 1){
-  			quick_select(temp_group, i+1, right, k); //sort large elements
+  		}else if(k > i){
+  			quick_select(temp_group, i, right, k); //sort large elements
   		}
   	}else{ //do an insertion sort on the subarrays
   		insertion_sort(temp_group, left,right);
