@@ -157,6 +157,10 @@ class GroupOfNumbers {
 	void quick_select(long *temp_group, long left, long right, long k) const;
  	long median_of_3(long *temp_group, long left, long right) const;
  	void output_temp_group(long*temp_group)const;
+ 	void percolate_down(long *temp_group, long i, long n)const;
+ 	inline long left_child(long i) const{
+    return 2*i + 1;
+  }
  	
   long Equilikely(long lower, long upper);  // use lower < upper
 

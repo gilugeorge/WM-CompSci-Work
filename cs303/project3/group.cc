@@ -275,13 +275,47 @@ using namespace std;
   	return true;
   }//min_heap_select
   bool GroupOfNumbers::partial_max_heap_select(long k, long & kth_smallest) const{
-  	return true;
+		if(k>_total)
+			return false;
+		
+		long* temp_group = _group;
+		int x;
+		for( int i = k / 2; i >= 0; i-- ) /* buildHeap */
+			percolate_down(temp_group, i, k);
+		
+		for(x = k; x < _total; x++){
+			if(temp_group[x] < temp_group[0]){
+				long temp_hold = temp_group[x]; //delete max
+				temp_group[x] = temp_group[0];
+				temp_group[0] = temp_hold;
+				percolate_down(temp_group, 0, k);
+			}
+		}
+		
+		output_temp_group(temp_group);
+		kth_smallest= temp_group[0];
+		return true;
   }//partial_max_heap_select
+  void GroupOfNumbers::percolate_down(long *temp_group, long i, long n)const{
+  	long child, tmp;
+  	
+  	for(tmp = temp_group[i]; left_child(i) < n; i = child){
+  		child = left_child(i);
+  		if(child != n-1 && temp_group[child] < temp_group[child+1])
+  			child++;
+  		if(tmp < temp_group[child])
+  			temp_group[i] = temp_group[child];
+  		else
+  			break;
+  	}
+  	_group[i] = tmp;
+  }
+  
   bool GroupOfNumbers::quick_select(long k, long & kth_smallest) const{
    	if(k < 1 || k > _total)
   		return false;
   	long* temp_group = _group;
-  	quick_select(temp_group, 0, total(), k);
+  	quick_select(temp_group, temp_group[0], total(), k);
   	
   	output_temp_group(temp_group);
   	
@@ -303,10 +337,12 @@ using namespace std;
   		}
   		
   		swap(temp_group[i], temp_group[right-1]); //Restore Pivot
-  		quick_select(temp_group, left, i-1, k); //sort small elements
-  		quick_select(temp_group, i+1, right, k); //sort large elements  		
+  		if(k <= i)
+	  		quick_select(temp_group, left, i-1, k); //sort small elements
+  		else if(k > i + 1)
+  			quick_select(temp_group, i+1, right, k); //sort large elements  		
   	}else{ //do an insertion sort on the subarrays
-  		insertion_sort(temp_group, left,right+1);
+  		insertion_sort(temp_group, left,right);
   	}	
 	}//quick select
 	long GroupOfNumbers::median_of_3(long *temp_group, long left, long right)const{
@@ -528,8 +564,8 @@ using namespace std;
   		
   		long i = left, j = right + 1;
   		for(;;){
-  			while(i <= right && _group[++i] < pivot){}
-  			while(j >= left && pivot < _group[--j]){}
+  			while(i < right && _group[++i] < pivot){}
+  			while(j > left && pivot < _group[--j]){}
   			if(i < j)
   				swap(_group[i], _group[j]);
   			else
@@ -558,7 +594,7 @@ using namespace std;
   void GroupOfNumbers::quick_choose_middle(long left, long right){
    	if(left + CutOff <= right){
   		long pivot = _group[(left + right)/2];
-  		
+  		swap(_group[right],_group[(left+right)/2]);
   		long i = left, j = right-1;
   		for(;;){
   			while(_group[++i] < pivot){}
