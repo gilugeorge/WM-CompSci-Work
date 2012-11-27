@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein          
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt          
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 423 Homework 10}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 1:00 pm, Wednesday, 11/28}
+\centerline{Eric Shih}
+
+\begin{enumerate}
+  \item (10 points) Prove that $A=\{w_{2i}|w_{2i}\not\in L(M_i)\}$ is not Turing-recognizable, where $w_{2i}$ is the
+	$2i$th string in the lexicographic  order of binary strings and $M_i$ is the TM whose binary  cod e  is$w_i$.
+    \begin{description}
+     \item Assume that $A$ is Turing Recognizable, such that $\exists$ TM $M$ such that $A = L(M)$. $M+M_i$ with code $w_i$ for some $i$.
+    $w_{2i} \in A_D$ if and only if $w_{2i} \notin L(M_i)$ by definition of $A$. $w_{2i} \in A$ if and only if $w_{2i} \in L(M_1)$
+    by $A = L(M_{2i})$. This gives us a contradiction proving that $A$ is not Truing Recognizable.
+    \end{description}
+   
+  \item (10 points) Exercise 5.1 on page 211. (Hint: Reduction from $ALL_{CFG}$ on page 197.) \\
+  *reference www.cs.uml.edu/~giam/91.304/Spring06/tf11*
+  \begin{description}
+   \item Assume it is decidable. Then there exists a TM $R$ that decides $EQ_{CFG}$ . A construction of TM $S$ that uses $R$ to decide
+	  $ALL_{CFG}$ follows.
+   \item S = On input G , where G is a CFG:
+   \item 1. Run R on input G, G1 where G1 isa CFG that generates Σ∗ .
+   \item 2. If R accepts, accept; if R rejects, reject.
+   \item If $R$ decides $EQ_{CFG}$ , $S$ decides $ALL_{CFG}$. But $ALL_{CFG}$ is undecidable, so $EQ_{CFG}$ must also be undecidable.
+  \end{description}
+  
+  \item (10 points) Problem 5.12 on page 211. (Hint: Reduction from $A_{TM}$.) \\
+  *reference www.cs.uml.edu/~giam/91.304/Spring06/tf11*
+  \begin{description}
+    \item First modify $M$ so that all of its transitions that WRITE a blank over a non blank are
+	  replaced by writing a new, different symbol. Then the modified $M$ will accept exactly the
+	  same set of strings without ever writing a blank over a non- blank. The ”encompassing TM”
+	  - $S$ of the last problem must:
+    \item a) change each $M$ as indicated,
+    \item b) run $M$ and at all acceptances make sure that a blank is now written over a non-blank:
+	  you may have to move left one or more positions, but, since the initial input was NOT blank
+	  and you never overwrote a blank with a non-blank, there must be at least one non-blank for
+	  you to overwrite.
+    \item The submachine that carries out a) and b) is the desired machine $R$. Now run this
+	  machine through the $T$ that is supposed to decide the blank/non-blank. Any machine $R$
+	  that writes a blank must have resulted from a modified $M$ stopping; any machine $R$ that is
+	  rejected (did not write a blank) must have come from an M that did NOT stop. So we have
+	  a decision for $A_{TM}$.
+  \end{description}
+
+  \item (10 points) Prove that $ES_{TM}=\{$code of M: TM M accepts the empty string$\}$ is undecidable. (Hint: Reduction from $A_{TM}$.)
+    \begin{description}
+     \item We will show TM $M$ to be undecidable by reducing $A_{TM}$ to $M$. Assume that $M$ can decide $ES_{TM}$. Then $M$ will be used
+     to construct TM $M_A$ to show that $A_{TM}$ is decidable.
+     \item $M_A$ = On input $<M,w>$
+     \item 1. Construct a TM $M_v$ that runs on an input string $v$ such that:
+     \begin{enumerate}
+      \item Replace every symbol with a blank symbol.
+      \item Write $w$ on its input tape.
+      \item Run $M$ on $w$. If $M$ accepts $w$, $M$ accepts, otherwise $M$ rejects.
+     \end{enumerate}
+     \item 2. Run $M_v$ on $M$. If $M$ accepts, accept, otherwise, reject.
+     \item This will decide $A_{TM}$, which is a contradiction because $A_{TM}$ is undecidable, which proves $ES_{TM}$ to be undecidable.
+    \end{description}
+
+\end{enumerate}
+
+\end{document}
