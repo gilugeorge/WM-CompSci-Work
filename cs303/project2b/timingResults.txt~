@@ -1,0 +1,18 @@
+insertion_sort(Random): Start: 0 Finish: 17.42 Timing: 17.42
+insertion_sort(sorted): Start: 17.42 Finish: 17.42 Timing: 0
+insertion_sort(reverse): Start: 17.42 Finish: 52.56 Timing: 35.14
+insertion_sort(identical): Start: 52.56 Finish: 52.56 Timing: 0
+heapsort(Random): Start: 52.57 Finish: 52.59 Timing: 0.02
+heapsort(sorted): Start: 52.59 Finish: 52.6 Timing: 0.01
+heapsort(reverse): Start: 52.6 Finish: 52.62 Timing: 0.02
+heapsort(identical): Start: 52.62 Finish: 52.62 Timing: 0
+mergesort(Random): Start: 52.62 Finish: 52.65 Timing: 0.03
+mergesort(sorted): Start: 52.65 Finish: 52.67 Timing: 0.02
+mergesort(reverse): Start: 52.68 Finish: 52.69 Timing: 0.01
+mergesort(identical): Start: 52.69 Finish: 52.7 Timing: 0.01
+Quicksort(Random): Start: 52.71 Finish: 52.72 Timing: 0.01
+Quicksort(sorted): Start: 52.72 Finish: 52.73 Timing: 0.01
+Quicksort(reverse): Start: 52.73 Finish: 52.74 Timing: 0.01
+Quicksort(identical): Start: 52.74 Finish: 52.74 Timing: 0
+
+on gpu1, using -O
