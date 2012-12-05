@@ -46,7 +46,7 @@
       \end{center}
 
   \item (8 points) Problem 2.26 on page 130. \\
-    First, the derivation involves the rules that follow the form $S \implies A_1A_2A_3 \dots A_n$.
+    First, the derivation involves the rules that follow the form $S \implies A_1A_2$.
     The derivation of $w$ will require $n-1$ uses of this type because a variable
     will need to be added for the increase in size. Second, the terminals being derived
     will take the for $S \implies a$. Thus because the $n$ number of derivations from
@@ -93,7 +93,8 @@
  sometimes have an end form. If there is not an end form, then the tags are usually matched at the end of a paragraph. A 
  CFG can be used to describe not only the syntax of HTML, but it can also be used to show the structure of the language. In
  more complex markup language, CFGs play a more important role. Document Type Definition is a CFG with its own notation,
- but the same principles for context-free grammars. 
+ but the same principles for context-free grammars. It is essentially treated as a grammar that specifies to XML documents.
+ Overall context-free grammars are a very useful application in a wide range of concepts.
 \end{spacing}
 
 \end{document}

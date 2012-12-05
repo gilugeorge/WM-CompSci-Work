@@ -31,12 +31,12 @@
  \item (8 points) Prove that the language A of strings of 0s and 1s whose length is a perfect square is not regular
   \begin{description}
     \item We will use proof by contradiction. Assume that A is a regular language, therefore the pumping lemma applies.
-    \item Let $p$ be the constant in the pumping lemma. Select $s = (0 \cup 1)^{p^2}$. $|s| \leq p, s = xyz, |xyz|=p^2,
-	  |y| > 0$, and $|xy| < p$.
+    \item Let $p$ be the constant in the pumping lemma. Select $s = (0 \cup 1)^{p^2}$. $|s| \geq p, s = xyz, |xyz|=p^2,
+	  |y| > 0$, and $|xy| \leq p$.
     \item According to the pumping lemma, $\forall i \leq 0$, $xy^iz \in A$. Therefore when y is pumped, $s$ should
 	  still be a perfect square, thus $|y|$ to any perfect square should result in the next perfect square.
     \item $|s| = p^2$, so the next perfect square will be $(p+1)^2$; letting $i = 2$: 
-	  $p^2 + 1 \leq |xy^2z| \leq p^2 + p$.
+	  $p^2 + 1 \leq |xy^2z| \leq p^2 + p$ since $1 \leq |y| \leq p$.
     \item $|xy^2z|$ can't be the correct perfect square $p^2$ nor can it be the next perfect square $(p+1)^2$ ($p^2 + 2p +1$)
 	  since $|xy^2z| \leq p^2 + p \leq p^2 + 2p +1$. This is a contradiction and the pumping lemma does not apply. Thus
 	  we have shown that A is not regular.
@@ -47,9 +47,9 @@
    \item Consider $\overline{L}$ where all strings are palindromes. By the closure properties, if $\overline{L}$ is
 	 not regular, $L$ is not regular.
    \item Assume $\overline{L}$ is regular, so the pumping lemma applies. Let $p$ be the constant in the pumping lemma
-	 and $s=xyz$ where $\forall i \leq 0$, $xy^iz \in \overline{L}, |y| > 0$, and $|xy| < p$.
+	 and $s=xyz$ where $\forall i \leq 0$, $xy^iz \in \overline{L}, |y| > 0$, and $|xy| \leq p$.
    \item Let $s = 0^p10^p$, $y$ will be a substring in the first half of $s$ containing at least one 0 and up to $p$
-	 number of $0$s. $z$ will be $10^p$. When $i=0$, there will be at least one 0 removed from the first part of
+	 number of $0$s. $z$ will be $0*10^p$. When $i=0$, there will be at least one 0 removed from the first part of
 	 $x$, leaving $xz$ resulting in anywhere from $0^{p-1}10^p$ to $10^p$, none of which are palindromes.
    \item Thus the pumping lemma does not hold, proving that $\overline{L}$ is not regular, and by closure $L$.
   \end{description}
@@ -70,10 +70,10 @@
   b) Show the C is not regular: \\
     \begin{description}
      \item Assume C is regular, therefore the pumping lemma applies. Let $p$ be the pumping length.
-     \item We choose $s = 1^p01^p$, $|s| = 2p + 1 \geq p$. Since $|ab| \leq p$, $|ab|$ will 
-     represent $1^p$ and $c$ will represent $01^p$. When $i = 0$, $b$ is removed from $abc$.
-     This resulting string $ac$ will have $k$ decremented by at least one since $|b| > 0$, but $y$
-     will contain the same amount of $1s$ since $c$ is unchanged. THus $y$ will have more than $k$ $1s$
+     \item We choose $s = 1^p01^p$, $|s| = 2p + 1 \geq p$. Since $|xy| \leq p$, $|xy|$ will
+     represent $1^p$ and $z$ will represent $01^p$. When $i = 0$, $y$ is removed from $xyz$.
+     This resulting string $xz$ will have $k$ decremented by at least one since $|y| > 0$, but $y$
+     will contain the same amount of $1s$ since $z$ is unchanged. Thus $y$ will have more than $k$ $1s$
      resulting in the string not being within C. Thusly, the PL does not hold showing $C$ to not be
      regular.
     \end{description}

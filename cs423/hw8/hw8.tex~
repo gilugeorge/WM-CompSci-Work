@@ -40,8 +40,8 @@
     \end{center}
     
      The configuration for TM $M$ for input string 000000 is: \\
-     q1000000 \\ q200000 \\ Xq30000 \\ X0q4000 \\ X0Xq300 \\ X0X0q40 \\ X0X0Xq3 \\ X0X0q50 \\ X0Xq5X0 \\ X0q50X0 \\ Xq5X0X0 \\ q50X0X0 \\
-     q5X0X0X0 \\ q20X0X0 \\ Xq3X0X0 \\ XXq30X0 \\ XXXq3X0 \\ XXX0q40 \\ XXX0Xq4 $\to reject$
+     q1000000 \\ q20000 \\ Xq30000 \\ X0q4000 \\ X0Xq300 \\ X0X0q40 \\ X0X0Xq3 \\ X0X0q50 \\ X0Xq5X0 \\ X0q50X0 \\ Xq5X0X0 \\ q50X0X0 \\
+     q5X0X0X0 \\ q20X0X0 \\ Xq3X0X0 \\ XXq30X0 \\ XXXq3X0 \\ XXX0q40 \\ XXX0X $q_{reject}$
 
   \item (10 points) Exercise 3.8 (b) on page 160.
     \begin{enumerate}
@@ -53,12 +53,13 @@
 
   \item (10 points) Problem 3.15 (b), (c) and (e) on page 161.
     \begin{itemize}
-     \item Concatenation: A TM $M$ can be constructed to decide the concatentation of two decidable langauges $AB$. For the input string
-     $w$, we can partition $w$ into $w_a$ and $w_b$. TM $M_A$ will take $w_a$ and TM $M_B$ will take $w_b$. If both
+     \item Concatenation: A TM $M$ can be constructed to decide the concatenation of two decidable languages $AB$. For the input string
+     $w$, we can partition $w$ into $w_a$ and $w_b$ for every possible way to cut $w$ into two parts. TM $M_A$ will take $w_a$ and TM $M_B$ will take $w_b$. If both
      $M_A$ and $M_B$ accept, then M will accept, otherwise it will reject.
      
      \item Star: A TM $M$ can be constructed to decide $L*$. If the input string $w$ is empty, $M$ will accept. Then for each way to divide
-     $w$, the substrings will be input to TM $M_L$. If $M$ accepts all substrings, then $M$ will accept $L*$, otherwise it will reject.
+     $w$, the substrings will be input to TM $M_L$. If $M$ accepts all substrings in any one partition, then $M$ will accept $L^*$,
+     otherwise it will reject.
      
      \item Intersection: A TM $M$ can be constructed to decide $A \cap B$. TM $M_A$ decides $A$ and TM $M_B$ will decide $B$. We then use
      input string $w$ as input for $M_A$. If it is not rejected, it is input to $M_B$. If it is accepted in $M_B$ it is accepted, otherwise
@@ -71,9 +72,11 @@
     \item Concatentation: A TM $M$ can be constructed to recognize the language $AB$. TM $M_A$ will recognize $A$ and TM $M_B$ will 
 	  recognize $B$. Input string $w$ can beb non-deterministically partitioned to $w_a$ and $w_b$. $w_a$ will be used for $M_A$ and
 	  $w_b$ will be used for $M_B$. While $w_a$ is running, $w_b$ should be run. If $M_B$ accepts, then it will be accepted.
-    \item Star: A TM $M$ can be constructed to recognize $L*$. If the input string $w$ is empty, $M$ will accept. For every possible way to
-	  divide $w$, the substrings should be run as input to TM $M_L$. If $M_L$ accepts all the substrings, then $M$ will accept.
-    \item Intersection: A TM $M$ can be constructed to recognize $A \cap B$. TM $M_A$ recognizes $A$ and TM $M_B$ recognizes $B$.
+    \item Star: A TM $M$ can be constructed to recognize $L*$. If the input string $w$ is empty, $M$ will accept. $w$ is nondeterministically
+	  cut into multiple parts, the substrings should be run as input to TM $M_L$. If $M_L$ accepts all the substrings, then $M$ will accept.
+    \item Intersection: A TM $M$ can be constructed to recognize $A \cap B$. TM $M_A$ recognizes $A$ and TM $M_B$ recognizes $B$. An input
+	  string, $w$, is then run on $M_A$. If $M_A$ accepts $w$, then $w$ will be used as input for $M_B$. If $M_B$ accepts, then M will
+	  accept.
   \end{itemize}
 
 \end{enumerate}

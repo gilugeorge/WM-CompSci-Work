@@ -34,10 +34,9 @@
     is a DFA and $L(A)= \emptyset \}$. \\
     On input $<A>$ where $A$ is a DFA:
     \begin{enumerate}
-     \item Mark the start state of $A$.
-     \item Repeat until no new states are marked.
-     \item Mark states that has a transition coming in from any state that is already marked.
-     \item If no accept state is marked, accept. Otherwise, reject.
+      \item Construct a DFA B that recognizes $\bar{L(A)}$, by swapping accept and non-accepting states.
+      \item Run the TM E on input $< B >$, where E is the decider of $E_DFA$.
+      \item If E accepts, accept. If E rejects, reject.
     \end{enumerate}
 
   \item (7 points) Exercise 4.6 on page 183. \\
@@ -48,31 +47,27 @@
     $
     \begin{array}{l|l}
      $n$ & f(n) \\ \hline
-     $1$ & (w_1 1, w_1 2,w_1 3,w_1 4,...) \\
-     $2$ & (w_2 1, w_2 2,w_2 3,w_2 4,...) \\
-     $3$ & (w_3 1, w_3 2,w_3 3,w_3 4,...) \\
+     $1$ & (w_{11}, w_{12},w_{13},w_{14},...) \\
+     $2$ & (w_{21}, w_{22},w_{23},w_{24},...) \\
+     $3$ & (w_{31}, w_{32},w_{33},w_{34},...) \\
      \vdots & \vdots
     \end{array}
     $
   \item (7 points) Exercise 4.7 on page 183. \\
-  *reference www.cs.ucdavis.edu/~gusfield/cs120f11/HW6key.pdf* \\
-  To prove that T is countable we provide a function f : T → N. Given a triple (i, j, k)
-from T f is deﬁned as follows: convert each number i, j, and k to their respective binary
-representation. We will compute the natural number n in its binary representation. For
-the ath bit of n, we divide a by 3. This will produce a quotient q and a remainder r.
-If r is 0 then we extract the qth bit from i, if r is 1 then we extra the qth bit from j,
-if r is 2 then we extract the qth bit from k. Note that if the qth bit of i, j, or k is not
-deﬁned then use a 0. Note that f maps every i, j, k tuple to a natural number and every
-natural number can be converted to an i, j, k tuple (by the reverse process). Hence f is
-a one-to-one function and onto (aka a bijection). Therefore T is countable.
+  *reference staffwww.dcs.shef.ac.uk/people/J.Marshall/alc/studyguides/Selected.pdf* \\
+  Construct a function $f::$ T $\to$ N which is uniquely invertible. Remember the
+unique factorisation theorem, which states that every number in N is expressible as a unique
+product of primes. Consequently we may choose three arbitrary primes $p \neq q \neq r$ and define our
+function $f(i, j , k) = p^iq^jr^k$. From the unique prime factorisation theorem we see that any choice
+of $i, j , k$ uniquely determines a value of $f$, and so $f$ is invertible.
 
   \item (7 points) Problem 4.19 on page 184. \\
   *test.scripts.psu.edu/users/a/y/.../Decidable\%20Languages(2).docx* \\  
-	Let P = ADFA. We know this to be decidable. \\
-	We also know that regular languages are closed under the reverse operation. So, if there is a DFA D for
-	w, there is a DFA D’ for $w^R$. We can then construct an NFA N by branching to D and D’. Since we have
+	Let P = DFA A. We know this to be decidable. \\
+	We also know that regular languages are closed under the reverse operation. So, if there is a DFA X for
+	w, there is a DFA X’ for $w^R$. We can then construct an NFA N by branching to X and X’. Since we have
 	an algorithm to convert NFAs to DFAs, we run it on $<N>$ to get $<M>$. Now we have a DFA M, and since
-	ADFA is decidable, there is some S such that S = $\{<M>\}$. Since M is a DFA that accepts wR whenever it
+	A is decidable, there is some S such that S = $\{<M>\}$. Since M is a DFA that accepts wR whenever it
 	accepts w, $S = \{<M> | M$ is a DFA that accepts $w^R$ whenever it accepts $w\}$, and S is decidable.
   
   \item (12 points) In class, we learned that $A_D$ is non-TR, $A_{TM}$ and $HALT_{TM}$ are TR but non-TD. What can you say 
@@ -105,7 +100,12 @@ a one-to-one function and onto (aka a bijection). Therefore T is countable.
  computing were mathematicians. \\
  \indent To capture much of the computational aspects of nature, people have turned to creating models to be analyzed. Hypercomputational 
  packages is one model that is subject to much disagreement. Some think that this idea of computational models that go beyond the Turing Machine
- are impossible and wrong, while others believe that hypercomputational packages are the way forward. 
+ are impossible and wrong, while others believe that hypercomputational packages are the way forward. \\
+ \indent Finally, the halting set is used by many scholars to explain incomputability. They believe that incomputability is simply the halting set
+ with an existential quantifier added. As it is described, ''All the fuss and descriptive variety associated with incomputability in nature and 
+ its models merely cloak avatars of halting sets for different machines.``  \\
+ \indent Even with the amount of discourse between scholars regarding the future of the Turing Machine, there is no doubt that it's impact is huge among
+ the subject of computability and will continue to play a factor in the future.
 \end{spacing}
 
 

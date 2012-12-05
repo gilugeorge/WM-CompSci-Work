@@ -20,7 +20,7 @@
 \begin{document}
 
 \begin{LARGE}
-\centerline {\bf CSci 423 Homework 1}
+\centerline {\bf CSci 423 Homework 2}
 \end{LARGE}
 \vskip 0.25cm
 
@@ -48,7 +48,8 @@
   \begin{center}
     \includegraphics[scale=.4] {fig4.pdf} \\
     0 denotes null state
-  \end{center}  
+  \end{center}
+  This FA recognizes all sets of strings except those that start with $b$ or contain $bab$.
 
   \item(10 points) Problem 1.32 on page 88. \\
   \begin{center}

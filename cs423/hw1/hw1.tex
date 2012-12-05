@@ -32,25 +32,38 @@
 \item (5 points) Prove by induction that for all integers $n \ge 4$ the inequality $2^n < n!$ holds.
 \begin{description}
  \item Basis Step: $2^n<n!$ when $n = 4$ \\
-$\implies$ $2^4 < 4!$ \\
-$\implies$ $2^4 < 4 \cdot 3 \cdot 2 \cdot 1$ \\
-$\implies$ $16 < 24$ \\
+  $\implies$ $16 ? 24$ \\
+ $\implies$ $2^4 ? 4 \cdot 3 \cdot 2 \cdot 1$ \\
+ $\implies$ $2^4 ? 4!$ \\
 The basis step is confirmed
 
  \item Inductive Hypothesis: \\
   $\forall k$ assume $2^k < k!$ for some $k \leq n$ where $k > 4$
 
  \item Inductive Step: \\
-  $n = k+1$ such that $2^{k+1} < (k+1)!$ \\
-  $\implies 2^k \cdot 2 < k \cdot k!$ \\
+  We wish to prove $n = k+1$ such that $2^{k+1} < (k+1)!$ \\
+  $\implies 2^k \cdot 2 < k+1 \cdot k!$ \\
   Since $k>2$ as shown before, we can assume that by the inductive hypothesis that $2^{k+1} < (k+1)!$
 
 \end{description}
 
-\item (5 points) Prove by contradiction that $2 - \sqrt{2}$ is not a rational number.
+\item (5 points) Prove by contradiction that $2 - \sqrt{2}$ is not a rational number. \\
+\begin{description}
+ \item First, let us assume that an irrational number plus a rational number makes a rational number and make this lead to a contradiction.\\
+      If a is rational, b is irrational, and c is rational, we will try to prove that $a + b = c$ is rational. If this is true, $a = x/y$
+      and $c = e/f$ for integers x, y, e, and f. So:
+  \item $a + b = c$ \\
+	$\implies x/y + b = e/f$ \\
+	$\implies b = e/f - x/y$ \\
+	$\implies b = ey/(fy) - xf/(fy)$ \\
+	$\implies b = (ey - xf)/(fy)$
+  \item Since the RHS is rational, so is b. But we said that b is irrational! This leads to a contradiction and so the sum must be irrational.
+\end{description}
+
+
 
 \begin{description}
-\item We know that any any sum of a rational and irrational number is irrational, so we will first focus on  $\sqrt{2}$.
+\item We know, from the proof cited before, that any sum of a rational and irrational number is irrational, so we will first focus on  $\sqrt{2}$.
 To prove by contradiction we first assume $\sqrt{2}$ is a rational number.
 \item $\exists$ int a, b with $gcd(a,b)=1$, such that $\sqrt{2} = \frac{a}{b}$\\
  $\implies$ $2=\frac{a^2}{b^2}$ \\
@@ -63,9 +76,8 @@ To prove by contradiction we first assume $\sqrt{2}$ is a rational number.
 \end{description}
 
 \item (5 points) Find the error in the following proof that all horses are the same color. \\
-There is an incorrect claim when $H_1$ is presented as having $k$ horses where $h=k$. If a horse is removed from
-the base case of $h=1$, then there are no horses left, therefore no way to know what color of the set of horses is.
-The entire proof relies on this property, and since it cannot be verified, the rest of the proof is false.
+There is an incorrect claim when $H_1$ is presented as having $k$ horses where $h=k$. The inductive step is not applies to the base case,
+therefore no way to know what color of the set of horses is. The entire proof relies on this property, and since it cannot be verified, the rest of the proof is false.
 
 \item (5 points for each question) Give state diagrams of DFAs recognizing the followiing languages. In all parts the alphabet is $\{0,1\}$.
 

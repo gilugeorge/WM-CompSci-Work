@@ -6,6 +6,7 @@
 \usepackage{latexsym}
 \usepackage{times,mathptm}
 \usepackage{epsfig}
+\usepackage{setspace}
 
 \textwidth 6.5truein          
 \textheight 9.0truein
@@ -19,11 +20,11 @@
 \begin{document}
 
 \begin{LARGE}
-\centerline {\bf CSci 423 Homework 1}
+\centerline {\bf CSci 423 Homework 2}
 \end{LARGE}
 \vskip 0.25cm
 
-\centerline{Due: 1:00 pm, Wednesday, 9/12}
+\centerline{Due: 1:00 pm, Wednesday, 9/19}
 \centerline{Eric Shih}
 
 \begin{enumerate}
@@ -71,6 +72,8 @@
 \pagebreak
 \setlength{\parindent}{1cm}
 \centerline{\bf Reading Summary 1}
+
+\begin{spacing}{1.5}
 \indent The common problem in online text repositories is that with a given set of words, we need to find all documents
 that contain those words. To solve this problem, many search engines use inverted indexes. Inverted indexes solves the
 problem by storing a list of all the places where the word occurs for each word. This amounts to a gigantic amount
@@ -86,9 +89,13 @@ of recognizing a key word consists of a start state with transitions to itself f
 for every keyword that is connected by the appropriate symbol as a transition between the states. The example given
 in the article describes an NFA that needs to recognize the words ``web'' and ``eBay''. The two choices to implement
 the NFA are to have a program that computes the set of states after reading each input symbo, or to convert the NFA
-to a DFA and then simulate the DFA. For this example, the DFA conversion was the easiest option.
+to a DFA and then simulate the DFA. For this example, the DFA conversion was the easiest option. \\
 \indent The number of states in the DFA when doing the subset construction for keywords will never be greater than
-the number of states in the NFA.
-
+the number of states in the NFA. This worst case scenario is a big reason why DFA conversion is used often. To
+construct the DFA a few rules must be followed. First if $q_0$ is the start state of the NFA, then ${q_0}$ is one
+of the states of the DFA. Then the DFA states must consist of $q_0$, the state in focus from the NFA, and every
+other state in the NFA that is reachable from $q_0$. Usually the states will match up directly, but sometimes two
+states will yield the same NFA states, and combine to become one DFA state.
+\end{spacing}
 
 \end{document}
