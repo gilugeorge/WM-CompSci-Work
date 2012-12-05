@@ -68,6 +68,45 @@
 	INSTANCE: Finite sets $A_1,\ldots,A_m$ and $B_1,\ldots,B_n$. \\
 	QUESTION: Is there a set $T$ such that $|T\cap A_i|\ge 1$ for $i=1,\ldots,m$ and $|T\cap B_j|\le 1$ for $j=1,\ldots,n$? \\
 	Show that SAT polynomially reduces to SI. \\
+	*reference research.cs.queensu.ca/~cisc365/2010F/365$\%$20SetIntersectionNPC.pdf* \\
+
+	For a CNF expression, $T$ can be transformed as follows:
+	\begin{enumerate}
+	 \item For each clause in the CNF expression, it is turned to set $A_i$. Each literal in $A_i$ becomes an element of the set. The unnegated
+	 literal $x_i$ will become element $T_i$. Negated literal $\bar{x_i}$ will become element $F_i$. $m$ in the set intersection will equal the
+	 number of clauses in the CNF expression
+	 \item For each boolean variable, set $B_j$ can be created with elements $T_j$ and $F_j$. $n$ from the set intersection will be the
+	 number of boolean variables.
+	\end{enumerate}
+	
 \end{enumerate}
+
+\pagebreak
+\setlength{\parindent}{1cm}
+\centerline{\bf Reading Summary 5}
+
+\begin{spacing}{1.5}
+\indent The $P$ versus $NP$ discussion is a problem that is unlikely to be solved in the near future, but its research has driven numerous
+  topics in varying computational problems. This article looks at how people have tried to solve the $P$ versus $NP$ problem and how it has
+  shaped the research of computer science. It also shows how to handle $NP$-complete problems, a new proof strategy, the possibility that
+  quantum computing can help to solve $NP$-complete problems, and finally an idea to ``separate $P$ from $NP$ using using algebraic-geometric
+  techniques.'' \\
+\indent The $P$ versus $NP$ problem is one that compares whether or not $P$, algorithms that run in polynomial time, is equal to $NP$,
+  nondeterministic polynomial time. If $P=NP$, then ``for every problem that has an efficiently verifiable solution, we can find that solution
+  efficiently as well.'' This would mean that there would be a simple efficient algorithm to solve any $NP$-complete problem, which would in
+  turn allow us to apply these solutions to improve real world issues. Many researchers believe that it is impossible for this to happen, so
+  many strategies such as diagonalization, circuit complexity, and proof complexity have been used in an attempt to prove that $P \neq NP$. \\
+\indent Dealing with $NP$-complete problems will undoubtedly be very difficult because of the $P$ versus $NP$ issue. To deal with any real world
+  $NP$-complete problems one can utilize a host of strategies. Brute force methods, parameterized complexity, approximation, and Heuristics and
+  Average-Case Complexity are some available strategies to solve these problems. Usually one will have to use a combination of these techniques
+  in order to fully solve an $NP$-complete problem. \\
+\indent Interactive proof models is one strategy being used to find a solution. PCPs fall under this category and can be used to
+  ``to show the limitations of approximation for a large number of optimization questions.'' Quantum computing is also an option that is being
+  explored. The author is highly doubtful that these machines, if even capable of being built, will be able to solve the problem. It is cited
+  that Shor's quantum computing algorithm ``cannot be applied to generic "black-box" search problems so any algorithm would have to use
+  some special structure of NP-complete problems that we don't know about.'' \\
+\indent   
+\end{spacing}
+
 
 \end{document}
