@@ -442,7 +442,7 @@ using namespace std;
 //  		cout << "Right: " << right << endl;  		  		
 //  		output_temp_group(temp_group);
   		
-  		long i = left-1, j = right+1;
+  		long i = left, j = right-1;
   		for(;;){
   			while(temp_group[++i] < pivot){}
   			while(pivot < temp_group[--j]){}

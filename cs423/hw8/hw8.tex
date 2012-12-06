@@ -69,7 +69,7 @@
       
   \item (10 points) Problem 3.16 (b), (c) and (d) on page 161.
   \begin{itemize}
-    \item Concatentation: A TM $M$ can be constructed to recognize the language $AB$. TM $M_A$ will recognize $A$ and TM $M_B$ will 
+    \item Concatenation: A TM $M$ can be constructed to recognize the language $AB$. TM $M_A$ will recognize $A$ and TM $M_B$ will
 	  recognize $B$. Input string $w$ can beb non-deterministically partitioned to $w_a$ and $w_b$. $w_a$ will be used for $M_A$ and
 	  $w_b$ will be used for $M_B$. While $w_a$ is running, $w_b$ should be run. If $M_B$ accepts, then it will be accepted.
     \item Star: A TM $M$ can be constructed to recognize $L*$. If the input string $w$ is empty, $M$ will accept. $w$ is nondeterministically

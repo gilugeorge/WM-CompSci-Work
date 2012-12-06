@@ -5,7 +5,7 @@ using namespace std;
 //extern double user_time();
 //extern double system_time();
 int input1 = 0, input2 = 200, input3 = 1000;
-long a = 1000, b;
+long a = 10, b;
 bool check;
 
 int main (){
