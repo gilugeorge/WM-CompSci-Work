@@ -380,9 +380,9 @@ using namespace std;
   	return true;
   }//quick_select
 	void GroupOfNumbers::quick_select(long *temp_group, long left, long right, long k) const{
-		if(left + 10 <= right){
+		if(left + CutOff <= right){
   		long pivot = median_of_3(temp_group,left, right);
-  		output_temp_group(temp_group);
+//  		output_temp_group(temp_group);
   		long i = left, j = right-1;
   		for(;;){
   			while(temp_group[++i] < pivot){}
@@ -394,12 +394,11 @@ using namespace std;
   		}
   		swap(temp_group[i], temp_group[right-1]); //Restore Pivot
   		if(k <= i){
-	  		quick_select(temp_group, left, i-1, k); //sort small elements
+	  		quick_select(temp_group, left, i, k); //sort small elements
   		}else if(k > i+1){ // if k=(i+1). No need to sort. As (i+1)th item is the pivot element.
-  			quick_select(temp_group, i+1, right, k);
+  			quick_select(temp_group, i, right, k);
  		 	}
-  		}
-  		else{ //do an insertion sort on the subarrays
+  	}else{ //do an insertion sort on the subarrays
   			insertion_sort(temp_group, left,right);  		
   	}	
 	}//quick select
@@ -435,12 +434,15 @@ using namespace std;
   }//public linear_select
   
   void GroupOfNumbers::linear_select(long *temp_group, long left, long right, long k) const{
-  	if(left + 10 <= right){
-  		output_temp_group(temp_group);
-  		long pivot = median_of_median_of_5(temp_group, right);
-  		cout << "Pivot: " << pivot << endl;
+  	if(left + CutOff <= right){
+  		long pivot = median_of_median_of_5(temp_group, left, right);
+//				long pivot = momo_five(temp_group, left, right);
+//  		cout << "Pivot: " << pivot << endl;
+//  		cout << "Left: " << left << endl;
+//  		cout << "Right: " << right << endl;  		  		
+//  		output_temp_group(temp_group);
   		
-  		long i = left, j = right-1;
+  		long i = left-1, j = right+1;
   		for(;;){
   			while(temp_group[++i] < pivot){}
   			while(pivot < temp_group[--j]){}
@@ -449,31 +451,34 @@ using namespace std;
   			else
   				break;
   		}
-  		cout<< i << endl;
-  		cout<< j << endl;
-  		swap(temp_group[i], temp_group[right-1]); //Restore Pivot
+//  		cout << "i " << i << endl;
+//  		cout << "j: " << j << endl;
+//  		output_temp_group(temp_group);  		
+  		swap(temp_group[i], temp_group[right-1]); //Restore Pivot	
   		if(k <= i){
-	  		linear_select(temp_group, left, i-1, k); //sort small elements
+	  		linear_select(temp_group, left, i, k); //sort small elements
   		}else if(k > i+1){ // if k=(i+1). No need to sort. As (i+1)th item is the pivot element.
-  			linear_select(temp_group, i+1, right, k);
+  			linear_select(temp_group, i, right, k);
  		 	}
-  		}
-  		else{ //do an insertion sort on the subarrays
-  			insertion_sort(temp_group, left,right);
+		}else{ //do an insertion sort on the subarrays
+			insertion_sort(temp_group, left,right+1);
   	}
-  }//protected linear_select
-  
+  }//protected linear_select 
+
   //median of median of 5 used for linear select
-	long GroupOfNumbers::median_of_median_of_5(long *tempArr, long temp_size) const{
+	long GroupOfNumbers::median_of_median_of_5(long *tempArr, long left, long right) const{
 		//output_temp_group(tempArr);
 //		cout<< temp_size << endl;
+		long temp_size= right-left+1;
 		long *median_5= new long[temp_size];
 		long *med_med= new long[(temp_size/5)];
 		if(temp_size>=5){
-			for(int i=0; i<temp_size/5; i++){
+			int k = 0;
+			for(int i=left; i<(left+temp_size/5); i++){
 				for(int j=0; j<5; j++){
-					median_5[(5*i)+j]= tempArr[(5*i)+j];
+					median_5[(5*k)+j]= tempArr[left+(5*k)+j];
 				}
+				k++;
 			}
 			for(int m=0; m< temp_size/5; m++){
 				int temp_m= m*5;
@@ -491,11 +496,15 @@ using namespace std;
 					swap(median_5[temp_m+1], median_5[temp_m+2]);
 				if(median_5[temp_m+2]>median_5[temp_m+3])
 					swap(median_5[temp_m+2], median_5[temp_m+3]);
-				swap(temp_group[m+2], temp_group[m+3]);
+//				swap(median_5[m+2], median_5[m+3]);
+//				insertion_sort(median_5, temp_m, temp_m+4);
+//				cout << "----median 5----" << endl;
+//				output_temp_group(median_5);
 				med_med[m]= median_5[temp_m+2];
 			}
-			return median_of_median_of_5(med_med, temp_size/5);
-		}else{
+			return med_med[temp_size/10];
+//			return median_of_median_of_5(med_med, temp_size/5);
+		}else{ //if the size is less than 5, return the indiv number
 			if(temp_size==4){
 				return tempArr[1];
 			}else if(temp_size==3){
@@ -506,7 +515,7 @@ using namespace std;
 			return tempArr[0];
 		}
 	}//med of med of 5
-  
+
   
  	void GroupOfNumbers::output_temp_group(long *temp_group)const{
   	long i;

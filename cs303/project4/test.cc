@@ -4,8 +4,8 @@
 using namespace std;
 //extern double user_time();
 //extern double system_time();
-int input1 = 0, input2 = 100, input3 = 25;
-long a = 1, b;
+int input1 = 0, input2 = 200, input3 = 1000;
+long a = 1000, b;
 bool check;
 
 int main (){

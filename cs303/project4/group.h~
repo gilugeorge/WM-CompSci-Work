@@ -162,7 +162,9 @@ class GroupOfNumbers {
 	void quick_select(long *temp_group, long left, long right, long k) const;
  	long median_of_3(long *temp_group, long left, long right) const;
 	void linear_select(long *temp_group, long left, long right, long k) const;
-	long median_of_median_of_5(long *tempArr) const;
+	long median_of_median_of_5(long *tempArr, long temp_size) const;
+//	long momo_five(long *temp_group, long left, long right) const;
+	
  	//used for testing/debugging purposes.
  	void output_temp_group(long*temp_group)const;
  	
