@@ -5,26 +5,26 @@ using namespace std;
 //extern double user_time();
 //extern double system_time();
 int input1 = 0, input2 = 100, input3 = 25;
-long a = 50, b;
+long a = 1, b;
 bool check;
 
 int main (){
-//	GroupOfNumbers nums1(input1, input2, input3);
-//	cout << "----- _group -----" << endl;
-//	nums1.displayGroupOfNumbers();
-//	cout << "----- Sort Select -----" << endl;
-//	bool check = nums1.sort_select(a,b);
-//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-	
-	GroupOfNumbers nums2(input1, input2, input3);
+	GroupOfNumbers nums1(input1, input2, input3);
 	cout << "----- _group -----" << endl;
-	nums2.displayGroupOfNumbers();	
-	cout << "----- Quick Select -----" << endl;
-	check = nums2.quick_select(a,b);	
-	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;	
-	cout << "----------" << endl;
-	nums2.insertion_sort();
-	nums2.displayGroupOfNumbers();
+	nums1.displayGroupOfNumbers();
+	cout << "----- Linear Select -----" << endl;
+	bool check = nums1.linear_select(a,b);
+	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+	
+//	GroupOfNumbers nums2(input1, input2, input3);
+//	cout << "----- _group -----" << endl;
+//	nums1.displayGroupOfNumbers();	
+//	cout << "----- Quick Select -----" << endl;
+//	check = nums1.quick_select(a,b);	
+//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;	
+//	cout << "----------" << endl;
+//	nums1.insertion_sort();
+//	nums1.displayGroupOfNumbers();
 	
 //	GroupOfNumbers nums3(input1, input2, input3);
 //	cout << "----- _group -----" << endl;
