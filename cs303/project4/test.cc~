@@ -4,8 +4,8 @@
 using namespace std;
 //extern double user_time();
 //extern double system_time();
-int input1 = 0, input2 = 200, input3 = 100;
-long a = 100, b;
+int input1 = 0, input2 = 100, input3 = 25;
+long a = 25, b;
 bool check;
 
 int main (){
@@ -13,7 +13,7 @@ int main (){
 	cout << "----- _group -----" << endl;
 	nums1.displayGroupOfNumbers();
 	cout << "----- Linear Select -----" << endl;
-	bool check = nums1.linear_select(a,b);
+	bool check = nums1.quick_select(a,b);
 	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
 	
 //	GroupOfNumbers nums2(input1, input2, input3);

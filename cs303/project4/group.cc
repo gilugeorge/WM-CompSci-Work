@@ -383,7 +383,7 @@ using namespace std;
 		if(left + CutOff <= right){
   		long pivot = median_of_3(temp_group,left, right);
 //  		output_temp_group(temp_group);
-  		long i = left, j = right-1;
+  		long i = left, j = right;
   		for(;;){
   			while(temp_group[++i] < pivot){}
   			while(pivot < temp_group[--j]){}
