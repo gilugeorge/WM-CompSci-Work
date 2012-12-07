@@ -2,10 +2,10 @@
 Selection algorithm                      k = 1       k is the       k = n
                                                      median
 =============================================================================
-sort select																
+sort select															32796.4				32796.4				32796.4
 
 -----------------------------------------------------------------------------
-partial sort select												0.04
+partial sort select												0.04				N/A						38524.6
 
 -----------------------------------------------------------------------------
 minimum binary heap select								0.14				2.47					3.94
@@ -30,6 +30,5 @@ Table 2.  Timing results for the selection algorithms with n = 10000000.
 
 [Used '-O' compiler option to create the executable test]
 
-[Finally, if you elect to leave one of the entries as "NA" (as
-discussed in the project specifications), then replace this last block
-with a thorough, but succinct, explanation of why.]
+[The worst case for for partial sort select will O(n^2). This will mean more time than the sort select which
+runs at O(nlogn).]
