@@ -369,6 +369,7 @@ using namespace std;
 		if(left + CutOff <= right){
   		long pivot = median_of_3(temp_group,left, right);
   		long i = left, j = right-1;
+  		long i = left, j = right;
   		for(;;){
   			while(temp_group[++i] < pivot){}
   			while(pivot < temp_group[--j]){}
@@ -468,7 +469,6 @@ using namespace std;
 				med_med[m]= median_5[temp_m+2];
 			}
 			return med_med[temp_size/10];
-//			return median_of_median_of_5(med_med, temp_size/5);
 		}else{ //if the size is less than 5, return the indiv number
 			if(temp_size==4){
 				return tempArr[1];

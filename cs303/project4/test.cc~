@@ -2,17 +2,10 @@
 #include "group.h"
 
 using namespace std;
-<<<<<<< HEAD
 extern double user_time();
 extern double system_time();
 int input1 = 0, input2 = 100, input3 = 20;
 long a = 5, b, start, finish;
-bool check;
-
-int main (){
-
-	GroupOfNumbers nums6(input1, input2, input3);
-=======
 //extern double user_time();
 //extern double system_time();
 int input1 = 0, input2 = 100, input3 = 25;
@@ -20,15 +13,8 @@ long a = 25, b;
 bool check;
 
 int main (){
-	GroupOfNumbers nums1(input1, input2, input3);
-	cout << "----- _group -----" << endl;
-	nums1.displayGroupOfNumbers();
-	cout << "----- Linear Select -----" << endl;
-	bool check = nums1.quick_select(a,b);
-	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-	
-//	GroupOfNumbers nums2(input1, input2, input3);
->>>>>>> 3d3b3420c22c9c23290c199debd93f1a4e9a28ff
+
+	GroupOfNumbers nums6(input1, input2, input3);
 //	cout << "----- _group -----" << endl;
 //	nums6.displayGroupOfNumbers();
 	cout << "----- Sort Select -----" << endl;
