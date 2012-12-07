@@ -8,16 +8,16 @@ sort select
 partial sort select												0.04
 
 -----------------------------------------------------------------------------
-minimum binary heap select								0.14
+minimum binary heap select								0.14				2.47
 
 -----------------------------------------------------------------------------
-partial maximum binary heap select				0.04
+partial maximum binary heap select				0.04				1.48
 
 -----------------------------------------------------------------------------
-quickselect (with median-of-three					0.11
+quickselect (with median-of-three					0.11				0.12
 rule for choosing the pivot)
 -----------------------------------------------------------------------------
-linear select (with median-of-median			0.34
+linear select (with median-of-median			0.34				.43
 of-five rule for choosing the pivot)
 -----------------------------------------------------------------------------
 
