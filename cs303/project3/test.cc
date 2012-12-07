@@ -5,7 +5,7 @@ using namespace std;
 //extern double user_time();
 //extern double system_time();
 int input1 = 0, input2 = 100, input3 = 25;
-long a = 1, b;
+long a = 5, b;
 bool check;
 
 int main (){
@@ -16,15 +16,15 @@ int main (){
 //	bool check = nums1.sort_select(a,b);
 //	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
 	
-	GroupOfNumbers nums2(input1, input2, input3);
-	cout << "----- _group -----" << endl;
-	nums2.displayGroupOfNumbers();	
-	cout << "----- Quick Select -----" << endl;
-	check = nums2.quick_select(a,b);	
-	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;	
-	cout << "----------" << endl;
-	nums2.insertion_sort();
-	nums2.displayGroupOfNumbers();
+//	GroupOfNumbers nums2(input1, input2, input3);
+//	cout << "----- _group -----" << endl;
+//	nums2.displayGroupOfNumbers();	
+//	cout << "----- Quick Select -----" << endl;
+//	check = nums2.quick_select(a,b);	
+//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;	
+//	cout << "----------" << endl;
+//	nums2.insertion_sort();
+//	nums2.displayGroupOfNumbers();
 	
 //	GroupOfNumbers nums3(input1, input2, input3);
 //	cout << "----- _group -----" << endl;

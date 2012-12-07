@@ -2,57 +2,70 @@
 #include "group.h"
 
 using namespace std;
-//extern double user_time();
-//extern double system_time();
-int input1 = 0, input2 = 200, input3 = 1000;
-long a = 8, b;
+extern double user_time();
+extern double system_time();
+int input1 = 0, input2 = 100, input3 = 20;
+long a = 5, b, start, finish;
 bool check;
 
 int main (){
-	GroupOfNumbers nums1(input1, input2, input3);
-	cout << "----- _group -----" << endl;
-	nums1.displayGroupOfNumbers();
-	cout << "----- Linear Select -----" << endl;
-	bool check = nums1.linear_select(a,b);
-	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-	
-//	GroupOfNumbers nums2(input1, input2, input3);
+
+	GroupOfNumbers nums6(input1, input2, input3);
 //	cout << "----- _group -----" << endl;
-//	nums1.displayGroupOfNumbers();	
-//	cout << "----- Quick Select -----" << endl;
-//	check = nums1.quick_select(a,b);	
-//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;	
-//	cout << "----------" << endl;
-//	nums1.insertion_sort();
-//	nums1.displayGroupOfNumbers();
+//	nums6.displayGroupOfNumbers();
+	cout << "----- Sort Select -----" << endl;
+	start = user_time() + system_time();
+	check = nums6.sort_select(a,b);	
+	finish = user_time() + system_time();
+	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	
-//	GroupOfNumbers nums3(input1, input2, input3);
+	GroupOfNumbers nums3(input1, input2, input3);
 //	cout << "----- _group -----" << endl;
 //	nums3.displayGroupOfNumbers();
-//	cout << "----- Partial Sort Select -----" << endl;
-//	check = nums3.partial_sort_select(a,b);	
-//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-//	
-//	GroupOfNumbers nums4(input1, input2, input3);
+	cout << "----- Partial Sort Select -----" << endl;
+	start = user_time() + system_time();
+	check = nums3.partial_sort_select(a,b);	
+	finish = user_time() + system_time();
+	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;	
+
+	GroupOfNumbers nums7(input1, input2, input3);
+	cout << "----- Min Heap Select -----" << endl;
+	start = user_time() + system_time();
+	check = nums7.min_heap_select(a,b);
+	finish = user_time() + system_time();
+	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+
+	GroupOfNumbers nums4(input1, input2, input3);
 //	cout << "----- _group -----" << endl;
 //	nums4.displayGroupOfNumbers();
-//	cout << "----- Partial Max Heap Select -----" << endl;
-//	check = nums4.partial_max_heap_select(a,b);	
-//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-//	check = nums4.quick_select(a,b);	
-//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-
-//	GroupOfNumbers nums5(input1, input2, input3);
+	cout << "----- Partial Max Heap Select -----" << endl;
+	start = user_time() + system_time();	
+	check = nums4.partial_max_heap_select(a,b);
+	finish = user_time() + system_time();
+	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	
+	GroupOfNumbers nums2(input1, input2, input3);
 //	cout << "----- _group -----" << endl;
-//	nums5.displayGroupOfNumbers();
-//	
-//		cout << "----- Sort Select -----" << endl;
-//	check = nums5.partial_sort_select(a,b);
-//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-//	
-//	cout << "----- Min Heap Select -----" << endl;
-//	check = nums5.min_heap_select(a,b);	
-//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-
-//	nums5.displayGroupOfNumbers();	
+//	nums2.displayGroupOfNumbers();	
+	cout << "----- Quick Select -----" << endl;
+	start = user_time() + system_time();
+	check = nums2.quick_select(a,b);	
+	finish = user_time() + system_time();
+	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;	
+	
+	GroupOfNumbers nums1(input1, input2, input3);
+//	cout << "----- _group -----" << endl;
+//	nums1.displayGroupOfNumbers();
+	cout << "----- Linear Select -----" << endl;
+	start = user_time() + system_time();
+	check = nums1.linear_select(a,b);
+	finish = user_time() + system_time();
+	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	
 }
