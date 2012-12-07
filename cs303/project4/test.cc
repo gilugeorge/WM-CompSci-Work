@@ -20,15 +20,15 @@ int main (){
 //	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
 //	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	
-	GroupOfNumbers nums3(input1, input2, input3);
-//	cout << "----- _group -----" << endl;
-//	nums3.displayGroupOfNumbers();
-	cout << "----- Partial Sort Select -----" << endl;
-	start = user_time() + system_time();
-	check = nums3.partial_sort_select(a,b);	
-	finish = user_time() + system_time();
-	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+//	GroupOfNumbers nums3(input1, input2, input3);
+////	cout << "----- _group -----" << endl;
+////	nums3.displayGroupOfNumbers();
+//	cout << "----- Partial Sort Select -----" << endl;
+//	start = user_time() + system_time();
+//	check = nums3.partial_sort_select(a,b);	
+//	finish = user_time() + system_time();
+//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+//	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 
 	GroupOfNumbers nums7(input1, input2, input3);
 	cout << "----- Min Heap Select -----" << endl;
