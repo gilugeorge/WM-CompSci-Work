@@ -368,7 +368,12 @@ using namespace std;
 	void GroupOfNumbers::quick_select(long *temp_group, long left, long right, long k) const{
 		if(left + CutOff <= right){
   		long pivot = median_of_3(temp_group,left, right);
+<<<<<<< HEAD
   		long i = left, j = right-1;
+=======
+//  		output_temp_group(temp_group);
+  		long i = left, j = right;
+>>>>>>> 3d3b3420c22c9c23290c199debd93f1a4e9a28ff
   		for(;;){
   			while(temp_group[++i] < pivot){}
   			while(pivot < temp_group[--j]){}

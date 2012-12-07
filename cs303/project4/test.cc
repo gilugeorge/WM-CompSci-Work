@@ -2,10 +2,17 @@
 #include "group.h"
 
 using namespace std;
+<<<<<<< HEAD
 extern double user_time();
 extern double system_time();
 int input1 = 0, input2 = 100, input3 = 20;
 long a = 5, b, start, finish;
+=======
+//extern double user_time();
+//extern double system_time();
+int input1 = 0, input2 = 100, input3 = 25;
+long a = 25, b;
+>>>>>>> 3d3b3420c22c9c23290c199debd93f1a4e9a28ff
 bool check;
 
 int main (){

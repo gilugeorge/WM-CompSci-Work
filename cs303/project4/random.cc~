@@ -78,7 +78,7 @@ long GroupOfNumbers::median_of_median_of_5(long *tempArr, long left, long right)
 			//swap(median_5[m+2], median_5[m+3]);
 			med_med[m]= median_5[temp_m+2];
 //			c_isort(temp_m, temp_m+4, median_5);
-//			med_med[m]= median_5[temp_m+2];
+			med_med[m]= median_5[temp_m+2];
 		}
 		return med_med[(temp_size/5)/2];
 		//return median_of_median_of_5(med_med, 0, temp_size/5);
