@@ -5,20 +5,20 @@ using namespace std;
 extern double user_time();
 extern double system_time();
 int input1 = -10000000, input2 = 10000000, input3 = 10000000;
-long a = 1, b, start, finish;
+long a = 1, b;
+double start, finish;
 bool check;
-
 int main (){
 
-	GroupOfNumbers nums6(input1, input2, input3);
-//	cout << "----- _group -----" << endl;
-//	nums6.displayGroupOfNumbers();
-	cout << "----- Sort Select -----" << endl;
-	start = user_time() + system_time();
-	check = nums6.sort_select(a,b);	
-	finish = user_time() + system_time();
-	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+//	GroupOfNumbers nums6(input1, input2, input3);
+////	cout << "----- _group -----" << endl;
+////	nums6.displayGroupOfNumbers();
+//	cout << "----- Sort Select -----" << endl;
+//	start = user_time() + system_time();
+//	check = nums6.sort_select(a,b);	
+//	finish = user_time() + system_time();
+//	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
+//	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 	
 	GroupOfNumbers nums3(input1, input2, input3);
 //	cout << "----- _group -----" << endl;
@@ -28,7 +28,7 @@ int main (){
 	check = nums3.partial_sort_select(a,b);	
 	finish = user_time() + system_time();
 	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;	
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 
 	GroupOfNumbers nums7(input1, input2, input3);
 	cout << "----- Min Heap Select -----" << endl;
