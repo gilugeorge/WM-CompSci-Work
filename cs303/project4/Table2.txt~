@@ -26,9 +26,14 @@ Table 2.  Timing results for the selection algorithms with n = 10000000.
 
 [Single Run]
 
-[Ran tests on gpu1]
+[Replace this second block with the name of the machine in the CS
+system on which you ran your timing tests (e.g., bg1 or ...).  If your
+tests were run on a machine not on the CS network, then say so and
+indicate the features of the machine upon which your tests were run.]
 
-[Used '-O' compiler option to create the executable test]
+[Replace this third block with the list of options you used to compile
+and create the executable used to run your timing tests.  In
+particular, it is useful to know if you used compiler optimizations.]
 
 [Finally, if you elect to leave one of the entries as "NA" (as
 discussed in the project specifications), then replace this last block

@@ -6,10 +6,6 @@ extern double user_time();
 extern double system_time();
 int input1 = 0, input2 = 100, input3 = 20;
 long a = 5, b, start, finish;
-//extern double user_time();
-//extern double system_time();
-int input1 = 0, input2 = 100, input3 = 25;
-long a = 25, b;
 bool check;
 
 int main (){
