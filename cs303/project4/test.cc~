@@ -28,7 +28,7 @@ int main (){
 	check = nums3.partial_sort_select(a,b);	
 	finish = user_time() + system_time();
 	cout << "return: " << check << " k: " << a << " kth_smallest: " << b << endl;
-	cout << setiosflags(ios::fixed) << setprecision(2) << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
+	cout << "Start: " << start << " Finish: " << finish << " Timing: " << finish - start << endl;
 
 	GroupOfNumbers nums7(input1, input2, input3);
 	cout << "----- Min Heap Select -----" << endl;
