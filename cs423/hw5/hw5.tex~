@@ -43,9 +43,9 @@
   \item (5 points) Exercise 2.9 on page 129. 
     \begin{description}
      \item CFG: \\
-      $S \to R|T $ \\
-      $R \to aRbU|\epsilon $ \\
-      $T \to WbTc|\epsilon $ \\
+      $S \to RU|RT $ \\
+      $R \to aRb|\epsilon $ \\
+      $T \to bTc|\epsilon $ \\
       $U \to cU|\epsilon $ \\
       $W \to aW|\epsilon $
      \item Yes the grammar is abiguous because there is a string a string that can be derived in more than 1 fashion.

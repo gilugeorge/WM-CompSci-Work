@@ -34,11 +34,11 @@
 	    $A = \{0^n1^n0^n1^n | n \geq 0\}$ \\
 	Assume $A$ is context free. The pumping lemma applies. Let $p$ be the pumping length. Let string $s = 0^p1^p0^p1^p \in A$
 	and $|s| \geq p$ with $s= uvxyz$, $|vy| > 0$ and $|vxy| \leq p$ and $\forall i \geq 0$, $uv^ixy^iz \in A$. \\
-	Pumping $s$, all $p$s must be equal or a $p`$ that is different from $p$ will result, rendering $s \notin A$. Therefore,
+	Pumping $s$, all blocks must be equal in length or a $p`$ that is different from $p$ will result, rendering $s \notin A$. Therefore,
 	$\forall i \geq 0$, $uv^ixy^iz \in A$ is true if and only if none of the $p$s change or $p$s change in $0^p1^p0^p1^p$.
 	Since $|vy| > 0$ and $|vxy| \leq p$ the substring $vxy$ can be:\\
-	1. one $p$ and a maximum length of p. \\
-	2. at most 2 $p$s no matter where $vxy$ spans $0^p1^p0^p1^p$. \\
+	1. one type of symbol, 0 or 1, and a maximum length of p. \\
+	2. at most 2 types of symbols, 0 or 1, no matter where $vxy$ spans $0^p1^p0^p1^p$. \\
 	Therefore, when $i=0$, and $s=uxz$, there will be one or two $p$s and $s \notin A$. This is a contradiction, proving that $A$
 	is not context free.
    
@@ -50,8 +50,11 @@
 	\begin{itemize}
 	 \item[Case 1:] $vxy$ is contained in the first $a^pb^p$. With $s = uv^0xy^0z$, there are fewer symbols on the left of the $\#$
 	      than on the right. Thus $s \notin B$.
-	 \item[Case 2:] $vxy$ is contained in $b^p\#a^p$. With $s = uv^0xy^0z$, there are fewer $b$s on the left side and fewer $a$s on
-	      the right side. Thus $s \notin B$.
+	 \item[Case 2.1:] If either $v$ or $y$ contains the $\#$ symbol, than we can pump $s$ down to $uv^0xy^0z$, which will not contain the
+			    $\#$ symbol and hence will not be in L
+	 \item[Case 2.2:] If $x$ contains the $\#$ symbol v is a substring of $1^p$ , and $y$ is a substring of $0^p$ (since $|vxy| \leq p$).
+			  Pumping $s$ down to $uv^0xy^0z$ reduces either the number of ones in $t_1$ or the number of zeros in $t_2$ or both.
+			  As a result, $t_1 \neq t_2$ for uv0 xy0 z, so the string is not in L.
 	 \item[Case 3:] Similar to case 1, $vxy$ is contained in the second $a^pb^p$. With $s = uv^0xy^0z$, there will be fewer symbols
 	      on the right of the $\#$ than on the left. Thus $s \notin B$.
 	\end{itemize}
@@ -71,7 +74,7 @@
 	\end{itemize}
 	Since all cases result in $s \notin C$, there is a contradiction, proving that $C$ is not context free.
 	
- \item (10 points) Problem 2.42 on page 131. (Hint: $s=1^{p+1}\#1^{p+2}\#...\#1^{3p}$). \\
+ \item (10 points) Problem 2.42 on page 131. (Hint: $s=1^{p+1}\#1^{p+2}\#...\#1^{3p}$).u \\
         Assume $Y$ is context free. The pumping lemma applies. Let $p$ be the pumping length. Let string $s = 1^{p+1}\#1^{p+2}\#...\#1^{3p}
         \in Y$ 	and $|s| \geq p$ with $s= uvxyz$, $|vy| > 0$ and $|vxy| \leq p$ and $\forall i \geq 0$, $uv^ixy^iz \in C$. \\
         Let $i = 2$ for Case 1, $i=0$ for Case 2, and $i = 3$ for Case 3:

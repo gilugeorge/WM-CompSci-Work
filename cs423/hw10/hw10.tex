@@ -31,7 +31,7 @@
   \item (10 points) Prove that $A=\{w_{2i}|w_{2i}\not\in L(M_i)\}$ is not Turing-recognizable, where $w_{2i}$ is the
 	$2i$th string in the lexicographic  order of binary strings and $M_i$ is the TM whose binary  cod e  is$w_i$.
     \begin{description}
-     \item Assume that $A$ is Turing Recognizable, such that $\exists$ TM $M$ such that $A = L(M)$. $M+M_i$ with code $w_i$ for some $i$.
+     \item Assume that $A$ is Turing Recognizable, such that $\exists$ TM $M$ such that $A = L(M)$. $M=M_i$ with code $w_i$ for some $i$.
     $w_{2i} \in A_D$ if and only if $w_{2i} \notin L(M_i)$ by definition of $A$. $w_{2i} \in A$ if and only if $w_{2i} \in L(M_1)$
     by $A = L(M_{2i})$. This gives us a contradiction proving that $A$ is not Truing Recognizable.
     \end{description}
@@ -42,7 +42,7 @@
    \item Assume it is decidable. Then there exists a TM $R$ that decides $EQ_{CFG}$ . A construction of TM $S$ that uses $R$ to decide
 	  $ALL_{CFG}$ follows.
    \item S = On input G , where G is a CFG:
-   \item 1. Run R on input G, G1 where G1 isa CFG that generates Σ∗ .
+   \item 1. Run R on input G, G1 where G1 is a CFG that generates all strings.
    \item 2. If R accepts, accept; if R rejects, reject.
    \item If $R$ decides $EQ_{CFG}$ , $S$ decides $ALL_{CFG}$. But $ALL_{CFG}$ is undecidable, so $EQ_{CFG}$ must also be undecidable.
   \end{description}

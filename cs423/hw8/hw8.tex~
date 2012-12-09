@@ -40,8 +40,9 @@
     \end{center}
     
      The configuration for TM $M$ for input string 000000 is: \\
-     q1000000 \\ q20000 \\ Xq30000 \\ X0q4000 \\ X0Xq300 \\ X0X0q40 \\ X0X0Xq3 \\ X0X0q50 \\ X0Xq5X0 \\ X0q50X0 \\ Xq5X0X0 \\ q50X0X0 \\
-     q5X0X0X0 \\ q20X0X0 \\ Xq3X0X0 \\ XXq30X0 \\ XXXq3X0 \\ XXX0q40 \\ XXX0X $q_{reject}$
+     $\sqcup$q1000000 \\ $\sqcup$q20000 \\ $\sqcup$Xq30000 \\ $\sqcup$X0q4000 \\ $\sqcup$X0Xq300 \\ $\sqcup$X0X0q40 \\ $\sqcup$X0X0Xq3 \\
+     $\sqcup$X0X0q50 \\ $\sqcup$X0Xq5X0 \\ $\sqcup$X0q50X0 \\ $\sqcup$Xq5X0X0 \\ $\sqcup$q50X0X0 \\ $\sqcup$q5X0X0X0 \\ $\sqcup$q20X0X0 \\
+     $\sqcup$Xq3X0X0 \\ $\sqcup$XXq30X0 \\ $\sqcup$XXXq3X0 \\ $\sqcup$XXX0q40 \\ $\sqcup$XXX0X $q_{reject}$
 
   \item (10 points) Exercise 3.8 (b) on page 160.
     \begin{enumerate}
@@ -69,7 +70,7 @@
       
   \item (10 points) Problem 3.16 (b), (c) and (d) on page 161.
   \begin{itemize}
-    \item Concatentation: A TM $M$ can be constructed to recognize the language $AB$. TM $M_A$ will recognize $A$ and TM $M_B$ will 
+    \item Concatenation: A TM $M$ can be constructed to recognize the language $AB$. TM $M_A$ will recognize $A$ and TM $M_B$ will
 	  recognize $B$. Input string $w$ can beb non-deterministically partitioned to $w_a$ and $w_b$. $w_a$ will be used for $M_A$ and
 	  $w_b$ will be used for $M_B$. While $w_a$ is running, $w_b$ should be run. If $M_B$ accepts, then it will be accepted.
     \item Star: A TM $M$ can be constructed to recognize $L*$. If the input string $w$ is empty, $M$ will accept. $w$ is nondeterministically
