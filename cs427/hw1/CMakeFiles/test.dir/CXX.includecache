@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eric/Documents/WM-CompSci-Work/cs427/HW1/src/vec3d.cpp
+cassert
+-
+vec3d.h
+/home/eric/Documents/WM-CompSci-Work/cs427/HW1/src/vec3d.h
+
+include/vec3d.h
+ostream
+-
+cmath
+-
+

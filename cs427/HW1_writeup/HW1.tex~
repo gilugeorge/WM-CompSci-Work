@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 427 Homework 1}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 5:00 pm, Monday, 1/21}
+\centerline{Eric Shih}
+
+\setlength{\parindent}{1cm}
+\indent This assignment took around 2 hours total to finish. No additional files or methods were implemented. All features provided seemed to work
+correctly. \\
+\indent This assignment was a fairly straightforward introduction to how future assignments will look and work. The comments and lecture 1
+were sufficient enough resources to implement all required functions except for normalize(). For normalize(), a simple wolfram alpha search
+was all that was needed to implement the method. Finally, Any results that did not have a provided answer was checked using wolfram alpha
+to run the respective operation.
+\\ \\
+\textit{Output:} \\
+eric@ubuntu:~/Documents/WM-CompSci-Work/cs427/HW1$\$$./hw1 \\
+Vector u = [1,2,3] \\
+Vector v = [1,0,0] \\
+Vector w = [0,1,0] \\
+u + v    = [2,2,3] should be: [2,2,3] \\
+u - w    = [1,1,3] should be: [1,1,3] \\
+u * w    = [0,2,0] should be: [0,2,0] \\
+u * 0.5f = [0.5,1,1.5] should be: [0.5,1,1.5] \\
+2.0f * ((v+w) / u)) = [2,1,0] \\
+v += w,   v = [1,1,0] should be: [1,1,0] \\
+v *= u,   v = [1,2,0] should be: [1,2,0] \\
+v /= u,   v = [1,1,0] should be: [1,1,0] \\
+v -= w,   v = [1,0,0] should be: [1,0,0] \\
+u.squared$\_$length() = 14 should be: 14 \\
+v.dot(u) = 1 \\
+v.dot(w) = 0 \\
+w.dot(v) = 0 \\
+v.normalize() = [1,0,0] should be: [1,0,0] \\
+u.normalize() = [0.267261,0.534522,0.801784] \\
+v.cross(w) = [0,0,1] should be: [0,0,1] \\
+u.cross(w) = [-3,0,1] \\
+u.cross(u) = [0,0,0] \\
+
+\end{document}

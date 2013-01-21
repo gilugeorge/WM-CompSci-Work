@@ -1,0 +1,2 @@
+/home/eric/Documents/WM-CompSci-Work/cs427/HW1/CMakeFiles/hw1.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW1/CMakeFiles/test.dir
