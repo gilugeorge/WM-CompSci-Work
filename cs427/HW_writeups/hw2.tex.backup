@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 427 Homework 2}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 12:00 pm, Monday, 1/29}
+\centerline{Eric Shih}
+
+\setlength{\parindent}{1cm}
+\indent This assignment took approximately 5 hours to finish. No additional files or methods were implemented, nor were any features
+incorrect. \\
+\indent Overall, the assignment took a bit of time to really understand the math behind the triangle intersection, but once the pieces were sorted
+out, the implementation was fairly straightforward. A reference paper from Curless was useful in determining whether or not a point was
+within the triangle; otherwise, the slides and book were sufficient enough to easily implement the images. \\
+\indent generateViewRay() is the method that creates the vector properties for the specific point in question. The coordinates to the point
+are sent in as arguments.  First the x vector is calculated using the 
+
+\end{document}

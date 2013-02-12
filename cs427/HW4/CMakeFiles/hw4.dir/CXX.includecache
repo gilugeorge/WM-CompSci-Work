@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eric/Documents/WM-CompSci-Work/cs427/HW4/src/rotation3d.cpp
+rotation3d.h
+/home/eric/Documents/WM-CompSci-Work/cs427/HW4/src/rotation3d.h
+
+include/mat3d.h
+ostream
+-
+vec3d.h
+include/vec3d.h
+
+include/rotation3d.h
+transformation3d.h
+include/transformation3d.h
+
+include/transformation3d.h
+ostream
+-
+vec3d.h
+include/vec3d.h
+mat3d.h
+include/mat3d.h
+
+include/vec3d.h
+ostream
+-
+cmath
+-
+
