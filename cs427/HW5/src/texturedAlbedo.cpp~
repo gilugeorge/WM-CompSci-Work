@@ -1,0 +1,73 @@
+#include "texturedAlbedo.h"
+
+
+/////////////////
+// Constructor //
+/////////////////
+texturedAlbedo::texturedAlbedo(const std::string& textureName)
+{
+  _texture.load(textureName);
+}
+
+
+texturedAlbedo::texturedAlbedo(const texturedAlbedo& ta)
+{
+  _texture = ta._texture;
+}
+
+
+
+//////////////
+// Operator //
+//////////////
+texturedAlbedo& texturedAlbedo::operator=(const texturedAlbedo& ta)
+{
+  _assign(ta);
+  return *this;
+}
+
+
+
+/////////////
+// Methods //
+/////////////
+color texturedAlbedo::evaluate(const vec2d& textureCoord) const
+{
+  // HW5: implement this
+  //      returns: the color at 'textureCoord' in _texture.  Note, textureCoord is given in a resolution independent range.
+  //               You will need to scale it such that [0,1]x[0,1] it maps to [0,width-1]x[0,height-1].  Coordinates outside this
+  //               range should be mapped to the nearest coordinate inside [0,1]x[0,1] before converting to [0,width-1]x[0,height-1] 
+  //      modifies: nothing.
+  
+	color mappedColor;
+	
+	if( textureCoord[0] >= 0 && textureCoord[0] <= _texture.width()-1 ){
+		if(textureCoord[1] >= 0 && textureCoord[1] <= _texture.height()-1){
+			return _texture[textureCoord[0]][textureCoord[1]];
+		}
+	}
+	
+  return color(1.0f, 1.0f, 1.0f);
+}
+
+
+
+/////////////////////
+// Private Methods //
+/////////////////////
+void texturedAlbedo::_swap(texturedAlbedo& ta)
+{
+  std::swap(_texture, ta._texture);
+}
+
+
+void texturedAlbedo::_assign(const texturedAlbedo& ta)
+{
+  _texture = ta._texture;
+}
+
+
+void texturedAlbedo::_print(std::ostream& s) const
+{
+  s << "Texture Albedo: (" << _texture.width() << "x" << _texture.height() << ")";
+}
