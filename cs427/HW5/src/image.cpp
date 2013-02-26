@@ -1,6 +1,6 @@
-#include <fstream>
 #include <cassert>
 #include <algorithm>
+#include <fstream>
 #include <functional>
 
 #include "image.h"

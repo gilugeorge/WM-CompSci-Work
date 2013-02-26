@@ -38,16 +38,35 @@ color texturedAlbedo::evaluate(const vec2d& textureCoord) const
   //               You will need to scale it such that [0,1]x[0,1] it maps to [0,width-1]x[0,height-1].  Coordinates outside this
   //               range should be mapped to the nearest coordinate inside [0,1]x[0,1] before converting to [0,width-1]x[0,height-1] 
   //      modifies: nothing.
+  vec2d coord = textureCoord;
   
-	color mappedColor;
-	
-	if( textureCoord[0] >= 0 && textureCoord[0] <= _texture.width()-1 ){
-		if(textureCoord[1] >= 0 && textureCoord[1] <= _texture.height()-1){
-			return _texture;
-		}
+	if( coord[0] <= 0 ){
+		coord[0] = 0.0f;
+	}else if( coord[0] >= 1 ){
+		coord[0] = 1.0f;
+	}
+	if( coord[1] <= 0 ){
+		coord[1] = 0.0f;
+	}else if( coord[1] >= 1 ){
+		coord[1] = 1.0f;
 	}
 	
-  return color(1.0f, 1.0f, 1.0f);
+	coord[0] = coord[0] * (_texture.width()-1.0f);
+	coord[1] = coord[1] * (_texture.height()-1.0f);
+	
+	//make it more precise by rounding up or down.
+	if(coord[0] -	floor(coord[0]) < 0.5f){
+		coord[0] = floor(coord[0]);
+	}else{
+		coord[0] = (coord[0]) + 1.0f;
+	}
+	if(coord[1] -	floor(coord[1]) < 0.5f){
+		coord[1] = floor(coord[1]);
+	}else{
+		coord[1] = floor(coord[1]) + 1.0f;
+	}
+	
+	return _texture(coord[0], coord[1]);
 }
 
 

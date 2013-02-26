@@ -61,5 +61,6 @@ vec2d parallelTextureProjection::computeTextureCoordinate(const vec3d& v) const
   // HW5: Implement this.
   //      returns: the texture coordinate obtained by projecting v onto the X-Y plane.
   //      modifies: nothing.
-  return vec2d(0.0f, 0.0f);
+  v.normalize();
+  return vec2d(v.x, v.y);
 }

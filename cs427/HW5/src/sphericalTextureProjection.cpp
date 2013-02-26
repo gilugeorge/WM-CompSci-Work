@@ -59,7 +59,17 @@ void sphericalTextureProjection::_print(std::ostream& s) const
 vec2d sphericalTextureProjection::computeTextureCoordinate(const vec3d& v) const
 {
   // HW5: Implement this.
-  //      returns: the spherical coordinate (theta, phi) of v projected onto a unit sphere.
+  //      returns: the spherical coordinate (phi, theta) of v projected onto a unit sphere.
   //      modifies: nothing.
-  return vec2d(0.0f, 0.0f);
+  v.normalize();
+  float theta, phi;
+
+  theta = acos(v.z)/M_PI;
+  if(v.y >= 0){
+	  phi = acos(v.x/(sin(M_PI*theta)))/ (2*M_PI);
+	}else{
+		phi = (M_PI + acos(v.x/(sin(M_PI*theta)))) / (2*M_PI);
+	}  
+  
+  return vec2d(phi,theta);
 }

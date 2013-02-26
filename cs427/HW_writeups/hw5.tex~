@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{times,mathptm}
+\usepackage{epsfig}
+\usepackage{setspace}
+
+\textwidth 6.5truein
+\textheight 9.0truein
+\oddsidemargin 0.0in
+\topmargin -0.6in
+
+\parindent 0pt
+\parskip 5pt
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\begin{LARGE}
+\centerline {\bf CSci 427 Homework 5}
+\end{LARGE}
+\vskip 0.25cm
+
+\centerline{Due: 12:00 pm, Tuesday, 2/26}
+\centerline{Eric Shih}
+
+\setlength{\parindent}{1cm}
+\indent This assignment took approximately 7 hours to complete. No additional files or methods were implemented. Image 1 and 3 are off
+by 5000 pixels and 1000 pixels respectively. I think this is because the preciseness of the coordinates that I provide _texture. \\
+\indent The role of the transformation in the constructor of the texture projections is to transform the newly constructed triangles in the
+projection. This is useful when different parts of the scene get transformed separately. The texturedAlbedo will load in the image when
+there is one available. This image is then evaluated as a material, where the colors are returned and the coordinates matched. This gets
+repeated with the other types of materials depending on the type of projection being done.
+\end{document}
