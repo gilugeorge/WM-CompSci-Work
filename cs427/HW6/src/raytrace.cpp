@@ -17,6 +17,22 @@ image raytrace(const scene& scene, unsigned int samplesPerPixel, unsigned int ma
   //                bounces (eye->1st intersection == 1 bounce).
   //       modifes: nothing
 
+/*
+Trace(ray)
+	Foreach object in scene
+		Intersect(ray, object)
+	If no intersections
+		return BackgroundColor
+	For each light
+		Foreach object in scene
+			Intersect(ShadowRay, object)
+		Accumulate local illumination
+	Trace(ReflectionRay)
+	Trace(TransmissionRay)
+	Accumulate global illumination
+	Return illumination
+*/
+
   image result(scene.getCamera().width(), scene.getCamera().height());
   result.clear();
   return result;

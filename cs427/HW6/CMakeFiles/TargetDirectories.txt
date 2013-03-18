@@ -1,0 +1,8 @@
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/hw1.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/hw2.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/hw3.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/hw4.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/hw5.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/hw6.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/imagediff.dir
+/home/eric/Documents/WM-CompSci-Work/cs427/HW6/CMakeFiles/test.dir
