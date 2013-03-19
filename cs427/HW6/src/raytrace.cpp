@@ -22,7 +22,7 @@ image raytrace(const scene& scene, unsigned int samplesPerPixel, unsigned int ma
 	for(image::size_type y=0; y < result.height(); y++) {
     for(image::size_type x=0; x < result.width(); x++) {
     	//create view ray
-	  	ray r = scene.getCamera().generateViewRay(x,y);
+	  	ray r = scene.getCamera().generateViewRay(x+.5,y+.5);
 			
 			
 	  	intersectionPoint ip = scene.intersect(r);
