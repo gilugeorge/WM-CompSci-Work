@@ -54,14 +54,16 @@ image raytrace(const scene& scene, unsigned int samplesPerPixel, unsigned int ma
 					while(bounceNum > 0){
 						//std::cout<<"bounces: " << bounceNum << std::endl;
 						if(check){
-							reflectionRay = (ray) (ip.point(), 2*(ip.normal().dot(r.direction()))*ip.normal() - r.direction());
+							reflectionRay.setOrigin(ip.point());
+							reflectionRay.setDirection(2*(ip.normal().dot(r.direction()))*ip.normal() - r.direction());
 							check = false;
 						}else{
-							reflectionRay = (ray) (ref_ip.point(),2*(ref_ip.normal().dot(reflectionRay.direction()))*ref_ip.normal()- reflectionRay.direction());
+							reflectionRay.setOrigin(reflectionRay.origin());
+							reflectionRay.setDirection(2*(ref_ip.normal().dot(reflectionRay.direction()))*ref_ip.normal()- reflectionRay.direction());
 							//std::cout<<"reflectionRay"<<reflectionRay << std::endl;
 						}
 						ref_ip = scene.intersect(reflectionRay);
-						//std::cout<<"ref_ip "<<ref_ip << std::endl;
+						//std::cout<<"ref_ip " << ref_ip << std::endl;
 						if(ref_ip.isHit()){
 							accumLight += ref_ip.evaluate(scene.lightSource(i));
 						}
