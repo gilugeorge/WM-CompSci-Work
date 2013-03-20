@@ -39,6 +39,19 @@ color environmentMap::evaluate(const ray& r) const
   //               large sphere that sits around the scene (and which reflects light inwards).  You should use
   //               the normal theta-phi encoding of direction to texture coordinate.
   //      modifies: nothing
+  
+    // normalize
+  vec3d n = r.direction().normalize();
+
+  // compute (theta,phi)
+  vec3d thetaPhi(atan2(n.y, n.x), acos(n.z), 0.0f);
+
+  // map to [0,1]
+  if(thetaPhi.x < 0.0f) thetaPhi.x += (2.0f * M_PI);
+  thetaPhi /= vec3d(2.0f * M_PI, M_PI,0.0f);
+
+  // Done.
+  return _texture(thetaPhi.x, thetaPhi.y);
   return color(0.0f, 0.0f, 0.0f);
 }
 

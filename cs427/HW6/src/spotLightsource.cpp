@@ -58,6 +58,13 @@ color spotLightsource::getIntensity(const vec3d& point, const vec3d& dir) const
   //               cut off (i.e., black), and sharpness is the similar as in phong shading a factor that
   //               controlls the fall off.
   //      modifies: nothing.
+  float distance = _position.distance(point);
+  color attenuationFactor = (color) 1/(_attenuation[0]+(_attenuation[1]*distance)+(_attenuation[2]*distance*distance));
+  float angle = dir.normalize().dot(_direction.normalize());
+  if(cos(angle) < cos(_cutoff)){
+  	return _intensity * pow(angle, _sharpness) * attenuationFactor;
+  }
+  
   return color(0.0f, 0.0f, 0.0f);
 }
 
