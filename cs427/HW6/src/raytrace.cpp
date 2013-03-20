@@ -1,5 +1,5 @@
 #include <cstdlib>
-
+#include <iostream>
 #include "raytrace.h"
 
 #include "ray.h"
@@ -45,24 +45,32 @@ image raytrace(const scene& scene, unsigned int samplesPerPixel, unsigned int ma
 						if(!s_ip.isHit()){
 							accumLight += ip.evaluate(scene.lightSource(i));
 						}
-					}//compute shadow
-					/*
+						
+					//specular reflection	
 					ray reflectionRay;
 					intersectionPoint ref_ip;
 					bool check = true;
-					//specular reflection
+					bounceNum = maxBounce;
 					while(bounceNum > 0){
+						//std::cout<<"bounces: " << bounceNum << std::endl;
 						if(check){
 							reflectionRay = (ray) (ip.point(), 2*(ip.normal().dot(r.direction()))*ip.normal() - r.direction());
 							check = false;
 						}else{
 							reflectionRay = (ray) (ref_ip.point(),2*(ref_ip.normal().dot(reflectionRay.direction()))*ref_ip.normal()- reflectionRay.direction());
-						}						
+							//std::cout<<"reflectionRay"<<reflectionRay << std::endl;
+						}
 						ref_ip = scene.intersect(reflectionRay);
-						accumLight += ref_ip.evaluate(reflectionRay.direction());
+						//std::cout<<"ref_ip "<<ref_ip << std::endl;
+						if(ref_ip.isHit()){
+							accumLight += ref_ip.evaluate(scene.lightSource(i));
+						}
 						bounceNum--;
-					}
-					*/
+						}//compute specular reflection
+					}//compute shadow
+					
+					
+					
 				}
 			}//for samplesPerPixel
 			result(x,y) = accumLight/samplesPerPixel; 	

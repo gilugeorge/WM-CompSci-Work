@@ -9,6 +9,8 @@
 /home/eric/Documents/WM-CompSci-Work/cs427/HW6/src/raytrace.cpp
 cstdlib
 -
+iostream
+-
 raytrace.h
 /home/eric/Documents/WM-CompSci-Work/cs427/HW6/src/raytrace.h
 ray.h
