@@ -36,10 +36,7 @@ color bilinearTexturedAlbedo::evaluate(const vec2d& textureCoord) const
   // HW6: Implement this.
   //      Exactly the same as texturedAlbedo, but it now return the bilinearly interpolated texel color.
   
-  // get pixel coord map to the nearest edge if outside
- // signed int u= textureCoord.u * _texture.width();
-  //signed int v= textureCoord.v * _texture.height();
-
+  //used wikipedia structure as template for this
 	int x = floor(textureCoord.u);
 	int y = floor(textureCoord.v);
 	double u_ratio = textureCoord.u - x;

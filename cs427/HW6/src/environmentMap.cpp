@@ -44,14 +44,30 @@ color environmentMap::evaluate(const ray& r) const
   vec3d n = r.direction().normalize();
 
   // compute (theta,phi)
-  vec3d thetaPhi(atan2(n.y, n.x), acos(n.z), 0.0f);
+  float theta = atan2(r.direction().y, r.direction().x);
+  float phi = acos(r.direction().z);
 
   // map to [0,1]
-  if(thetaPhi.x < 0.0f) thetaPhi.x += (2.0f * M_PI);
-  thetaPhi /= vec3d(2.0f * M_PI, M_PI,0.0f);
+	if(theta < 0.0f ) theta += (2.0f * M_PI);
+	theta /= 2.0f * M_PI;
+	phi /= M_PI;
+
+	//bilinear interpolation
+	float degree = M_PI/180;
+	int thetaTimes = (int) theta/degree;
+	int phiTimes = (int) phi/degree;
+	float floor_theta = thetaTimes * degree;
+	float floor_phi = phiTimes * degree;
+	
+	double u_ratio = theta - floor_theta;
+	double v_ratio = phi - floor_phi;
+	double u_opposite = 1 - u_ratio;
+	double v_opposite = 1 - v_ratio;
+	color result = (color) (_texture(floor_theta,floor_phi) * u_opposite  + _texture(floor_theta+1,floor_phi)   * u_ratio) * v_opposite + (_texture(floor_theta,floor_phi+1) * u_opposite  + _texture(floor_theta+1,floor_phi+1) * u_ratio) * v_ratio;
 
   // Done.
-  return _texture(thetaPhi.x, thetaPhi.y);
+	return result;
+//  return _texture(thetaPhi.x, thetaPhi.y);
   return color(0.0f, 0.0f, 0.0f);
 }
 
