@@ -38,6 +38,7 @@ class boundingVolumeElement {
   static float centroid(const std::vector<const triangle*>& list, unsigned int index, unsigned int coord);
 	void quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis);
 	float median_of_3(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis);
+	void swap(std::vector<const triangle*>& _group, int a, int b);
 	
   //////////////////////////
   // Private Data Members //

@@ -22,79 +22,28 @@ boundingVolumeElement::boundingVolumeElement(std::vector<const triangle*>& trian
   //std::cout << "Starting a bve: " << end_index - start_index << std::endl;
   
   
-  vec3d empty(-1.0f);
+  
   //down to leaf, store triangle
-  if((end_index - start_index) <= 0){
-  	//std::cout << "Adding a Leaf! " << triangleList[start_index]->vertex(0) << triangleList[start_index]->vertex(1) << triangleList[start_index]->vertex(2) << std::endl;
-  	
+  if((end_index - start_index) <= 0){  	
   	_triangle = triangleList[start_index];
+  	_bb = boundingBox();
+  	_bb.expand(triangleList[start_index]->vertex(0), EPSILON);
+		_bb.expand(triangleList[start_index]->vertex(1), EPSILON);
+		_bb.expand(triangleList[start_index]->vertex(2), EPSILON);
   }
   else{
-  	//std::cout << "Not a leaf, set _bb" << std::endl;
-  	//set bounding volume
-  	vec3d lfb(-1.0f);
-  	vec3d rbt(-1.0f);
-  	//vec3d vert0, vert1, vert2; 
-  	for(int i = start_index; i < end_index; i++){
-  		if(lfb == empty){
-  			_bb = boundingBox();
-  			lfb += vec3d(1.0f);
-  			std::cout << "_bb empty" << std::endl;
-  		}
-  	
-  		_bb.expand(triangleList[i]->vertex(0), EPSILON);
-  		_bb.expand(triangleList[i]->vertex(1), EPSILON);
-  		_bb.expand(triangleList[i]->vertex(2), EPSILON);
-  		//std::cout << "Begin checking verts" << std::endl;
-  		/*
-  		vert0 = triangleList[i]->vertex(0);
-  		if(lfb == empty || rbt == empty){
-  			lfb = vert0;
-  			rbt = vert0;
-  		//	std::cout << "setting initial lfb rbt" << lfb << ", " << rbt << std::endl;
-  		}else if(vert0.length() < lfb.length()){
-  			lfb = vert0;
-  		}else if(vert0.length() > rbt.length()){
-  			rbt = vert0;
-  		}
-  		//std::cout << "After vert0 lfb: " << lfb << ", rbt: " << rbt << std::endl;
-  		
-  		
-  		vert1 = triangleList[i]->vertex(1);
-  		//std::cout << "about to check vert1: " << vert1 << std::endl;
-  		if(vert1.length() < lfb.length()){
-  			lfb = vert1;
-  		}else if(vert1.length() > rbt.length()){
-  			rbt = vert1;
-  		//	std::cout << "rbt updated" << rbt << std::endl;
-  		}
-  		//std::cout << "After vert1 lfb: " << lfb << ", rbt: " << rbt << std::endl;
-  		
-  		
-  		vert2 = triangleList[i]->vertex(2);
-  		//std::cout << "about to check vert2: " << vert2 << std::endl;
-  		if(vert2.length() < lfb.length()){
-  			lfb = vert2;
-  		}else if(vert2.length() > rbt.length()){
-  			rbt = vert2;
-  		}
-  		//std::cout << "After vert2 lfb: " << lfb << ", rbt: " << rbt << std::endl;	
-  		*/
-  		
-  	}
-  	
-  	
   	//sort objects using centroid (mergesort)
-  	//std::cout << "Sort triangles from index: " << start_index << ", "<< end_index << std::endl;
-  	int axis = 0;
+  	//give a random, or increment
+  	int axis = rand() % 3;
+  	axis = 0;
   	quicksort(triangleList, start_index, end_index, axis);
   	
-  	
   	//set left and right children
-  	//std::cout << "Recurse to left: " << start_index << ", "<< end_index/2 <<std::endl;
   	_left = new boundingVolumeElement(triangleList, start_index, (start_index + end_index)/2);
-  	//std::cout << "Recurse to right: " << (end_index/2)+ 1 << ", "<< end_index <<std::endl;
   	_right = new boundingVolumeElement(triangleList, ((start_index + end_index)/2)+ 1 , end_index );
+  	
+  	//set parent bounding box
+  	_bb = _left->_bb + _right->_bb;
   }
   
   
@@ -132,22 +81,24 @@ bool boundingVolumeElement::isHit(const ray& r) const
   // Homework 7: returns true if this element or any of its children is hit by the ray r.
   //        modifies: nothing
   //        returns: true/false on hit/miss
-  if(!isBoundingBoxHit(r)){
-  	std::cout << "Returning False isHit()" << std::endl;
-  	return false;
-  }
-  std::cout << "checking isHit" << std::endl;
+  
+  //test if you hit the bounding volume
+  
+  //test the children
   if(_triangle == NULL){
-  	_left -> isHit(r);
-  	_right -> isHit(r);
+  	if(_left->isBoundingBoxHit(r)){
+  		if(_left -> isHit(r))
+  			return true;
+  	}
+  	if(_right->isBoundingBoxHit(r)){
+  		if(_right -> isHit(r))
+  			return true;
+		}
   }else{
-  	// hit?
     float t;
     vec3d barycentric;
-    if(_triangle->intersect(r, barycentric, t)) 
-    	return true;
+    return _triangle->intersect(r, barycentric, t);
   }
-  
   return false;
 }
 
@@ -159,23 +110,26 @@ intersectionPoint boundingVolumeElement::intersect(const ray& r, const triangleM
   //             not stored in the mesh).  You can assume that the mesh is the same as the one that was used for creating the bounding volume hierarchy.
   //        modifies: nothing
   //        returns: intersection point of the hit
-  return intersectionPoint();
-  intersectionPoint ip, leftIP, rightIP;
+  //return intersectionPoint();
+  intersectionPoint ip = intersectionPoint(), leftIP, rightIP, tempIP;
   
   //check if at leaf, if so: calculate intersectionPoint, else recurse further down
   if(_left == NULL && _right == NULL){
     float t;
     vec3d barycentric;
-    if(isHit(r)){  // hit?
-    	_triangle -> intersect(r, barycentric, t);
-			ip = intersectionPoint(r, barycentric, t, *_triangle, mesh.getMaterial());
-		}else{
-			ip = intersectionPoint();
-		}	
+    if(isBoundingBoxHit(r)){  // hit?
+    	if(_triangle -> intersect(r, barycentric, t)){
+				ip = intersectionPoint(r, barycentric, t, *_triangle, mesh.getMaterial());
+    	}
+		}
   }else{ //recurse through tree
-		leftIP = _left->intersect(r, mesh);
-  	rightIP = _right->intersect(r, mesh);
-  	if(leftIP > rightIP){
+  	if(_left != NULL && _left->isBoundingBoxHit(r)){
+			leftIP = _left->intersect(r, mesh);
+		}
+		if(_right != NULL && _right -> isBoundingBoxHit(r)){
+  		rightIP = _right->intersect(r, mesh);
+  	}
+  	if(leftIP < rightIP){
   		ip = leftIP;
   	}else{
   		ip = rightIP;
@@ -193,28 +147,54 @@ float boundingVolumeElement::centroid(const std::vector<const triangle*>& list, 
 {
   return (list[index]->vertex(0)[coord] + list[index]->vertex(1)[coord] + list[index]->vertex(2)[coord]) / 3.0f;
 }
-
+void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
+	int i = left, j = right;
+      int tmp;
+      float pivot = centroid(_group, arr[(left + right) / 2];
+ 
+      /* partition */
+      while (i <= j) {
+            while (arr[i] < pivot)
+                  i++;
+            while (arr[j] > pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = arr[i];
+                  arr[i] = arr[j];
+                  arr[j] = tmp;
+                  i++;
+                  j--;
+            }
+      };
+ 
+      /* recursion */
+      if (left < j)
+            quickSort(arr, left, j);
+      if (i < right)
+            quickSort(arr, i, right);
+}
+/*
 void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
 	if(left + 10 <= right){
-		float pivot = median_of_3(_group, left, right, axis);
+		float pivot = centroid(_group, median_of_3(_group, left, right, axis), axis);
 		
 		int i = left, j = right-1;
 		for(;;){
 			while(centroid(_group, ++i, axis) < pivot){}
 			while(pivot < centroid(_group, --j, axis)){}
 			if(i < j)
-				std::swap(_group[i], _group[j]);
+				swap(_group, i, j);
 			else
 				break;
 		}
 		
-		std::swap(_group[i], _group[right-1]); //Restore Pivot
+		swap(_group, i, right-1); //Restore Pivot
 		quicksort(_group, left, i-1, axis); //sort small elements
-		quicksort(_group, i+1, right, axis); //sort large elements  		
+		quicksort(_group, i+1, right, axis); //sort large elements		
 	}else{ //do an insertion sort on the subarrays
-		int x;  	
+		int x;
   	for(int p = left; p < right; p++){
-	  	long tmp = centroid(_group, p, axis);
+	  	float tmp = centroid(_group, p, axis);
 	  	for( x = p; x > 0 && tmp < centroid(_group, x-1, axis); x--){
 	  		_group[x] = _group[x-1];
 	  	}
@@ -226,16 +206,24 @@ void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsi
 float boundingVolumeElement::median_of_3(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
 	int center = (left + right) / 2;
 	if(centroid(_group, center, axis) < centroid(_group, left, axis))
-		std::swap(_group[left], _group[center]);
+		swap(_group, left, center);
   if(centroid(_group, right, axis) < centroid(_group, left, axis))
-      std::swap( _group[left], _group[right] );
+      swap( _group, left, right );
   if( centroid(_group, right, axis) < centroid(_group, center, axis) )
-      std::swap( _group[center], _group[right] );
+      swap(_group, center, right);
 
       // Place pivot at position right - 1
-  std::swap( _group[center], _group[right - 1] );
+  swap( _group, center, right - 1);
   return centroid(_group, right-1, axis);
+}*/
+
+void boundingVolumeElement::swap(std::vector<const triangle*>& _group, int a, int b){
+	const triangle* temp = _group[a];
+	_group[a] = _group[b];
+	_group[b] = temp;
 }
+
+
 
 /*
 void GroupOfNumbers::mergesort(std::vector<const triangle*>& temp_group, unsigned int left, unsigned int right){
