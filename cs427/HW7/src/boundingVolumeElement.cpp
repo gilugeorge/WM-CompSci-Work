@@ -1,6 +1,7 @@
 #include "constants.h"
 #include "boundingVolumeElement.h"
 #include <iostream>
+int axis = -1;
 
 //////////////////
 // Constructor //
@@ -34,10 +35,16 @@ boundingVolumeElement::boundingVolumeElement(std::vector<const triangle*>& trian
   else{
   	//sort objects using centroid (mergesort)
   	//give a random, or increment
-  	int axis = rand() % 3;
-  	axis = 0;
+  	axis = (axis+1) % 3;
+  	//std::cout << axis << std::endl;
+  	//axis = 0;
   	quicksort(triangleList, start_index, end_index, axis);
   	
+  	/*for(int i = start_index; i <= end_index; i++){
+  		std::cout << centroid(triangleList, i, axis) << std::endl;
+  	}
+  	std::cout<<std::endl;
+  	*/
   	//set left and right children
   	_left = new boundingVolumeElement(triangleList, start_index, (start_index + end_index)/2);
   	_right = new boundingVolumeElement(triangleList, ((start_index + end_index)/2)+ 1 , end_index );
@@ -111,10 +118,10 @@ intersectionPoint boundingVolumeElement::intersect(const ray& r, const triangleM
   //        modifies: nothing
   //        returns: intersection point of the hit
   //return intersectionPoint();
-  intersectionPoint ip = intersectionPoint(), leftIP, rightIP, tempIP;
-  
+  intersectionPoint ip = intersectionPoint(), leftIP, rightIP;
+
   //check if at leaf, if so: calculate intersectionPoint, else recurse further down
-  if(_left == NULL && _right == NULL){
+  if(_triangle != NULL && _left == NULL && _right == NULL){
     float t;
     vec3d barycentric;
     if(isBoundingBoxHit(r)){  // hit?
@@ -122,18 +129,15 @@ intersectionPoint boundingVolumeElement::intersect(const ray& r, const triangleM
 				ip = intersectionPoint(r, barycentric, t, *_triangle, mesh.getMaterial());
     	}
 		}
-  }else{ //recurse through tree
-  	if(_left != NULL && _left->isBoundingBoxHit(r)){
-			leftIP = _left->intersect(r, mesh);
-		}
-		if(_right != NULL && _right -> isBoundingBoxHit(r)){
-  		rightIP = _right->intersect(r, mesh);
-  	}
-  	if(leftIP < rightIP){
-  		ip = leftIP;
-  	}else{
-  		ip = rightIP;
-  	}
+  }
+  
+  if(_left != NULL && _left -> isBoundingBoxHit(r)){ //recurse through tree
+		ip = _left->intersect(r, mesh);
+	}
+	if(_right != NULL && _right -> isBoundingBoxHit(r)){
+		rightIP = _right->intersect(r, mesh);
+		if(rightIP < ip)
+			ip = rightIP;
 	}
 	return ip;
 }
@@ -147,6 +151,8 @@ float boundingVolumeElement::centroid(const std::vector<const triangle*>& list, 
 {
   return (list[index]->vertex(0)[coord] + list[index]->vertex(1)[coord] + list[index]->vertex(2)[coord]) / 3.0f;
 }
+//int random()
+
 void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
 	int i = left, j = right;
       const triangle* tmp;
@@ -165,13 +171,14 @@ void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsi
                   i++;
                   j--;
             }
-      };
+      }
  
       /* recursion */
-      if (left < j)
+      /*if (left < j)
             quicksort(_group, left, j, axis);
       if (i < right)
             quicksort(_group, i, right, axis);
+      */      
 }
 /*
 void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
