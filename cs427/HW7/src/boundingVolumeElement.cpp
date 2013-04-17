@@ -149,19 +149,19 @@ float boundingVolumeElement::centroid(const std::vector<const triangle*>& list, 
 }
 void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
 	int i = left, j = right;
-      int tmp;
-      float pivot = centroid(_group, arr[(left + right) / 2];
+      const triangle* tmp;
+      float pivot = centroid(_group, (left + right) / 2, axis);
  
       /* partition */
       while (i <= j) {
-            while (arr[i] < pivot)
+            while (centroid(_group, i, axis) < pivot)
                   i++;
-            while (arr[j] > pivot)
+            while (centroid(_group, j, axis) > pivot)
                   j--;
             if (i <= j) {
-                  tmp = arr[i];
-                  arr[i] = arr[j];
-                  arr[j] = tmp;
+                  tmp = _group[i];
+                  _group[i] = _group[j];
+                  _group[j] = tmp;
                   i++;
                   j--;
             }
@@ -169,9 +169,9 @@ void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsi
  
       /* recursion */
       if (left < j)
-            quickSort(arr, left, j);
+            quicksort(_group, left, j, axis);
       if (i < right)
-            quickSort(arr, i, right);
+            quicksort(_group, i, right, axis);
 }
 /*
 void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
