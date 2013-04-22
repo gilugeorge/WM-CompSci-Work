@@ -92,6 +92,12 @@ bool boundingVolumeElement::isHit(const ray& r) const
   //test if you hit the bounding volume
   
   //test the children
+  if(_triangle != NULL){
+    float t;
+    vec3d barycentric;
+    return _triangle->intersect(r, barycentric, t);  
+  }
+  
   if(_triangle == NULL){
   	if(_left->isBoundingBoxHit(r)){
   		if(_left -> isHit(r))
@@ -101,10 +107,6 @@ bool boundingVolumeElement::isHit(const ray& r) const
   		if(_right -> isHit(r))
   			return true;
 		}
-  }else{
-    float t;
-    vec3d barycentric;
-    return _triangle->intersect(r, barycentric, t);
   }
   return false;
 }
@@ -153,18 +155,23 @@ float boundingVolumeElement::centroid(const std::vector<const triangle*>& list, 
 }
 //int random()
 
+/*
 void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
-	int i = left, j = right;
-      const triangle* tmp;
+			int i = left, j = right;
+			//std::cout << "left, right: " << left << ", " << right << std::endl;
       float pivot = centroid(_group, (left + right) / 2, axis);
- 
-      /* partition */
+ 			//std::cout << "pivot: " << pivot << std::endl;
+ 			//std::cout << "centroid 1: " << centroid(_group, i, axis) << std::endl;
+ 			//std::cout << "centroid 2: " << centroid(_group, j, axis) << std::endl;
+ 			
+      // partition
       while (i <= j) {
             while (centroid(_group, i, axis) < pivot)
                   i++;
             while (centroid(_group, j, axis) > pivot)
                   j--;
             if (i <= j) {
+                  const triangle* tmp;
                   tmp = _group[i];
                   _group[i] = _group[j];
                   _group[j] = tmp;
@@ -173,19 +180,28 @@ void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsi
             }
       }
  
-      /* recursion */
-      /*if (left < j)
+      // recursion
+      if(i < left || j > right){
+      	
+      }else
+      if (left < j){
+      			//std::cout << "*sort left: " << left << ", " << right << "... j=" << j << std::endl;
             quicksort(_group, left, j, axis);
-      if (i < right)
+      }else     
+      if (i < right){
+      			//std::cout << "**sort right: " << "... i=" << i << std::endl;
             quicksort(_group, i, right, axis);
-      */      
+      }      
 }
-/*
+*/
+
 void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
-	if(left + 10 <= right){
-		float pivot = centroid(_group, median_of_3(_group, left, right, axis), axis);
+	if(left + 25 <= right){
+		//float pivot = centroid(_group, median_of_3(_group, left, right, axis), axis);
+		float pivot = centroid(_group, (left + right) / 2, axis);
 		
-		int i = left, j = right-1;
+		int i = left-1, j = right+1;
+		//std::cout << "left, right: " << left << ", " << right << std::endl;
 		for(;;){
 			while(centroid(_group, ++i, axis) < pivot){}
 			while(pivot < centroid(_group, --j, axis)){}
@@ -195,21 +211,23 @@ void boundingVolumeElement::quicksort(std::vector<const triangle*>& _group, unsi
 				break;
 		}
 		
-		swap(_group, i, right-1); //Restore Pivot
+		//swap(_group, i, right-1); //Restore Pivot
 		quicksort(_group, left, i-1, axis); //sort small elements
 		quicksort(_group, i+1, right, axis); //sort large elements		
 	}else{ //do an insertion sort on the subarrays
-		int x;
+	  //std::cout << "insert left, right: " << left << ", " << right << std::endl;
   	for(int p = left; p < right; p++){
-	  	float tmp = centroid(_group, p, axis);
-	  	for( x = p; x > 0 && tmp < centroid(_group, x-1, axis); x--){
-	  		_group[x] = _group[x-1];
+  		int x;
+	  	//float tmp = centroid(_group, p, axis);
+	  	for(x = p; x > left && centroid(_group, x-1, axis) > centroid(_group, x, axis); x--){
+	  		swap(_group, x, x-1);
 	  	}
-	  	_group[x] = _group[p];
+	  	//_group[x] = _group[p];
   	} 
-	}	
+	}
 }
 
+/*
 float boundingVolumeElement::median_of_3(std::vector<const triangle*>& _group, unsigned int left, unsigned int right, int axis){
 	int center = (left + right) / 2;
 	if(centroid(_group, center, axis) < centroid(_group, left, axis))
@@ -229,7 +247,6 @@ void boundingVolumeElement::swap(std::vector<const triangle*>& _group, int a, in
 	_group[a] = _group[b];
 	_group[b] = temp;
 }
-
 
 
 /*
